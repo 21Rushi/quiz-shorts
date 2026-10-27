@@ -19,6 +19,11 @@ on:
         description: "Render only, don't upload"
         type: boolean
         default: false
+      privacy:
+        description: "Visibility for a manual upload (use private for tests)"
+        type: choice
+        options: [public, private, unlisted]
+        default: public
 
 concurrency:
   group: daily-quiz
@@ -55,6 +60,7 @@ jobs:
           IN_SLOT: ${{ inputs.slot }}
           IN_DATE: ${{ inputs.date }}
           IN_DRY: ${{ inputs.dry_run }}
+          YT_PRIVACY: ${{ inputs.privacy || 'public' }}
         run: |
           if [ "$EVENT" = "schedule" ]; then
             if [ "$CRON" = "47 2 * * *" ]; then SLOT=morning; else SLOT=evening; fi
