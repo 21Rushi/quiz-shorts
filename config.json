@@ -4,7 +4,7 @@
   "privacy": "public",
   "title_template": "{question} 🤔 Quiz #{episode} #shorts",
   "title_fallback": "Can you answer in 25 seconds? 🧠 GK Quiz #{episode} #shorts",
-  "description_template": "🧠 GK Quiz #{episode} | {category}\n\n{question}\n\n{options}\n\n⏱️ Answer at 0:25 — comment yours before the timer ends!\n⏱️ जवाब 0:25 पर — टाइमर खत्म होने से पहले कमेंट करें!\n\n🔔 Subscribe: 2 new quizzes every day (8 AM & 7 PM)\n🔔 सब्सक्राइब करें: रोज़ 2 नए क्विज़\n\n{topic_hashtags} #gkquiz #gkinhindi #quiz #shorts",
+  "description_template": "🧠 GK Quiz #{episode} | {category}\n\n{question}\n\n{options}\n\n⏱️ Answer at 0:25 — comment yours before the timer ends!\n⏱️ जवाब 0:25 पर — टाइमर खत्म होने से पहले कमेंट करें!\n\n🔔 Subscribe for 2 new quizzes daily (7:45 AM & 7:45 PM IST): https://www.youtube.com/@I-mRushi?sub_confirmation=1\n🔔 सब्सक्राइब करें — रोज़ 2 नए क्विज़\n📺 Every Sunday: a 40-question GK challenge on the channel!\n\n{topic_hashtags} #gkquiz #gkinhindi #quiz #shorts",
   "tags": [
     "gk quiz",
     "quiz",

@@ -1,6 +1,6 @@
 # Daily Quiz Shorts 🧠
 
-Posts **two** general-knowledge quiz Shorts to YouTube every day (8:17 AM & 7:17 PM IST), fully automatic.
+Posts **two** general-knowledge quiz Shorts to YouTube every day (7:47 AM & 7:47 PM IST), fully automatic.
 See **PLAN.md** for the 21-day bilingual (English + Hindi) content calendar and the growth checklist.
 
 - 1080x1920 vertical Short, ~31 seconds
@@ -10,7 +10,8 @@ See **PLAN.md** for the 21-day bilingual (English + Hindi) content calendar and 
   royalty-free `.mp3` files into `assets/music/` to use those instead.
 - 371 questions written and checked — over a year of daily posts. Edit `questions.json` anytime.
 - `schedule.json`: 42 hand-written bilingual questions for 28 Oct – 17 Nov 2026, tied to festivals and national days. After that it falls back to `questions.json`.
-- Runs on GitHub Actions at **8:17 AM and 7:17 PM IST**. Your laptop can stay off.
+- **Every Sunday 8:47 PM IST:** a ~10-minute, 40-question "Weekly GK Challenge" (16:9) with chapters and a custom thumbnail — builds watch hours, the second monetisation path.
+- Runs on GitHub Actions at **7:47 AM and 7:47 PM IST**. Your laptop can stay off.
 
 ## One-time setup (~20 minutes)
 

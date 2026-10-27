@@ -175,7 +175,7 @@ def build_option(label, text, state, accent, text_hi=None):
     return card
 
 
-def make_static(q, episode, theme, hook):
+def make_static(q, episode, theme, hook, label=None):
     top, bottom, accent = theme
     base = gradient(top, bottom)
     d = ImageDraw.Draw(base)
@@ -192,7 +192,7 @@ def make_static(q, episode, theme, hook):
 
     # header pill
     hf = font(FONT_BOLD, 46)
-    label = f"DAILY QUIZ #{episode}"
+    label = label or f"DAILY QUIZ #{episode}"
     tw = d.textlength(label, font=hf)
     pill = rounded((int(tw) + 80, 92), 46, accent + (255,))
     ImageDraw.Draw(pill).text((40, 14), label, font=hf, fill=(20, 16, 40))
@@ -307,12 +307,27 @@ def option_positions():
     return [(OPT_X, OPT_Y0 + i * OPT_STEP) for i in range(4)]
 
 
-def render_frames(q, episode, out_path, music_dir=None):
+def render_frames(q, episode, out_path, music_dir=None, reveal_at=None, duration=None, label=None):
+    """Render one quiz. reveal_at/duration override the Short timings (used by the
+    weekly long-form compilation); label overrides the header pill text."""
+    global REVEAL_AT, DURATION, TICK_FROM
+    saved = (REVEAL_AT, DURATION, TICK_FROM)
+    if reveal_at:
+        REVEAL_AT, DURATION, TICK_FROM = reveal_at, duration or reveal_at + 6, max(0.0, reveal_at - 5)
+    try:
+        return _render(q, episode, out_path, music_dir, label)
+    finally:
+        REVEAL_AT, DURATION, TICK_FROM = saved
+
+
+def _render(q, episode, out_path, music_dir, label):
     rng = random.Random(q["id"] * 7919)
     theme = THEMES[q["id"] % len(THEMES)]
     accent = theme[2]
     bilingual = bool(q.get("q_hi"))
     hook = (HOOKS_HI if bilingual else HOOKS)[q["id"] % len(HOOKS)]
+    if label:  # compilation segments: header shows the question number, no hook line
+        hook = ""
     opts = [q["a"]] + list(q["w"])
     opts_hi = ([q["a_hi"]] + list(q["w_hi"])) if bilingual else [None] * 4
     order = list(range(4))
@@ -322,13 +337,13 @@ def render_frames(q, episode, out_path, music_dir=None):
     correct = order.index(0)
     labels = "ABCD"
 
-    static = make_static(q, episode, theme, hook)
+    static = make_static(q, episode, theme, hook, label)
     normal = [build_option(labels[i], o, "normal", accent, opts_hi[i]) for i, o in enumerate(opts)]
     reveal = [build_option(labels[i], o, "correct" if i == correct else "wrong", accent, opts_hi[i])
               for i, o in enumerate(opts)]
     shadows = [shadow(img) for img in normal]
     fact = make_fact_card(q["f"], theme[0], q.get("f_hi"))
-    static_reveal = make_static(q, episode, theme, "")
+    static_reveal = make_static(q, episode, theme, "", label)
     fact_sh = shadow(fact)
     pos = option_positions()
 
@@ -395,7 +410,7 @@ def render_frames(q, episode, out_path, music_dir=None):
             if bp < 1:
                 pill = answer_pill.resize((max(1, int(pill.width * bp)), max(1, int(pill.height * bp))), Image.BICUBIC)
             frame.alpha_composite(pill, ((W - pill.width) // 2, HOOK_Y + 32 - pill.height // 2))
-            if rt > 2.5:
+            if rt > 2.5 and DURATION - REVEAL_AT > 4:
                 d = ImageDraw.Draw(frame)
                 cf = font(FONT_BOLD, 40)
                 cta = "Follow for 2 new quizzes daily!" if bilingual else "Follow for a new quiz every day!"

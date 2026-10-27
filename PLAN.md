@@ -1,11 +1,11 @@
 # 21-Day Content Plan (28 Oct – 17 Nov 2026)
 
-Two bilingual (English + Hindi) Shorts a day: **8:17 AM IST** (easier warm-up) and **7:17 PM IST** (harder / topical).
+Two bilingual (English + Hindi) Shorts a day: **7:47 AM IST** (easier warm-up) and **7:47 PM IST** (harder / topical).
 Topics are tied to that day's festival, birthday or national day so the videos ride what people are already searching.
 All 42 questions live in `schedule.json`; edit any line and the change goes out on that date.
 After 17 Nov the channel automatically keeps posting from the 371-question bank (English only) until you add more to `schedule.json`.
 
-| Day | Date | Theme | Morning 8:17 AM | Evening 7:17 PM |
+| Day | Date | Theme | Morning 7:47 AM | Evening 7:47 PM |
 |---|---|---|---|---|
 | 1 | Wed 28 Oct | Space | Which planet is known as the Red Planet? | Which mission made India first to land near the Moon's south pole? |
 | 2 | Thu 29 Oct | Human Body | How many bones are in the adult human body? | Which is the smallest bone in the human body? |
