@@ -2,10 +2,11 @@ name: Daily Quiz Shorts (2 per day)
 
 on:
   schedule:
-    # Times are UTC. 02:17 UTC = 7:47 AM IST (morning commute peak),
-    # 14:17 UTC = 7:47 PM IST (evening peak). Off the hour so GitHub runs them on time.
-    - cron: "17 2 * * *"
-    - cron: "17 14 * * *"
+    # Runs ~1 hour early (UTC): 01:17 UTC = 6:47 AM IST, 13:17 UTC = 6:47 PM IST.
+    # The video is uploaded as scheduled and YouTube publishes it at exactly
+    # 7:47 AM / 7:47 PM IST, so GitHub's usual 5-30 min scheduler delay doesn't matter.
+    - cron: "17 1 * * *"
+    - cron: "17 13 * * *"
   workflow_dispatch:
     inputs:
       slot:
@@ -68,7 +69,7 @@ jobs:
           YT_PRIVACY: ${{ inputs.privacy || 'public' }}
         run: |
           if [ "$EVENT" = "schedule" ]; then
-            if [ "$CRON" = "17 2 * * *" ]; then SLOT=morning; else SLOT=evening; fi
+            if [ "$CRON" = "17 1 * * *" ]; then SLOT=morning; else SLOT=evening; fi
             python src/daily.py --slot "$SLOT"
           else
             ARGS="--slot $IN_SLOT"

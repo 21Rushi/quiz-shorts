@@ -21,6 +21,7 @@ from make_video import ROOT, render_frames  # noqa: E402
 
 CONFIG = json.load(open(os.path.join(ROOT, "config.json"), encoding="utf-8"))
 SLOTS = ["morning", "evening"]
+PUBLISH_TIMES = {"morning": (7, 47), "evening": (19, 47)}  # IST — YouTube publishes at exactly these
 IST = dt.timezone(dt.timedelta(hours=5, minutes=30))
 
 
@@ -102,7 +103,12 @@ def main():
         return
     from youtube_upload import upload  # imported late so dry runs need no Google libs
 
-    vid = upload(out, title, desc, tags, privacy=os.environ.get("YT_PRIVACY", CONFIG.get("privacy", "public")))
+    privacy = os.environ.get("YT_PRIVACY", CONFIG.get("privacy", "public"))
+    h, m = PUBLISH_TIMES[slot]
+    when = dt.datetime(day.year, day.month, day.day, h, m, tzinfo=IST)
+    publish_at = when if privacy == "public" and when > dt.datetime.now(IST) + dt.timedelta(minutes=3) else None
+    print("Scheduled to go public at", when.strftime("%d %b %H:%M IST") if publish_at else "now")
+    vid = upload(out, title, desc, tags, privacy=privacy, publish_at=publish_at)
     print(f"Uploaded: https://youtube.com/shorts/{vid}")
     summary = os.environ.get("GITHUB_STEP_SUMMARY")
     if summary:

@@ -186,7 +186,12 @@ def main():
         return
     from youtube_upload import get_service, upload
 
-    vid = upload(final, title, desc, tags, privacy=os.environ.get("YT_PRIVACY", CONFIG.get("privacy", "public")))
+    privacy = os.environ.get("YT_PRIVACY", CONFIG.get("privacy", "public"))
+    now = dt.datetime.now(IST)
+    when = now.replace(hour=20, minute=47, second=0, microsecond=0)   # Sunday 8:47 PM IST
+    publish_at = when if privacy == "public" and when > now + dt.timedelta(minutes=3) else None
+    print("Scheduled to go public at", when.strftime("%d %b %H:%M IST") if publish_at else "now")
+    vid = upload(final, title, desc, tags, privacy=privacy, publish_at=publish_at)
     print(f"Uploaded: https://youtu.be/{vid}")
     try:
         from googleapiclient.http import MediaFileUpload
