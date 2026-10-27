@@ -3,3 +3,6 @@ __pycache__/
 client_secret*.json
 token*.json
 *.wav
+.env
+*.pem
+credentials*.json

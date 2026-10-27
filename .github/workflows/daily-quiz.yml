@@ -25,6 +25,10 @@ on:
         options: [public, private, unlisted]
         default: public
 
+# Least privilege: the job only needs to read the code.
+permissions:
+  contents: read
+
 concurrency:
   group: daily-quiz
   cancel-in-progress: false
