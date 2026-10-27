@@ -2,9 +2,25 @@
   "start_date": "2026-10-28",
   "episode_offset": 0,
   "privacy": "public",
-  "title_template": "{question} 🤔 25 sec challenge #shorts",
+  "title_template": "{question} 🤔 Quiz #{episode} #shorts",
   "title_fallback": "Can you answer in 25 seconds? 🧠 GK Quiz #{episode} #shorts",
   "description_template": "🧠 GK Quiz #{episode} | {category}\n\n{question}\n\n{options}\n\n⏱️ Answer at 0:25 — comment yours before the timer ends!\n⏱️ जवाब 0:25 पर — टाइमर खत्म होने से पहले कमेंट करें!\n\n🔔 Subscribe: 2 new quizzes every day (8 AM & 7 PM)\n🔔 सब्सक्राइब करें: रोज़ 2 नए क्विज़\n\n{topic_hashtags} #gkquiz #gkinhindi #quiz #shorts",
-  "tags": ["gk quiz", "quiz", "general knowledge", "gk", "trivia", "daily quiz", "quiz shorts", "gk questions", "brain test"],
-  "tags_hindi": ["gk in hindi", "gk quiz hindi", "hindi quiz", "सामान्य ज्ञान", "gk question answer"]
+  "tags": [
+    "gk quiz",
+    "quiz",
+    "general knowledge",
+    "gk",
+    "trivia",
+    "daily quiz",
+    "quiz shorts",
+    "gk questions",
+    "brain test"
+  ],
+  "tags_hindi": [
+    "gk in hindi",
+    "gk quiz hindi",
+    "hindi quiz",
+    "सामान्य ज्ञान",
+    "gk question answer"
+  ]
 }
