@@ -1,0 +1,76 @@
+name: Daily Quiz Shorts (2 per day)
+
+on:
+  schedule:
+    # Times are UTC. 02:47 UTC = 8:17 AM IST, 13:47 UTC = 7:17 PM IST
+    - cron: "47 2 * * *"
+    - cron: "47 13 * * *"
+  workflow_dispatch:
+    inputs:
+      slot:
+        description: "Which slot to post"
+        type: choice
+        options: [morning, evening]
+        default: morning
+      date:
+        description: "Post the quiz planned for this date (YYYY-MM-DD). Empty = today"
+        required: false
+      dry_run:
+        description: "Render only, don't upload"
+        type: boolean
+        default: false
+
+concurrency:
+  group: daily-quiz
+  cancel-in-progress: false
+
+jobs:
+  quiz:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install ffmpeg + Hindi text shaping
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg libraqm0
+
+      - name: Install Python packages
+        run: pip install -r requirements.txt
+
+      - name: Check Hindi shaping is available
+        run: python -c "from PIL import features; assert features.check('raqm'), 'libraqm missing - Hindi would render broken'"
+
+      - name: Render and upload
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          EVENT: ${{ github.event_name }}
+          CRON: ${{ github.event.schedule }}
+          IN_SLOT: ${{ inputs.slot }}
+          IN_DATE: ${{ inputs.date }}
+          IN_DRY: ${{ inputs.dry_run }}
+        run: |
+          if [ "$EVENT" = "schedule" ]; then
+            if [ "$CRON" = "47 2 * * *" ]; then SLOT=morning; else SLOT=evening; fi
+            python src/daily.py --slot "$SLOT"
+          else
+            ARGS="--slot $IN_SLOT"
+            if [ -n "$IN_DATE" ]; then ARGS="$ARGS --date $IN_DATE"; fi
+            if [ "$IN_DRY" = "true" ]; then ARGS="$ARGS --dry-run"; fi
+            python src/daily.py $ARGS
+          fi
+
+      - name: Keep the video as a downloadable artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quiz-video-${{ github.run_id }}
+          path: out/*.mp4
+          retention-days: 7
+          if-no-files-found: ignore

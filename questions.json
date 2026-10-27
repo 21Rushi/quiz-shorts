@@ -1,0 +1,4454 @@
+[
+ {
+  "c": "Geography",
+  "q": "What is the capital of Brazil?",
+  "a": "Brasília",
+  "w": [
+   "Rio de Janeiro",
+   "São Paulo",
+   "Salvador"
+  ],
+  "f": "Brasília was built from scratch and became capital in 1960.",
+  "id": 1
+ },
+ {
+  "c": "History",
+  "q": "Who is called the Father of the Indian Constitution?",
+  "a": "B. R. Ambedkar",
+  "w": [
+   "Jawaharlal Nehru",
+   "Mahatma Gandhi",
+   "Sardar Patel"
+  ],
+  "f": "Ambedkar chaired the Constitution's Drafting Committee.",
+  "id": 2
+ },
+ {
+  "c": "Science",
+  "q": "What does DNA stand for?",
+  "a": "Deoxyribonucleic acid",
+  "w": [
+   "Dinitrogen acid",
+   "Dual nucleic acid",
+   "Deoxy nitrogen acid"
+  ],
+  "f": "DNA's double helix structure was described in 1953.",
+  "id": 3
+ },
+ {
+  "c": "India",
+  "q": "Where is the India Gate located?",
+  "a": "New Delhi",
+  "w": [
+   "Mumbai",
+   "Agra",
+   "Jaipur"
+  ],
+  "f": "India Gate is a war memorial completed in 1931.",
+  "id": 4
+ },
+ {
+  "c": "Animals",
+  "q": "Which bird is a symbol of peace?",
+  "a": "Dove",
+  "w": [
+   "Eagle",
+   "Swan",
+   "Crow"
+  ],
+  "f": "Doves and pigeons belong to the same bird family.",
+  "id": 5
+ },
+ {
+  "c": "Body",
+  "q": "How many litres of blood does an adult have?",
+  "a": "About 5",
+  "w": [
+   "About 2",
+   "About 10",
+   "About 15"
+  ],
+  "f": "Blood is about 7-8% of body weight.",
+  "id": 6
+ },
+ {
+  "c": "Space",
+  "q": "How many planets are in our Solar System?",
+  "a": "8",
+  "w": [
+   "9",
+   "7",
+   "10"
+  ],
+  "f": "Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune.",
+  "id": 7
+ },
+ {
+  "c": "Sports",
+  "q": "How many players does a football (soccer) team field?",
+  "a": "11",
+  "w": [
+   "10",
+   "9",
+   "12"
+  ],
+  "f": "That includes the goalkeeper.",
+  "id": 8
+ },
+ {
+  "c": "Food",
+  "q": "What is the main ingredient in guacamole?",
+  "a": "Avocado",
+  "w": [
+   "Tomato",
+   "Cucumber",
+   "Pea"
+  ],
+  "f": "Guacamole dates back to the Aztecs.",
+  "id": 9
+ },
+ {
+  "c": "Logic",
+  "q": "How many sides does a hexagon have?",
+  "a": "6",
+  "w": [
+   "5",
+   "7",
+   "8"
+  ],
+  "f": "Bees build honeycomb cells as hexagons.",
+  "id": 10
+ },
+ {
+  "c": "Inventions",
+  "q": "Who invented the steam engine improvement that powered industry?",
+  "a": "James Watt",
+  "w": [
+   "George Stephenson",
+   "Henry Ford",
+   "Isaac Newton"
+  ],
+  "f": "The power unit 'watt' is named after him.",
+  "id": 11
+ },
+ {
+  "c": "Tech",
+  "q": "What does 'HTTP' stand for?",
+  "a": "HyperText Transfer Protocol",
+  "w": [
+   "High Tech Transfer Protocol",
+   "HyperText Tool Program",
+   "Home Transfer Text Protocol"
+  ],
+  "f": "HTTPS adds encryption with TLS.",
+  "id": 12
+ },
+ {
+  "c": "Culture",
+  "q": "Who wrote 'Romeo and Juliet'?",
+  "a": "William Shakespeare",
+  "w": [
+   "Charles Dickens",
+   "Jane Austen",
+   "Leo Tolstoy"
+  ],
+  "f": "Shakespeare added around 1,700 words to English.",
+  "id": 13
+ },
+ {
+  "c": "Language",
+  "q": "What is a word that reads the same backwards?",
+  "a": "Palindrome",
+  "w": [
+   "Anagram",
+   "Acronym",
+   "Homophone"
+  ],
+  "f": "'Malayalam' is a palindrome!",
+  "id": 14
+ },
+ {
+  "c": "Geography",
+  "q": "Which country is directly south of the USA?",
+  "a": "Mexico",
+  "w": [
+   "Cuba",
+   "Guatemala",
+   "Canada"
+  ],
+  "f": "The US-Mexico border is about 3,145 km long.",
+  "id": 15
+ },
+ {
+  "c": "History",
+  "q": "The Great Wall was built mainly to protect which country?",
+  "a": "China",
+  "w": [
+   "Mongolia",
+   "Japan",
+   "Korea"
+  ],
+  "f": "The Wall's various sections total over 20,000 km.",
+  "id": 16
+ },
+ {
+  "c": "Science",
+  "q": "What is the chemical symbol for gold?",
+  "a": "Au",
+  "w": [
+   "Ag",
+   "Gd",
+   "Go"
+  ],
+  "f": "Au comes from the Latin word 'aurum'.",
+  "id": 17
+ },
+ {
+  "c": "India",
+  "q": "The Ajanta and Ellora caves are in which state?",
+  "a": "Maharashtra",
+  "w": [
+   "Madhya Pradesh",
+   "Karnataka",
+   "Gujarat"
+  ],
+  "f": "Ellora's Kailasa temple was carved from a single rock.",
+  "id": 18
+ },
+ {
+  "c": "Animals",
+  "q": "Which animal sleeps standing up?",
+  "a": "Horse",
+  "w": [
+   "Dog",
+   "Cat",
+   "Rabbit"
+  ],
+  "f": "Horses lock their legs, though they lie down for deep sleep.",
+  "id": 19
+ },
+ {
+  "c": "Body",
+  "q": "How many pairs of ribs do humans usually have?",
+  "a": "12",
+  "w": [
+   "10",
+   "14",
+   "8"
+  ],
+  "f": "Men and women have the same number of ribs.",
+  "id": 20
+ },
+ {
+  "c": "Space",
+  "q": "What is the closest star to Earth?",
+  "a": "The Sun",
+  "w": [
+   "Sirius",
+   "Polaris",
+   "Proxima Centauri"
+  ],
+  "f": "Proxima Centauri is the closest star after the Sun.",
+  "id": 21
+ },
+ {
+  "c": "Sports",
+  "q": "How many players are on a volleyball team on court?",
+  "a": "6",
+  "w": [
+   "5",
+   "7",
+   "9"
+  ],
+  "f": "Volleyball was invented in 1895 in the USA.",
+  "id": 22
+ },
+ {
+  "c": "Food",
+  "q": "Which fruit has its seeds on the outside?",
+  "a": "Strawberry",
+  "w": [
+   "Raspberry",
+   "Kiwi",
+   "Fig"
+  ],
+  "f": "A strawberry has around 200 seeds.",
+  "id": 23
+ },
+ {
+  "c": "Logic",
+  "q": "How many zeros are in one million?",
+  "a": "6",
+  "w": [
+   "5",
+   "7",
+   "9"
+  ],
+  "f": "In India, 10 lakh equals one million.",
+  "id": 24
+ },
+ {
+  "c": "Inventions",
+  "q": "Who is credited with the practical light bulb?",
+  "a": "Thomas Edison",
+  "w": [
+   "Nikola Tesla",
+   "Benjamin Franklin",
+   "James Watt"
+  ],
+  "f": "Edison's team tested thousands of filament materials.",
+  "id": 25
+ },
+ {
+  "c": "Tech",
+  "q": "Who co-founded Microsoft with Paul Allen?",
+  "a": "Bill Gates",
+  "w": [
+   "Steve Jobs",
+   "Larry Page",
+   "Mark Zuckerberg"
+  ],
+  "f": "Microsoft was founded in 1975.",
+  "id": 26
+ },
+ {
+  "c": "Culture",
+  "q": "Who painted 'The Starry Night'?",
+  "a": "Vincent van Gogh",
+  "w": [
+   "Pablo Picasso",
+   "Claude Monet",
+   "Salvador Dalí"
+  ],
+  "f": "Van Gogh painted it in 1889.",
+  "id": 27
+ },
+ {
+  "c": "Language",
+  "q": "How many official languages are in India's 8th Schedule?",
+  "a": "22",
+  "w": [
+   "18",
+   "24",
+   "15"
+  ],
+  "f": "The list began with 14 languages in 1950.",
+  "id": 28
+ },
+ {
+  "c": "Geography",
+  "q": "What is the capital of New Zealand?",
+  "a": "Wellington",
+  "w": [
+   "Auckland",
+   "Christchurch",
+   "Queenstown"
+  ],
+  "f": "Wellington is the world's southernmost capital of a sovereign state.",
+  "id": 29
+ },
+ {
+  "c": "History",
+  "q": "Who founded the Maratha Empire?",
+  "a": "Shivaji Maharaj",
+  "w": [
+   "Bajirao I",
+   "Sambhaji",
+   "Shahu"
+  ],
+  "f": "Shivaji was crowned Chhatrapati at Raigad in 1674.",
+  "id": 30
+ },
+ {
+  "c": "Science",
+  "q": "What is the most abundant element in the universe?",
+  "a": "Hydrogen",
+  "w": [
+   "Oxygen",
+   "Helium",
+   "Carbon"
+  ],
+  "f": "About three-quarters of normal matter is hydrogen.",
+  "id": 31
+ },
+ {
+  "c": "India",
+  "q": "Which state has the most coastline in India?",
+  "a": "Gujarat",
+  "w": [
+   "Tamil Nadu",
+   "Andhra Pradesh",
+   "Kerala"
+  ],
+  "f": "Gujarat's coastline is about 1,600 km.",
+  "id": 32
+ },
+ {
+  "c": "Animals",
+  "q": "What is India's national animal?",
+  "a": "Bengal tiger",
+  "w": [
+   "Lion",
+   "Elephant",
+   "Peacock"
+  ],
+  "f": "India has about 75% of the world's wild tigers.",
+  "id": 33
+ },
+ {
+  "c": "Body",
+  "q": "Which is the longest bone in the human body?",
+  "a": "Femur",
+  "w": [
+   "Tibia",
+   "Humerus",
+   "Spine"
+  ],
+  "f": "The femur is your thigh bone.",
+  "id": 34
+ },
+ {
+  "c": "Space",
+  "q": "Which planet is known as the Red Planet?",
+  "a": "Mars",
+  "w": [
+   "Venus",
+   "Jupiter",
+   "Mercury"
+  ],
+  "f": "Iron oxide (rust) in its soil gives Mars its red colour.",
+  "id": 35
+ },
+ {
+  "c": "Sports",
+  "q": "Who is known as 'The Flying Sikh'?",
+  "a": "Milkha Singh",
+  "w": [
+   "Mary Kom",
+   "Dhyan Chand",
+   "Kapil Dev"
+  ],
+  "f": "Pakistan's president gave him the nickname in 1960.",
+  "id": 36
+ },
+ {
+  "c": "Food",
+  "q": "What is the main ingredient of hummus?",
+  "a": "Chickpeas",
+  "w": [
+   "Lentils",
+   "Kidney beans",
+   "Peas"
+  ],
+  "f": "Hummus means 'chickpea' in Arabic.",
+  "id": 37
+ },
+ {
+  "c": "Logic",
+  "q": "What comes next: 2, 4, 8, 16, ...?",
+  "a": "32",
+  "w": [
+   "24",
+   "20",
+   "18"
+  ],
+  "f": "Each number doubles - powers of two.",
+  "id": 38
+ },
+ {
+  "c": "Inventions",
+  "q": "Who invented the telephone?",
+  "a": "Alexander Graham Bell",
+  "w": [
+   "Thomas Edison",
+   "Nikola Tesla",
+   "Guglielmo Marconi"
+  ],
+  "f": "Bell received the telephone patent in 1876.",
+  "id": 39
+ },
+ {
+  "c": "Tech",
+  "q": "What does 'USB' stand for?",
+  "a": "Universal Serial Bus",
+  "w": [
+   "United System Bus",
+   "Universal Signal Board",
+   "Ultra Speed Bus"
+  ],
+  "f": "USB-C plugs work either way up.",
+  "id": 40
+ },
+ {
+  "c": "Culture",
+  "q": "Who is traditionally credited with the Mahabharata?",
+  "a": "Vyasa",
+  "w": [
+   "Valmiki",
+   "Kalidasa",
+   "Chanakya"
+  ],
+  "f": "The Mahabharata is one of the longest poems ever written.",
+  "id": 41
+ },
+ {
+  "c": "Language",
+  "q": "Which is the most common letter in English?",
+  "a": "E",
+  "w": [
+   "A",
+   "T",
+   "S"
+  ],
+  "f": "E makes up about 12% of letters in English text.",
+  "id": 42
+ },
+ {
+  "c": "Geography",
+  "q": "Which country has the city of Istanbul?",
+  "a": "Turkey",
+  "w": [
+   "Greece",
+   "Iran",
+   "Bulgaria"
+  ],
+  "f": "Istanbul sits on two continents: Europe and Asia.",
+  "id": 43
+ },
+ {
+  "c": "History",
+  "q": "Who was the first Indian in space?",
+  "a": "Rakesh Sharma",
+  "w": [
+   "Kalpana Chawla",
+   "Ravish Malhotra",
+   "Sunita Williams"
+  ],
+  "f": "He told PM Indira Gandhi India looked 'Saare Jahan Se Achha'.",
+  "id": 44
+ },
+ {
+  "c": "Science",
+  "q": "Which Indian scientist discovered the Raman Effect?",
+  "a": "C. V. Raman",
+  "w": [
+   "Homi Bhabha",
+   "J. C. Bose",
+   "S. N. Bose"
+  ],
+  "f": "India celebrates National Science Day on 28 Feb for this discovery.",
+  "id": 45
+ },
+ {
+  "c": "India",
+  "q": "Which hill station was British India's summer capital?",
+  "a": "Shimla",
+  "w": [
+   "Ooty",
+   "Darjeeling",
+   "Munnar"
+  ],
+  "f": "The Viceroy's government moved to Shimla every summer.",
+  "id": 46
+ },
+ {
+  "c": "Animals",
+  "q": "Which animal produces the loudest sound?",
+  "a": "Sperm whale",
+  "w": [
+   "Lion",
+   "Elephant",
+   "Howler monkey"
+  ],
+  "f": "Sperm whale clicks can exceed 200 decibels underwater.",
+  "id": 47
+ },
+ {
+  "c": "Body",
+  "q": "Which is the largest muscle in the body?",
+  "a": "Gluteus maximus",
+  "w": [
+   "Biceps",
+   "Heart",
+   "Tongue"
+  ],
+  "f": "The gluteus maximus keeps you upright and powers climbing.",
+  "id": 48
+ },
+ {
+  "c": "Space",
+  "q": "What galaxy do we live in?",
+  "a": "Milky Way",
+  "w": [
+   "Andromeda",
+   "Triangulum",
+   "Whirlpool"
+  ],
+  "f": "The Milky Way contains an estimated 100-400 billion stars.",
+  "id": 49
+ },
+ {
+  "c": "Sports",
+  "q": "How many players are on a cricket team on the field?",
+  "a": "11",
+  "w": [
+   "9",
+   "10",
+   "12"
+  ],
+  "f": "A 12th player can field as a substitute but can't bat or bowl.",
+  "id": 50
+ },
+ {
+  "c": "Food",
+  "q": "Which is botanically a fruit?",
+  "a": "Tomato",
+  "w": [
+   "Carrot",
+   "Potato",
+   "Onion"
+  ],
+  "f": "Tomatoes are berries, botanically speaking.",
+  "id": 51
+ },
+ {
+  "c": "Logic",
+  "q": "What is 15% of 200?",
+  "a": "30",
+  "w": [
+   "15",
+   "25",
+   "35"
+  ],
+  "f": "Trick: 10% is 20, 5% is 10, so 15% is 30.",
+  "id": 52
+ },
+ {
+  "c": "Inventions",
+  "q": "Which country invented paper?",
+  "a": "China",
+  "w": [
+   "Egypt",
+   "India",
+   "Greece"
+  ],
+  "f": "Cai Lun is credited with improving papermaking around 105 CE.",
+  "id": 53
+ },
+ {
+  "c": "Tech",
+  "q": "Which symbol starts a hashtag?",
+  "a": "#",
+  "w": [
+   "@",
+   "&",
+   "$"
+  ],
+  "f": "Hashtags became popular on Twitter in 2007.",
+  "id": 54
+ },
+ {
+  "c": "Culture",
+  "q": "Bharatanatyam originates from which state?",
+  "a": "Tamil Nadu",
+  "w": [
+   "Kerala",
+   "Karnataka",
+   "Andhra Pradesh"
+  ],
+  "f": "It's one of India's oldest classical dance forms.",
+  "id": 55
+ },
+ {
+  "c": "Language",
+  "q": "Which language has the most native speakers in Europe?",
+  "a": "Russian",
+  "w": [
+   "German",
+   "French",
+   "English"
+  ],
+  "f": "German is the most spoken native language within the EU.",
+  "id": 56
+ },
+ {
+  "c": "Geography",
+  "q": "Which river is the longest in Europe?",
+  "a": "Volga",
+  "w": [
+   "Danube",
+   "Rhine",
+   "Thames"
+  ],
+  "f": "The Volga flows into the Caspian Sea.",
+  "id": 57
+ },
+ {
+  "c": "History",
+  "q": "The Battle of Plassey was fought in which year?",
+  "a": "1757",
+  "w": [
+   "1857",
+   "1764",
+   "1700"
+  ],
+  "f": "It began British political control in Bengal.",
+  "id": 58
+ },
+ {
+  "c": "Science",
+  "q": "What is the lightest element?",
+  "a": "Hydrogen",
+  "w": [
+   "Helium",
+   "Lithium",
+   "Oxygen"
+  ],
+  "f": "Hydrogen is number 1 on the periodic table.",
+  "id": 59
+ },
+ {
+  "c": "India",
+  "q": "Which river is known as Sorrow of Bihar?",
+  "a": "Kosi",
+  "w": [
+   "Ganga",
+   "Son",
+   "Gandak"
+  ],
+  "f": "The Kosi often changes its course, causing floods.",
+  "id": 60
+ },
+ {
+  "c": "Animals",
+  "q": "What is the slowest mammal on Earth?",
+  "a": "Sloth",
+  "w": [
+   "Koala",
+   "Tortoise",
+   "Panda"
+  ],
+  "f": "Sloths can take a month to digest a single meal.",
+  "id": 61
+ },
+ {
+  "c": "Body",
+  "q": "Which blood group is the universal donor?",
+  "a": "O negative",
+  "w": [
+   "AB positive",
+   "A positive",
+   "B negative"
+  ],
+  "f": "AB positive people can receive red cells from any group.",
+  "id": 62
+ },
+ {
+  "c": "Space",
+  "q": "Who was the first human to travel into space?",
+  "a": "Yuri Gagarin",
+  "w": [
+   "Neil Armstrong",
+   "Alan Shepard",
+   "Valentina Tereshkova"
+  ],
+  "f": "Gagarin orbited Earth in 1961 aboard Vostok 1.",
+  "id": 63
+ },
+ {
+  "c": "Sports",
+  "q": "In which year did India first win the Cricket World Cup?",
+  "a": "1983",
+  "w": [
+   "2011",
+   "1987",
+   "1975"
+  ],
+  "f": "Kapil Dev lifted the trophy at Lord's.",
+  "id": 64
+ },
+ {
+  "c": "Food",
+  "q": "Which spice is the most expensive by weight?",
+  "a": "Saffron",
+  "w": [
+   "Cardamom",
+   "Vanilla",
+   "Cinnamon"
+  ],
+  "f": "About 150,000 flowers make 1 kg of saffron.",
+  "id": 65
+ },
+ {
+  "c": "Logic",
+  "q": "What is the Roman numeral for 50?",
+  "a": "L",
+  "w": [
+   "C",
+   "D",
+   "X"
+  ],
+  "f": "C is 100, D is 500 and M is 1,000.",
+  "id": 66
+ },
+ {
+  "c": "Inventions",
+  "q": "Who discovered the vaccine for smallpox?",
+  "a": "Edward Jenner",
+  "w": [
+   "Louis Pasteur",
+   "Robert Koch",
+   "Jonas Salk"
+  ],
+  "f": "Jenner used cowpox to build immunity in 1796.",
+  "id": 67
+ },
+ {
+  "c": "Tech",
+  "q": "How many bits are in a byte?",
+  "a": "8",
+  "w": [
+   "4",
+   "16",
+   "10"
+  ],
+  "f": "A nibble is 4 bits - half a byte.",
+  "id": 68
+ },
+ {
+  "c": "Culture",
+  "q": "Who wrote the epic Ramayana?",
+  "a": "Valmiki",
+  "w": [
+   "Vyasa",
+   "Kalidasa",
+   "Tulsidas"
+  ],
+  "f": "Valmiki is called the 'Adi Kavi' - the first poet.",
+  "id": 69
+ },
+ {
+  "c": "Language",
+  "q": "What is the opposite of 'ancient'?",
+  "a": "Modern",
+  "w": [
+   "Old",
+   "Antique",
+   "Historic"
+  ],
+  "f": "'Ancient' comes from Latin 'ante', meaning before.",
+  "id": 70
+ },
+ {
+  "c": "Geography",
+  "q": "Which country has the most natural lakes?",
+  "a": "Canada",
+  "w": [
+   "Russia",
+   "USA",
+   "Finland"
+  ],
+  "f": "Canada has more lakes than the rest of the world combined.",
+  "id": 71
+ },
+ {
+  "c": "History",
+  "q": "Which Indian city got the country's first metro?",
+  "a": "Kolkata",
+  "w": [
+   "Delhi",
+   "Mumbai",
+   "Bengaluru"
+  ],
+  "f": "Kolkata Metro opened in 1984; Delhi Metro followed in 2002.",
+  "id": 72
+ },
+ {
+  "c": "Science",
+  "q": "Who proposed the theory of relativity?",
+  "a": "Albert Einstein",
+  "w": [
+   "Isaac Newton",
+   "Nikola Tesla",
+   "Stephen Hawking"
+  ],
+  "f": "Einstein published special relativity in 1905.",
+  "id": 73
+ },
+ {
+  "c": "India",
+  "q": "Which is the smallest state of India by area?",
+  "a": "Goa",
+  "w": [
+   "Sikkim",
+   "Tripura",
+   "Manipur"
+  ],
+  "f": "Goa became a state in 1987.",
+  "id": 74
+ },
+ {
+  "c": "Animals",
+  "q": "What is the only bird that can fly backwards?",
+  "a": "Hummingbird",
+  "w": [
+   "Sparrow",
+   "Swallow",
+   "Kingfisher"
+  ],
+  "f": "Hummingbirds beat their wings up to ~80 times a second.",
+  "id": 75
+ },
+ {
+  "c": "Body",
+  "q": "What is the voice box also called?",
+  "a": "Larynx",
+  "w": [
+   "Pharynx",
+   "Trachea",
+   "Uvula"
+  ],
+  "f": "The Adam's apple is part of the larynx.",
+  "id": 76
+ },
+ {
+  "c": "Space",
+  "q": "What is the name of India's Mars Orbiter Mission?",
+  "a": "Mangalyaan",
+  "w": [
+   "Chandrayaan",
+   "Aditya-L1",
+   "Shukrayaan"
+  ],
+  "f": "India reached Mars orbit on its very first attempt in 2014.",
+  "id": 77
+ },
+ {
+  "c": "Sports",
+  "q": "Which country hosts the Wimbledon tournament?",
+  "a": "England (UK)",
+  "w": [
+   "USA",
+   "France",
+   "Australia"
+  ],
+  "f": "Wimbledon is the oldest tennis tournament, started in 1877.",
+  "id": 78
+ },
+ {
+  "c": "Food",
+  "q": "Which vitamin is orange rich in?",
+  "a": "Vitamin C",
+  "w": [
+   "Vitamin D",
+   "Vitamin B12",
+   "Vitamin K"
+  ],
+  "f": "Kiwis and guavas have even more vitamin C than oranges.",
+  "id": 79
+ },
+ {
+  "c": "Logic",
+  "q": "How many zeros are in one crore?",
+  "a": "7",
+  "w": [
+   "6",
+   "8",
+   "5"
+  ],
+  "f": "One crore equals 10 million.",
+  "id": 80
+ },
+ {
+  "c": "Inventions",
+  "q": "Who discovered the law of gravity after a falling apple?",
+  "a": "Isaac Newton",
+  "w": [
+   "Galileo",
+   "Kepler",
+   "Copernicus"
+  ],
+  "f": "The apple story is likely a simplified legend.",
+  "id": 81
+ },
+ {
+  "c": "Tech",
+  "q": "Which programming language is named after a comedy group?",
+  "a": "Python",
+  "w": [
+   "Java",
+   "Ruby",
+   "Swift"
+  ],
+  "f": "It's named after 'Monty Python's Flying Circus'.",
+  "id": 82
+ },
+ {
+  "c": "Culture",
+  "q": "Ganesh Chaturthi is most famously celebrated in?",
+  "a": "Maharashtra",
+  "w": [
+   "Punjab",
+   "Assam",
+   "Kerala"
+  ],
+  "f": "Lokmanya Tilak turned it into a public festival in 1893.",
+  "id": 83
+ },
+ {
+  "c": "Language",
+  "q": "How many letters are in the English alphabet?",
+  "a": "26",
+  "w": [
+   "24",
+   "28",
+   "30"
+  ],
+  "f": "'The quick brown fox...' uses every letter.",
+  "id": 84
+ },
+ {
+  "c": "Geography",
+  "q": "What is the capital of China?",
+  "a": "Beijing",
+  "w": [
+   "Shanghai",
+   "Hong Kong",
+   "Guangzhou"
+  ],
+  "f": "Beijing means 'northern capital'.",
+  "id": 85
+ },
+ {
+  "c": "History",
+  "q": "Who founded the Mughal Empire in India?",
+  "a": "Babur",
+  "w": [
+   "Akbar",
+   "Humayun",
+   "Shah Jahan"
+  ],
+  "f": "Babur won the First Battle of Panipat in 1526.",
+  "id": 86
+ },
+ {
+  "c": "Science",
+  "q": "What is the hardest natural substance?",
+  "a": "Diamond",
+  "w": [
+   "Quartz",
+   "Steel",
+   "Granite"
+  ],
+  "f": "Diamond is pure carbon arranged in a strong crystal lattice.",
+  "id": 87
+ },
+ {
+  "c": "India",
+  "q": "What is the capital of Arunachal Pradesh?",
+  "a": "Itanagar",
+  "w": [
+   "Shillong",
+   "Kohima",
+   "Aizawl"
+  ],
+  "f": "Arunachal means 'land of the dawn-lit mountains'.",
+  "id": 88
+ },
+ {
+  "c": "Animals",
+  "q": "What do you call a baby kangaroo?",
+  "a": "Joey",
+  "w": [
+   "Kit",
+   "Cub",
+   "Calf"
+  ],
+  "f": "A newborn joey is about the size of a jellybean.",
+  "id": 89
+ },
+ {
+  "c": "Body",
+  "q": "What does your heart pump through the body?",
+  "a": "Blood",
+  "w": [
+   "Air",
+   "Lymph only",
+   "Water"
+  ],
+  "f": "A heart beats about 100,000 times a day.",
+  "id": 90
+ },
+ {
+  "c": "Space",
+  "q": "Which planet is closest to the Sun?",
+  "a": "Mercury",
+  "w": [
+   "Venus",
+   "Mars",
+   "Earth"
+  ],
+  "f": "A year on Mercury lasts just 88 Earth days.",
+  "id": 91
+ },
+ {
+  "c": "Sports",
+  "q": "In which sport is the term 'checkmate' used?",
+  "a": "Chess",
+  "w": [
+   "Carrom",
+   "Ludo",
+   "Poker"
+  ],
+  "f": "Chess is believed to have originated in India as chaturanga.",
+  "id": 92
+ },
+ {
+  "c": "Food",
+  "q": "Which fruit is known for keeping doctors away?",
+  "a": "Apple",
+  "w": [
+   "Banana",
+   "Orange",
+   "Grapes"
+  ],
+  "f": "The saying originated in Wales in the 1860s.",
+  "id": 93
+ },
+ {
+  "c": "Logic",
+  "q": "What is 9 x 9?",
+  "a": "81",
+  "w": [
+   "72",
+   "99",
+   "89"
+  ],
+  "f": "Digits of multiples of 9 add up to 9.",
+  "id": 94
+ },
+ {
+  "c": "Inventions",
+  "q": "Who made the first successful powered aeroplane flight?",
+  "a": "Wright brothers",
+  "w": [
+   "Leonardo da Vinci",
+   "Otto Lilienthal",
+   "Charles Lindbergh"
+  ],
+  "f": "The first flight in 1903 lasted just 12 seconds.",
+  "id": 95
+ },
+ {
+  "c": "Tech",
+  "q": "What does CPU stand for?",
+  "a": "Central Processing Unit",
+  "w": [
+   "Computer Power Unit",
+   "Central Program Utility",
+   "Core Processing Unit"
+  ],
+  "f": "The CPU is often called the brain of the computer.",
+  "id": 96
+ },
+ {
+  "c": "Culture",
+  "q": "Which festival is called the Festival of Colours?",
+  "a": "Holi",
+  "w": [
+   "Diwali",
+   "Pongal",
+   "Baisakhi"
+  ],
+  "f": "Holi marks the arrival of spring.",
+  "id": 97
+ },
+ {
+  "c": "Language",
+  "q": "Which is the most spoken native language in the world?",
+  "a": "Mandarin Chinese",
+  "w": [
+   "English",
+   "Spanish",
+   "Hindi"
+  ],
+  "f": "English is the most spoken when you include second-language speakers.",
+  "id": 98
+ },
+ {
+  "c": "Geography",
+  "q": "What is the capital of Argentina?",
+  "a": "Buenos Aires",
+  "w": [
+   "Santiago",
+   "Lima",
+   "Montevideo"
+  ],
+  "f": "Buenos Aires means 'good airs' in Spanish.",
+  "id": 99
+ },
+ {
+  "c": "History",
+  "q": "Who wrote India's national anthem?",
+  "a": "Rabindranath Tagore",
+  "w": [
+   "Bankim Chandra",
+   "Sarojini Naidu",
+   "Muhammad Iqbal"
+  ],
+  "f": "Tagore also wrote Bangladesh's national anthem.",
+  "id": 100
+ },
+ {
+  "c": "Science",
+  "q": "What is the chemical symbol for iron?",
+  "a": "Fe",
+  "w": [
+   "Ir",
+   "In",
+   "I"
+  ],
+  "f": "Fe comes from 'ferrum', Latin for iron.",
+  "id": 101
+ },
+ {
+  "c": "India",
+  "q": "Which is the largest brackish water lake in India?",
+  "a": "Chilika Lake",
+  "w": [
+   "Pulicat Lake",
+   "Vembanad Lake",
+   "Sambhar Lake"
+  ],
+  "f": "Chilika in Odisha hosts migratory birds every winter.",
+  "id": 102
+ },
+ {
+  "c": "Animals",
+  "q": "Which animal has the longest lifespan among these?",
+  "a": "Greenland shark",
+  "w": [
+   "Elephant",
+   "Tortoise",
+   "Parrot"
+  ],
+  "f": "Greenland sharks may live for around 400 years.",
+  "id": 103
+ },
+ {
+  "c": "Body",
+  "q": "Where in the body is the cornea?",
+  "a": "Eye",
+  "w": [
+   "Ear",
+   "Nose",
+   "Heart"
+  ],
+  "f": "The cornea is the clear front layer of the eye.",
+  "id": 104
+ },
+ {
+  "c": "Space",
+  "q": "Which planet is farthest from the Sun?",
+  "a": "Neptune",
+  "w": [
+   "Uranus",
+   "Pluto",
+   "Saturn"
+  ],
+  "f": "Neptune has the fastest winds in the Solar System.",
+  "id": 105
+ },
+ {
+  "c": "Sports",
+  "q": "What is the national sport of Japan?",
+  "a": "Sumo wrestling",
+  "w": [
+   "Judo",
+   "Karate",
+   "Baseball"
+  ],
+  "f": "Sumo matches often last only a few seconds.",
+  "id": 106
+ },
+ {
+  "c": "Food",
+  "q": "Which vegetable is used to make sauerkraut?",
+  "a": "Cabbage",
+  "w": [
+   "Carrot",
+   "Onion",
+   "Cucumber"
+  ],
+  "f": "Sauerkraut means 'sour cabbage' in German.",
+  "id": 107
+ },
+ {
+  "c": "Logic",
+  "q": "What is the square root of 144?",
+  "a": "12",
+  "w": [
+   "14",
+   "11",
+   "16"
+  ],
+  "f": "144 is also called a gross.",
+  "id": 108
+ },
+ {
+  "c": "Inventions",
+  "q": "Who invented the printing press with movable type in Europe?",
+  "a": "Johannes Gutenberg",
+  "w": [
+   "William Caxton",
+   "Galileo",
+   "Martin Luther"
+  ],
+  "f": "The Gutenberg Bible was printed around 1455.",
+  "id": 109
+ },
+ {
+  "c": "Tech",
+  "q": "Which company owns Android today?",
+  "a": "Google",
+  "w": [
+   "Apple",
+   "Microsoft",
+   "Samsung"
+  ],
+  "f": "Google bought Android Inc. in 2005.",
+  "id": 110
+ },
+ {
+  "c": "Culture",
+  "q": "Who wrote the Harry Potter books?",
+  "a": "J. K. Rowling",
+  "w": [
+   "Roald Dahl",
+   "C. S. Lewis",
+   "J. R. R. Tolkien"
+  ],
+  "f": "The first book was rejected by 12 publishers.",
+  "id": 111
+ },
+ {
+  "c": "Language",
+  "q": "Which word means a word with the same meaning?",
+  "a": "Synonym",
+  "w": [
+   "Antonym",
+   "Homonym",
+   "Acronym"
+  ],
+  "f": "Antonyms have opposite meanings.",
+  "id": 112
+ },
+ {
+  "c": "Geography",
+  "q": "Which is the longest mountain range on land?",
+  "a": "Andes",
+  "w": [
+   "Himalayas",
+   "Rockies",
+   "Alps"
+  ],
+  "f": "The Andes stretch about 7,000 km.",
+  "id": 113
+ },
+ {
+  "c": "History",
+  "q": "Who led the 1857 revolt from Jhansi?",
+  "a": "Rani Lakshmibai",
+  "w": [
+   "Begum Hazrat Mahal",
+   "Rani Durgavati",
+   "Ahilyabai Holkar"
+  ],
+  "f": "She fought on horseback with her son tied to her back.",
+  "id": 114
+ },
+ {
+  "c": "Science",
+  "q": "Sound travels fastest through which?",
+  "a": "Solids",
+  "w": [
+   "Air",
+   "Vacuum",
+   "Liquids"
+  ],
+  "f": "Sound cannot travel through a vacuum at all.",
+  "id": 115
+ },
+ {
+  "c": "India",
+  "q": "Which city is called the Blue City?",
+  "a": "Jodhpur",
+  "w": [
+   "Jaipur",
+   "Udaipur",
+   "Shimla"
+  ],
+  "f": "Many houses in old Jodhpur are painted blue.",
+  "id": 116
+ },
+ {
+  "c": "Animals",
+  "q": "What is a female deer called?",
+  "a": "Doe",
+  "w": [
+   "Mare",
+   "Ewe",
+   "Sow"
+  ],
+  "f": "A male deer is called a buck or stag.",
+  "id": 117
+ },
+ {
+  "c": "Body",
+  "q": "Which organ filters blood to make urine?",
+  "a": "Kidneys",
+  "w": [
+   "Liver",
+   "Heart",
+   "Lungs"
+  ],
+  "f": "Your kidneys filter about 180 litres of blood a day.",
+  "id": 118
+ },
+ {
+  "c": "Space",
+  "q": "Which planet has the most visible rings?",
+  "a": "Saturn",
+  "w": [
+   "Uranus",
+   "Jupiter",
+   "Mars"
+  ],
+  "f": "Saturn's rings are made mostly of ice chunks and rock.",
+  "id": 119
+ },
+ {
+  "c": "Sports",
+  "q": "Which boxer was nicknamed 'The Greatest'?",
+  "a": "Muhammad Ali",
+  "w": [
+   "Mike Tyson",
+   "Floyd Mayweather",
+   "Joe Frazier"
+  ],
+  "f": "Ali won Olympic gold in 1960 as Cassius Clay.",
+  "id": 120
+ },
+ {
+  "c": "Food",
+  "q": "Which fruit is called the King of Fruits in India?",
+  "a": "Mango",
+  "w": [
+   "Banana",
+   "Jackfruit",
+   "Apple"
+  ],
+  "f": "India produces about half of the world's mangoes.",
+  "id": 121
+ },
+ {
+  "c": "Logic",
+  "q": "How many minutes are in a full day?",
+  "a": "1,440",
+  "w": [
+   "1,240",
+   "1,400",
+   "2,400"
+  ],
+  "f": "That's 86,400 seconds.",
+  "id": 122
+ },
+ {
+  "c": "Inventions",
+  "q": "Who developed the polio vaccine (injected)?",
+  "a": "Jonas Salk",
+  "w": [
+   "Albert Sabin",
+   "Edward Jenner",
+   "Alexander Fleming"
+  ],
+  "f": "Salk chose not to patent his vaccine.",
+  "id": 123
+ },
+ {
+  "c": "Tech",
+  "q": "What does 'AI' stand for?",
+  "a": "Artificial Intelligence",
+  "w": [
+   "Automated Internet",
+   "Advanced Interface",
+   "Auto Intelligence"
+  ],
+  "f": "The term was coined in 1956 at Dartmouth.",
+  "id": 124
+ },
+ {
+  "c": "Culture",
+  "q": "Kathakali is a classical dance from which state?",
+  "a": "Kerala",
+  "w": [
+   "Tamil Nadu",
+   "Odisha",
+   "Manipur"
+  ],
+  "f": "Kathakali dancers wear elaborate green face makeup.",
+  "id": 125
+ },
+ {
+  "c": "Geography",
+  "q": "Which line divides Earth into North and South?",
+  "a": "Equator",
+  "w": [
+   "Prime Meridian",
+   "Tropic of Cancer",
+   "Date Line"
+  ],
+  "f": "The Equator is about 40,075 km long.",
+  "id": 126
+ },
+ {
+  "c": "History",
+  "q": "Who said 'Swaraj is my birthright'?",
+  "a": "Bal Gangadhar Tilak",
+  "w": [
+   "Gopal Krishna Gokhale",
+   "Dadabhai Naoroji",
+   "Bipin Chandra Pal"
+  ],
+  "f": "Tilak was called 'Lokmanya' - accepted by the people.",
+  "id": 127
+ },
+ {
+  "c": "Science",
+  "q": "Which particle has a negative charge?",
+  "a": "Electron",
+  "w": [
+   "Proton",
+   "Neutron",
+   "Nucleus"
+  ],
+  "f": "Electrons are about 1,800 times lighter than protons.",
+  "id": 128
+ },
+ {
+  "c": "India",
+  "q": "Which Indian city is the City of Joy?",
+  "a": "Kolkata",
+  "w": [
+   "Lucknow",
+   "Varanasi",
+   "Patna"
+  ],
+  "f": "The name comes from a 1985 novel by Dominique Lapierre.",
+  "id": 129
+ },
+ {
+  "c": "Animals",
+  "q": "Which animal has black and white stripes?",
+  "a": "Zebra",
+  "w": [
+   "Panda",
+   "Skunk",
+   "Tapir"
+  ],
+  "f": "No two zebras have exactly the same stripes.",
+  "id": 130
+ },
+ {
+  "c": "Body",
+  "q": "Where does digestion of food begin?",
+  "a": "Mouth",
+  "w": [
+   "Stomach",
+   "Small intestine",
+   "Liver"
+  ],
+  "f": "Saliva starts breaking down starch right away.",
+  "id": 131
+ },
+ {
+  "c": "Space",
+  "q": "How long does light from the Sun take to reach Earth?",
+  "a": "About 8 minutes",
+  "w": [
+   "About 8 seconds",
+   "About 1 hour",
+   "About 1 day"
+  ],
+  "f": "Sunlight travels roughly 150 million km to reach us.",
+  "id": 132
+ },
+ {
+  "c": "Sports",
+  "q": "How many points is a touchdown worth in American football?",
+  "a": "6",
+  "w": [
+   "3",
+   "7",
+   "2"
+  ],
+  "f": "A kick afterwards can add one extra point.",
+  "id": 133
+ },
+ {
+  "c": "Food",
+  "q": "Which nut is used to make marzipan?",
+  "a": "Almond",
+  "w": [
+   "Cashew",
+   "Peanut",
+   "Walnut"
+  ],
+  "f": "Marzipan is almond paste mixed with sugar.",
+  "id": 134
+ },
+ {
+  "c": "Logic",
+  "q": "How many days are in a leap year?",
+  "a": "366",
+  "w": [
+   "365",
+   "364",
+   "360"
+  ],
+  "f": "February gets an extra 29th day.",
+  "id": 135
+ },
+ {
+  "c": "Inventions",
+  "q": "What does 'www' stand for?",
+  "a": "World Wide Web",
+  "w": [
+   "World Web Wide",
+   "Wide World Web",
+   "Web World Wide"
+  ],
+  "f": "The first website went live in 1991.",
+  "id": 136
+ },
+ {
+  "c": "Tech",
+  "q": "What was the first name of Google's search engine?",
+  "a": "BackRub",
+  "w": [
+   "Googol",
+   "Searchy",
+   "PageRank"
+  ],
+  "f": "'Google' comes from 'googol' - 1 followed by 100 zeros.",
+  "id": 137
+ },
+ {
+  "c": "Culture",
+  "q": "Which instrument is Zakir Hussain famous for?",
+  "a": "Tabla",
+  "w": [
+   "Sitar",
+   "Santoor",
+   "Veena"
+  ],
+  "f": "He won multiple Grammy Awards.",
+  "id": 138
+ },
+ {
+  "c": "Geography",
+  "q": "What is the capital of Sri Lanka (commercial)?",
+  "a": "Colombo",
+  "w": [
+   "Kandy",
+   "Galle",
+   "Jaffna"
+  ],
+  "f": "Sri Jayawardenepura Kotte is the official administrative capital.",
+  "id": 139
+ },
+ {
+  "c": "History",
+  "q": "When was the East India Company founded?",
+  "a": "1600",
+  "w": [
+   "1757",
+   "1500",
+   "1700"
+  ],
+  "f": "Queen Elizabeth I granted its charter.",
+  "id": 140
+ },
+ {
+  "c": "Science",
+  "q": "Which gas makes up most of Earth's atmosphere?",
+  "a": "Nitrogen",
+  "w": [
+   "Oxygen",
+   "Carbon dioxide",
+   "Argon"
+  ],
+  "f": "Nitrogen is about 78% of the air we breathe.",
+  "id": 141
+ },
+ {
+  "c": "India",
+  "q": "Which pass connects Kashmir valley and Ladakh?",
+  "a": "Zoji La",
+  "w": [
+   "Nathu La",
+   "Rohtang Pass",
+   "Shipki La"
+  ],
+  "f": "Zoji La sits at about 3,500 m.",
+  "id": 142
+ },
+ {
+  "c": "Animals",
+  "q": "What is the largest animal ever known?",
+  "a": "Blue whale",
+  "w": [
+   "Elephant",
+   "Megalodon",
+   "Giraffe"
+  ],
+  "f": "A blue whale's heart is the size of a small car.",
+  "id": 143
+ },
+ {
+  "c": "Body",
+  "q": "What do white blood cells do?",
+  "a": "Fight infection",
+  "w": [
+   "Carry oxygen",
+   "Clot blood",
+   "Digest food"
+  ],
+  "f": "They're the soldiers of your immune system.",
+  "id": 144
+ },
+ {
+  "c": "Space",
+  "q": "Who was the first person to walk on the Moon?",
+  "a": "Neil Armstrong",
+  "w": [
+   "Buzz Aldrin",
+   "Yuri Gagarin",
+   "John Glenn"
+  ],
+  "f": "Armstrong stepped onto the Moon on 20 July 1969.",
+  "id": 145
+ },
+ {
+  "c": "Sports",
+  "q": "Which sport is Sachin Tendulkar famous for?",
+  "a": "Cricket",
+  "w": [
+   "Hockey",
+   "Football",
+   "Tennis"
+  ],
+  "f": "Tendulkar scored 100 international centuries.",
+  "id": 146
+ },
+ {
+  "c": "Food",
+  "q": "Which Indian state is famous for the dish 'dhokla'?",
+  "a": "Gujarat",
+  "w": [
+   "Punjab",
+   "Bihar",
+   "Kerala"
+  ],
+  "f": "Dhokla is steamed from a fermented gram-flour batter.",
+  "id": 147
+ },
+ {
+  "c": "Logic",
+  "q": "How many seconds are in an hour?",
+  "a": "3,600",
+  "w": [
+   "360",
+   "6,000",
+   "1,200"
+  ],
+  "f": "60 seconds x 60 minutes.",
+  "id": 148
+ },
+ {
+  "c": "Inventions",
+  "q": "Which company made the first iPhone?",
+  "a": "Apple",
+  "w": [
+   "Samsung",
+   "Nokia",
+   "Google"
+  ],
+  "f": "The first iPhone launched in 2007.",
+  "id": 149
+ },
+ {
+  "c": "Tech",
+  "q": "What is the binary number for 2?",
+  "a": "10",
+  "w": [
+   "11",
+   "01",
+   "100"
+  ],
+  "f": "Binary uses only 0s and 1s.",
+  "id": 150
+ },
+ {
+  "c": "Culture",
+  "q": "Onam is the harvest festival of which state?",
+  "a": "Kerala",
+  "w": [
+   "Tamil Nadu",
+   "Goa",
+   "Karnataka"
+  ],
+  "f": "Onam welcomes the mythical King Mahabali.",
+  "id": 151
+ },
+ {
+  "c": "Geography",
+  "q": "The Amazon rainforest is mostly in which country?",
+  "a": "Brazil",
+  "w": [
+   "Peru",
+   "Colombia",
+   "Venezuela"
+  ],
+  "f": "About 60% of the Amazon lies in Brazil.",
+  "id": 152
+ },
+ {
+  "c": "History",
+  "q": "Who wrote 'Vande Mataram'?",
+  "a": "Bankim Chandra Chatterjee",
+  "w": [
+   "Rabindranath Tagore",
+   "Aurobindo Ghosh",
+   "Subramania Bharati"
+  ],
+  "f": "It first appeared in his 1882 novel 'Anandamath'.",
+  "id": 153
+ },
+ {
+  "c": "Science",
+  "q": "What gas do plants absorb from the air?",
+  "a": "Carbon dioxide",
+  "w": [
+   "Oxygen",
+   "Nitrogen",
+   "Helium"
+  ],
+  "f": "Plants use CO2, water and sunlight to make sugar.",
+  "id": 154
+ },
+ {
+  "c": "India",
+  "q": "Which lake is India's largest freshwater lake?",
+  "a": "Wular Lake",
+  "w": [
+   "Dal Lake",
+   "Chilika Lake",
+   "Loktak Lake"
+  ],
+  "f": "Wular Lake is in Jammu and Kashmir.",
+  "id": 155
+ },
+ {
+  "c": "Animals",
+  "q": "Penguins are found mostly in which hemisphere?",
+  "a": "Southern",
+  "w": [
+   "Northern",
+   "Both equally",
+   "Eastern only"
+  ],
+  "f": "No penguins live naturally at the North Pole.",
+  "id": 156
+ },
+ {
+  "c": "Body",
+  "q": "What carries oxygen in your blood?",
+  "a": "Red blood cells",
+  "w": [
+   "White blood cells",
+   "Platelets",
+   "Plasma"
+  ],
+  "f": "Haemoglobin in red cells binds to oxygen.",
+  "id": 157
+ },
+ {
+  "c": "Space",
+  "q": "What is the brightest star in the night sky?",
+  "a": "Sirius",
+  "w": [
+   "Polaris",
+   "Betelgeuse",
+   "Vega"
+  ],
+  "f": "Sirius is also called the Dog Star.",
+  "id": 158
+ },
+ {
+  "c": "Sports",
+  "q": "How long is a marathon?",
+  "a": "42.195 km",
+  "w": [
+   "40 km",
+   "21.1 km",
+   "50 km"
+  ],
+  "f": "The odd length dates back to the 1908 London Olympics.",
+  "id": 159
+ },
+ {
+  "c": "Food",
+  "q": "Vada pav is a street food from which city?",
+  "a": "Mumbai",
+  "w": [
+   "Delhi",
+   "Kolkata",
+   "Chennai"
+  ],
+  "f": "It's often called the 'Bombay burger'.",
+  "id": 160
+ },
+ {
+  "c": "Logic",
+  "q": "How many degrees are in a right angle?",
+  "a": "90",
+  "w": [
+   "180",
+   "45",
+   "60"
+  ],
+  "f": "A full circle is 360 degrees.",
+  "id": 161
+ },
+ {
+  "c": "Inventions",
+  "q": "Which ancient Indian mathematician worked with zero?",
+  "a": "Brahmagupta",
+  "w": [
+   "Pythagoras",
+   "Euclid",
+   "Archimedes"
+  ],
+  "f": "Brahmagupta gave rules for arithmetic with zero in 628 CE.",
+  "id": 162
+ },
+ {
+  "c": "Tech",
+  "q": "Which company makes the PlayStation?",
+  "a": "Sony",
+  "w": [
+   "Nintendo",
+   "Microsoft",
+   "Sega"
+  ],
+  "f": "The first PlayStation launched in 1994.",
+  "id": 163
+ },
+ {
+  "c": "Culture",
+  "q": "Which festival is called the Festival of Lights?",
+  "a": "Diwali",
+  "w": [
+   "Holi",
+   "Navratri",
+   "Onam"
+  ],
+  "f": "Diwali celebrates the victory of light over darkness.",
+  "id": 164
+ },
+ {
+  "c": "Geography",
+  "q": "Which country has the most people?",
+  "a": "India",
+  "w": [
+   "China",
+   "USA",
+   "Indonesia"
+  ],
+  "f": "India overtook China as the most populous country in 2023.",
+  "id": 165
+ },
+ {
+  "c": "History",
+  "q": "Who was the first female pharaoh to rule long-term?",
+  "a": "Hatshepsut",
+  "w": [
+   "Cleopatra",
+   "Nefertiti",
+   "Tiye"
+  ],
+  "f": "Hatshepsut ruled Egypt for about 20 years.",
+  "id": 166
+ },
+ {
+  "c": "Science",
+  "q": "Which metal is liquid at room temperature?",
+  "a": "Mercury",
+  "w": [
+   "Lead",
+   "Aluminium",
+   "Zinc"
+  ],
+  "f": "Mercury was once used in most thermometers.",
+  "id": 167
+ },
+ {
+  "c": "India",
+  "q": "Which Indian state is called God's Own Country?",
+  "a": "Kerala",
+  "w": [
+   "Goa",
+   "Himachal Pradesh",
+   "Sikkim"
+  ],
+  "f": "Kerala has the highest literacy rate among Indian states.",
+  "id": 168
+ },
+ {
+  "c": "Animals",
+  "q": "Which bird lays the largest eggs?",
+  "a": "Ostrich",
+  "w": [
+   "Emu",
+   "Eagle",
+   "Penguin"
+  ],
+  "f": "One ostrich egg equals about 24 chicken eggs.",
+  "id": 169
+ },
+ {
+  "c": "Body",
+  "q": "Which blood cells help blood clot?",
+  "a": "Platelets",
+  "w": [
+   "Red cells",
+   "White cells",
+   "Plasma cells"
+  ],
+  "f": "Platelets plug wounds within seconds.",
+  "id": 170
+ },
+ {
+  "c": "Space",
+  "q": "Which planet has the longest day?",
+  "a": "Venus",
+  "w": [
+   "Mercury",
+   "Jupiter",
+   "Mars"
+  ],
+  "f": "One day on Venus is longer than its year!",
+  "id": 171
+ },
+ {
+  "c": "Sports",
+  "q": "Which country invented the game of cricket?",
+  "a": "England",
+  "w": [
+   "Australia",
+   "India",
+   "South Africa"
+  ],
+  "f": "The first Test match was played in 1877.",
+  "id": 172
+ },
+ {
+  "c": "Food",
+  "q": "What is tofu made from?",
+  "a": "Soybeans",
+  "w": [
+   "Rice",
+   "Wheat",
+   "Chickpeas"
+  ],
+  "f": "Tofu was invented in China over 2,000 years ago.",
+  "id": 173
+ },
+ {
+  "c": "Logic",
+  "q": "Which number is a perfect square?",
+  "a": "49",
+  "w": [
+   "50",
+   "45",
+   "56"
+  ],
+  "f": "49 = 7 x 7.",
+  "id": 174
+ },
+ {
+  "c": "Inventions",
+  "q": "Who invented the radio (first long-distance)?",
+  "a": "Guglielmo Marconi",
+  "w": [
+   "Alexander Bell",
+   "Thomas Edison",
+   "J. C. Bose"
+  ],
+  "f": "J. C. Bose also did pioneering early work on radio waves.",
+  "id": 175
+ },
+ {
+  "c": "Tech",
+  "q": "What does 'RAM' stand for?",
+  "a": "Random Access Memory",
+  "w": [
+   "Read Access Memory",
+   "Rapid Action Memory",
+   "Run All Memory"
+  ],
+  "f": "RAM loses its data when the power is off.",
+  "id": 176
+ },
+ {
+  "c": "Culture",
+  "q": "Which instrument did Ravi Shankar famously play?",
+  "a": "Sitar",
+  "w": [
+   "Tabla",
+   "Sarod",
+   "Flute"
+  ],
+  "f": "He taught sitar to George Harrison of the Beatles.",
+  "id": 177
+ },
+ {
+  "c": "Geography",
+  "q": "What is the deepest ocean trench?",
+  "a": "Mariana Trench",
+  "w": [
+   "Java Trench",
+   "Puerto Rico Trench",
+   "Tonga Trench"
+  ],
+  "f": "Its deepest point is nearly 11 km down.",
+  "id": 178
+ },
+ {
+  "c": "History",
+  "q": "Which ship sank on its maiden voyage in 1912?",
+  "a": "Titanic",
+  "w": [
+   "Lusitania",
+   "Britannic",
+   "Queen Mary"
+  ],
+  "f": "Titanic hit an iceberg in the North Atlantic.",
+  "id": 179
+ },
+ {
+  "c": "Science",
+  "q": "What is the chemical symbol for silver?",
+  "a": "Ag",
+  "w": [
+   "Si",
+   "Sv",
+   "Au"
+  ],
+  "f": "Ag comes from the Latin 'argentum'.",
+  "id": 180
+ },
+ {
+  "c": "India",
+  "q": "Which river is called the Dakshin Ganga?",
+  "a": "Godavari",
+  "w": [
+   "Krishna",
+   "Kaveri",
+   "Narmada"
+  ],
+  "f": "Godavari is India's second-longest river.",
+  "id": 181
+ },
+ {
+  "c": "Animals",
+  "q": "What is a baby frog called?",
+  "a": "Tadpole",
+  "w": [
+   "Cub",
+   "Kit",
+   "Fry"
+  ],
+  "f": "Tadpoles breathe through gills before growing lungs.",
+  "id": 182
+ },
+ {
+  "c": "Body",
+  "q": "Which is the smallest bone in the human body?",
+  "a": "Stapes",
+  "w": [
+   "Femur",
+   "Patella",
+   "Radius"
+  ],
+  "f": "The stapes is in your middle ear.",
+  "id": 183
+ },
+ {
+  "c": "Space",
+  "q": "What is the largest planet in our Solar System?",
+  "a": "Jupiter",
+  "w": [
+   "Saturn",
+   "Neptune",
+   "Earth"
+  ],
+  "f": "More than 1,300 Earths could fit inside Jupiter.",
+  "id": 184
+ },
+ {
+  "c": "Sports",
+  "q": "Who is called the Wizard of Hockey?",
+  "a": "Dhyan Chand",
+  "w": [
+   "Dhanraj Pillay",
+   "Balbir Singh",
+   "Sardar Singh"
+  ],
+  "f": "India's National Sports Day is his birthday, 29 August.",
+  "id": 185
+ },
+ {
+  "c": "Food",
+  "q": "Chocolate is made from the seeds of which tree?",
+  "a": "Cacao",
+  "w": [
+   "Coconut",
+   "Coffee",
+   "Vanilla"
+  ],
+  "f": "The Aztecs once used cacao beans as money.",
+  "id": 186
+ },
+ {
+  "c": "Logic",
+  "q": "How many sides does a triangle have?",
+  "a": "3",
+  "w": [
+   "4",
+   "2",
+   "5"
+  ],
+  "f": "The angles of a triangle always add up to 180°.",
+  "id": 187
+ },
+ {
+  "c": "Inventions",
+  "q": "What did Louis Braille invent?",
+  "a": "A reading system for the blind",
+  "w": [
+   "The typewriter",
+   "Sign language",
+   "Hearing aids"
+  ],
+  "f": "Braille created his system at about age 15.",
+  "id": 188
+ },
+ {
+  "c": "Geography",
+  "q": "What is the smallest country in the world?",
+  "a": "Vatican City",
+  "w": [
+   "Monaco",
+   "San Marino",
+   "Maldives"
+  ],
+  "f": "Vatican City is about 0.44 square km.",
+  "id": 189
+ },
+ {
+  "c": "History",
+  "q": "The Berlin Wall fell in which year?",
+  "a": "1989",
+  "w": [
+   "1991",
+   "1985",
+   "1975"
+  ],
+  "f": "Germany reunified the next year, in 1990.",
+  "id": 190
+ },
+ {
+  "c": "Science",
+  "q": "What is the chemical symbol for sodium?",
+  "a": "Na",
+  "w": [
+   "So",
+   "Sd",
+   "S"
+  ],
+  "f": "Na comes from 'natrium', its Latin name.",
+  "id": 191
+ },
+ {
+  "c": "India",
+  "q": "Which Indian state has Cherrapunji?",
+  "a": "Meghalaya",
+  "w": [
+   "Assam",
+   "Sikkim",
+   "Mizoram"
+  ],
+  "f": "Nearby Mawsynram is among the wettest places on Earth.",
+  "id": 192
+ },
+ {
+  "c": "Animals",
+  "q": "Which marine animal has eight arms?",
+  "a": "Octopus",
+  "w": [
+   "Squid",
+   "Starfish",
+   "Jellyfish"
+  ],
+  "f": "Squid have eight arms plus two longer tentacles.",
+  "id": 193
+ },
+ {
+  "c": "Body",
+  "q": "Which sense is linked to the olfactory nerve?",
+  "a": "Smell",
+  "w": [
+   "Taste",
+   "Sight",
+   "Hearing"
+  ],
+  "f": "Smell is strongly tied to memory.",
+  "id": 194
+ },
+ {
+  "c": "Space",
+  "q": "What is the Sun mostly made of?",
+  "a": "Hydrogen",
+  "w": [
+   "Oxygen",
+   "Carbon",
+   "Iron"
+  ],
+  "f": "The Sun is about 73% hydrogen and 25% helium by mass.",
+  "id": 195
+ },
+ {
+  "c": "Sports",
+  "q": "Which Indian won Olympic gold in javelin in 2021?",
+  "a": "Neeraj Chopra",
+  "w": [
+   "Abhinav Bindra",
+   "P. V. Sindhu",
+   "Bajrang Punia"
+  ],
+  "f": "It was India's first Olympic gold in athletics.",
+  "id": 196
+ },
+ {
+  "c": "Food",
+  "q": "Which country is the largest producer of coffee?",
+  "a": "Brazil",
+  "w": [
+   "Colombia",
+   "India",
+   "Ethiopia"
+  ],
+  "f": "Brazil grows about a third of the world's coffee.",
+  "id": 197
+ },
+ {
+  "c": "Logic",
+  "q": "What is the only even prime number?",
+  "a": "2",
+  "w": [
+   "4",
+   "0",
+   "6"
+  ],
+  "f": "Every other even number is divisible by 2.",
+  "id": 198
+ },
+ {
+  "c": "Inventions",
+  "q": "Who invented the first practical car with petrol engine?",
+  "a": "Karl Benz",
+  "w": [
+   "Henry Ford",
+   "Enzo Ferrari",
+   "Rudolf Diesel"
+  ],
+  "f": "Benz patented his Motorwagen in 1886.",
+  "id": 199
+ },
+ {
+  "c": "Geography",
+  "q": "Mount Kilimanjaro is in which country?",
+  "a": "Tanzania",
+  "w": [
+   "Kenya",
+   "Uganda",
+   "Ethiopia"
+  ],
+  "f": "It's Africa's highest peak at about 5,895 m.",
+  "id": 200
+ },
+ {
+  "c": "History",
+  "q": "The Dandi March was a protest against a tax on?",
+  "a": "Salt",
+  "w": [
+   "Cotton",
+   "Tea",
+   "Land"
+  ],
+  "f": "Gandhi walked about 385 km to Dandi in 1930.",
+  "id": 201
+ },
+ {
+  "c": "Science",
+  "q": "What is the main gas released in photosynthesis?",
+  "a": "Oxygen",
+  "w": [
+   "Carbon dioxide",
+   "Nitrogen",
+   "Hydrogen"
+  ],
+  "f": "Ocean plankton produce a huge share of Earth's oxygen.",
+  "id": 202
+ },
+ {
+  "c": "India",
+  "q": "What is the capital of Maharashtra?",
+  "a": "Mumbai",
+  "w": [
+   "Pune",
+   "Nagpur",
+   "Nashik"
+  ],
+  "f": "Nagpur is Maharashtra's second (winter) capital.",
+  "id": 203
+ },
+ {
+  "c": "Animals",
+  "q": "Which is the national heritage animal of India?",
+  "a": "Elephant",
+  "w": [
+   "Tiger",
+   "Lion",
+   "Cow"
+  ],
+  "f": "India declared the elephant its heritage animal in 2010.",
+  "id": 204
+ },
+ {
+  "c": "Body",
+  "q": "How many teeth does an adult usually have?",
+  "a": "32",
+  "w": [
+   "28",
+   "30",
+   "36"
+  ],
+  "f": "That count includes four wisdom teeth.",
+  "id": 205
+ },
+ {
+  "c": "Space",
+  "q": "What is a light-year a measure of?",
+  "a": "Distance",
+  "w": [
+   "Time",
+   "Brightness",
+   "Speed"
+  ],
+  "f": "One light-year is about 9.46 trillion km.",
+  "id": 206
+ },
+ {
+  "c": "Sports",
+  "q": "In which sport would you perform a slam dunk?",
+  "a": "Basketball",
+  "w": [
+   "Volleyball",
+   "Tennis",
+   "Handball"
+  ],
+  "f": "Basketball was invented by James Naismith in 1891.",
+  "id": 207
+ },
+ {
+  "c": "Food",
+  "q": "Rasgulla is most associated with which region?",
+  "a": "Bengal & Odisha",
+  "w": [
+   "Punjab",
+   "Kerala",
+   "Rajasthan"
+  ],
+  "f": "Both West Bengal and Odisha have GI tags for their rasgullas.",
+  "id": 208
+ },
+ {
+  "c": "Logic",
+  "q": "A dozen equals how many?",
+  "a": "12",
+  "w": [
+   "10",
+   "20",
+   "6"
+  ],
+  "f": "A baker's dozen is 13.",
+  "id": 209
+ },
+ {
+  "c": "Inventions",
+  "q": "Who invented the World Wide Web?",
+  "a": "Tim Berners-Lee",
+  "w": [
+   "Bill Gates",
+   "Steve Jobs",
+   "Vint Cerf"
+  ],
+  "f": "He proposed the Web in 1989 while at CERN.",
+  "id": 210
+ },
+ {
+  "c": "Geography",
+  "q": "What is the capital of Turkey?",
+  "a": "Ankara",
+  "w": [
+   "Istanbul",
+   "Izmir",
+   "Antalya"
+  ],
+  "f": "Istanbul is bigger, but Ankara is the capital.",
+  "id": 211
+ },
+ {
+  "c": "History",
+  "q": "Who painted the Mona Lisa?",
+  "a": "Leonardo da Vinci",
+  "w": [
+   "Michelangelo",
+   "Raphael",
+   "Van Gogh"
+  ],
+  "f": "The Mona Lisa hangs in the Louvre, Paris.",
+  "id": 212
+ },
+ {
+  "c": "Science",
+  "q": "What is the freezing point of water in Fahrenheit?",
+  "a": "32°F",
+  "w": [
+   "0°F",
+   "100°F",
+   "212°F"
+  ],
+  "f": "Water boils at 212°F at sea level.",
+  "id": 213
+ },
+ {
+  "c": "India",
+  "q": "Which Indian city has the Charminar?",
+  "a": "Hyderabad",
+  "w": [
+   "Lucknow",
+   "Bhopal",
+   "Mysuru"
+  ],
+  "f": "Charminar was built in 1591.",
+  "id": 214
+ },
+ {
+  "c": "Animals",
+  "q": "Which animal is known as the Ship of the Desert?",
+  "a": "Camel",
+  "w": [
+   "Horse",
+   "Donkey",
+   "Elephant"
+  ],
+  "f": "A camel's hump stores fat, not water.",
+  "id": 215
+ },
+ {
+  "c": "Body",
+  "q": "Which part of the eye gives it colour?",
+  "a": "Iris",
+  "w": [
+   "Pupil",
+   "Retina",
+   "Lens"
+  ],
+  "f": "The pupil is actually a hole in the iris.",
+  "id": 216
+ },
+ {
+  "c": "Space",
+  "q": "What is the name of India's first Moon mission?",
+  "a": "Chandrayaan-1",
+  "w": [
+   "Mangalyaan",
+   "Aryabhata",
+   "Gaganyaan"
+  ],
+  "f": "Chandrayaan-1 (2008) helped confirm water molecules on the Moon.",
+  "id": 217
+ },
+ {
+  "c": "Sports",
+  "q": "Who was India's first individual Olympic gold medallist?",
+  "a": "Abhinav Bindra",
+  "w": [
+   "Neeraj Chopra",
+   "Milkha Singh",
+   "Leander Paes"
+  ],
+  "f": "Bindra won 10m air rifle gold in Beijing 2008.",
+  "id": 218
+ },
+ {
+  "c": "Food",
+  "q": "Which is the most consumed drink in the world after water?",
+  "a": "Tea",
+  "w": [
+   "Coffee",
+   "Soda",
+   "Milk"
+  ],
+  "f": "Billions of cups of tea are drunk every day.",
+  "id": 219
+ },
+ {
+  "c": "Logic",
+  "q": "What comes next: 1, 1, 2, 3, 5, 8, ...?",
+  "a": "13",
+  "w": [
+   "11",
+   "12",
+   "15"
+  ],
+  "f": "This is the Fibonacci sequence.",
+  "id": 220
+ },
+ {
+  "c": "Geography",
+  "q": "Which ocean lies between Africa and Australia?",
+  "a": "Indian Ocean",
+  "w": [
+   "Pacific Ocean",
+   "Atlantic Ocean",
+   "Southern Ocean"
+  ],
+  "f": "It's the only ocean named after a country.",
+  "id": 221
+ },
+ {
+  "c": "History",
+  "q": "Who built the Taj Mahal?",
+  "a": "Shah Jahan",
+  "w": [
+   "Akbar",
+   "Aurangzeb",
+   "Babur"
+  ],
+  "f": "About 20,000 workers built it over ~20 years.",
+  "id": 222
+ },
+ {
+  "c": "Science",
+  "q": "Which vitamin do we get from sunlight?",
+  "a": "Vitamin D",
+  "w": [
+   "Vitamin C",
+   "Vitamin A",
+   "Vitamin B12"
+  ],
+  "f": "Skin makes vitamin D when exposed to UVB rays.",
+  "id": 223
+ },
+ {
+  "c": "India",
+  "q": "Which is India's first national park?",
+  "a": "Jim Corbett",
+  "w": [
+   "Kaziranga",
+   "Gir",
+   "Kanha"
+  ],
+  "f": "It was established in 1936 as Hailey National Park.",
+  "id": 224
+ },
+ {
+  "c": "Animals",
+  "q": "Which animal is famous for changing colour?",
+  "a": "Chameleon",
+  "w": [
+   "Gecko",
+   "Iguana",
+   "Frog"
+  ],
+  "f": "Chameleons change colour partly to communicate.",
+  "id": 225
+ },
+ {
+  "c": "Body",
+  "q": "What is the normal human body temperature?",
+  "a": "About 37°C",
+  "w": [
+   "About 35°C",
+   "About 39°C",
+   "About 33°C"
+  ],
+  "f": "37°C is roughly 98.6°F.",
+  "id": 226
+ },
+ {
+  "c": "Space",
+  "q": "Which planet has the Great Red Spot?",
+  "a": "Jupiter",
+  "w": [
+   "Mars",
+   "Saturn",
+   "Neptune"
+  ],
+  "f": "The Great Red Spot is a storm bigger than Earth.",
+  "id": 227
+ },
+ {
+  "c": "Sports",
+  "q": "Which country has won the most FIFA World Cups?",
+  "a": "Brazil",
+  "w": [
+   "Germany",
+   "Italy",
+   "Argentina"
+  ],
+  "f": "Brazil has won it five times.",
+  "id": 228
+ },
+ {
+  "c": "Food",
+  "q": "Which country did pizza originate from?",
+  "a": "Italy",
+  "w": [
+   "USA",
+   "France",
+   "Greece"
+  ],
+  "f": "Pizza Margherita was named after an Italian queen.",
+  "id": 229
+ },
+ {
+  "c": "Logic",
+  "q": "What is half of a quarter?",
+  "a": "One-eighth",
+  "w": [
+   "One-sixth",
+   "One-half",
+   "One-third"
+  ],
+  "f": "1/4 divided by 2 is 1/8.",
+  "id": 230
+ },
+ {
+  "c": "Geography",
+  "q": "Which is the largest lake in Africa?",
+  "a": "Lake Victoria",
+  "w": [
+   "Lake Tanganyika",
+   "Lake Malawi",
+   "Lake Chad"
+  ],
+  "f": "It's shared by Kenya, Uganda and Tanzania.",
+  "id": 231
+ },
+ {
+  "c": "History",
+  "q": "Who gave the slogan 'Jai Hind'?",
+  "a": "Subhas Chandra Bose",
+  "w": [
+   "Bhagat Singh",
+   "Mahatma Gandhi",
+   "Lala Lajpat Rai"
+  ],
+  "f": "Bose led the Indian National Army (Azad Hind Fauj).",
+  "id": 232
+ },
+ {
+  "c": "Science",
+  "q": "What is the chemical formula of water?",
+  "a": "H2O",
+  "w": [
+   "CO2",
+   "O2",
+   "H2O2"
+  ],
+  "f": "Each water molecule has 2 hydrogen atoms and 1 oxygen atom.",
+  "id": 233
+ },
+ {
+  "c": "India",
+  "q": "What is the capital of India?",
+  "a": "New Delhi",
+  "w": [
+   "Mumbai",
+   "Kolkata",
+   "Chennai"
+  ],
+  "f": "Kolkata was the capital of British India until 1911.",
+  "id": 234
+ },
+ {
+  "c": "Animals",
+  "q": "What is a group of lions called?",
+  "a": "Pride",
+  "w": [
+   "Pack",
+   "Herd",
+   "Flock"
+  ],
+  "f": "Lionesses do most of the hunting in a pride.",
+  "id": 235
+ },
+ {
+  "c": "Body",
+  "q": "Which is the longest part of the digestive tract?",
+  "a": "Small intestine",
+  "w": [
+   "Large intestine",
+   "Stomach",
+   "Oesophagus"
+  ],
+  "f": "It's about 6 metres long in adults.",
+  "id": 236
+ },
+ {
+  "c": "Space",
+  "q": "Which planet spins on its side?",
+  "a": "Uranus",
+  "w": [
+   "Neptune",
+   "Saturn",
+   "Venus"
+  ],
+  "f": "Uranus is tilted about 98 degrees, likely from an ancient collision.",
+  "id": 237
+ },
+ {
+  "c": "Sports",
+  "q": "How many squares are on a chessboard?",
+  "a": "64",
+  "w": [
+   "32",
+   "81",
+   "100"
+  ],
+  "f": "The board is an 8x8 grid.",
+  "id": 238
+ },
+ {
+  "c": "Food",
+  "q": "Sushi comes from which country?",
+  "a": "Japan",
+  "w": [
+   "China",
+   "Korea",
+   "Thailand"
+  ],
+  "f": "Sushi originally referred to fermented rice.",
+  "id": 239
+ },
+ {
+  "c": "Geography",
+  "q": "Which waterfall is the highest in the world?",
+  "a": "Angel Falls",
+  "w": [
+   "Niagara Falls",
+   "Victoria Falls",
+   "Iguazu Falls"
+  ],
+  "f": "Angel Falls in Venezuela drops about 979 m.",
+  "id": 240
+ },
+ {
+  "c": "History",
+  "q": "Who was the first President of the USA?",
+  "a": "George Washington",
+  "w": [
+   "Abraham Lincoln",
+   "Thomas Jefferson",
+   "John Adams"
+  ],
+  "f": "Washington is the only president unanimously elected.",
+  "id": 241
+ },
+ {
+  "c": "Science",
+  "q": "Who discovered penicillin?",
+  "a": "Alexander Fleming",
+  "w": [
+   "Louis Pasteur",
+   "Marie Curie",
+   "Edward Jenner"
+  ],
+  "f": "Fleming noticed mould killing bacteria in 1928.",
+  "id": 242
+ },
+ {
+  "c": "India",
+  "q": "Which is the southernmost point of mainland India?",
+  "a": "Kanyakumari",
+  "w": [
+   "Rameswaram",
+   "Chennai",
+   "Kochi"
+  ],
+  "f": "Three water bodies meet at Kanyakumari.",
+  "id": 243
+ },
+ {
+  "c": "Animals",
+  "q": "What does a panda mainly eat?",
+  "a": "Bamboo",
+  "w": [
+   "Fish",
+   "Fruits",
+   "Insects"
+  ],
+  "f": "Pandas eat 12-38 kg of bamboo a day.",
+  "id": 244
+ },
+ {
+  "c": "Body",
+  "q": "How many chambers does the human heart have?",
+  "a": "4",
+  "w": [
+   "2",
+   "3",
+   "6"
+  ],
+  "f": "Two atria and two ventricles.",
+  "id": 245
+ },
+ {
+  "c": "Space",
+  "q": "What causes the Moon's phases?",
+  "a": "Its position vs the Sun",
+  "w": [
+   "Earth's shadow",
+   "Clouds on the Moon",
+   "The Moon's rotation"
+  ],
+  "f": "We see different amounts of the Moon's sunlit half as it orbits.",
+  "id": 246
+ },
+ {
+  "c": "Sports",
+  "q": "In cricket, how many balls are in a standard over?",
+  "a": "6",
+  "w": [
+   "5",
+   "8",
+   "10"
+  ],
+  "f": "Some old Tests used 8-ball overs.",
+  "id": 247
+ },
+ {
+  "c": "Food",
+  "q": "Biryani is mainly made with which grain?",
+  "a": "Rice",
+  "w": [
+   "Wheat",
+   "Millet",
+   "Barley"
+  ],
+  "f": "Basmati rice is the classic choice for biryani.",
+  "id": 248
+ },
+ {
+  "c": "Geography",
+  "q": "What is the capital of Spain?",
+  "a": "Madrid",
+  "w": [
+   "Barcelona",
+   "Seville",
+   "Valencia"
+  ],
+  "f": "Madrid sits almost at the centre of Spain.",
+  "id": 249
+ },
+ {
+  "c": "History",
+  "q": "In which year did World War I begin?",
+  "a": "1914",
+  "w": [
+   "1918",
+   "1905",
+   "1939"
+  ],
+  "f": "It was sparked by the assassination of Archduke Franz Ferdinand.",
+  "id": 250
+ },
+ {
+  "c": "Science",
+  "q": "Which colour of light has the longest wavelength?",
+  "a": "Red",
+  "w": [
+   "Violet",
+   "Blue",
+   "Green"
+  ],
+  "f": "Violet light has the shortest visible wavelength.",
+  "id": 251
+ },
+ {
+  "c": "India",
+  "q": "Which state is the Sundarbans mainly in?",
+  "a": "West Bengal",
+  "w": [
+   "Odisha",
+   "Assam",
+   "Andhra Pradesh"
+  ],
+  "f": "Sundarbans is the largest mangrove forest in the world.",
+  "id": 252
+ },
+ {
+  "c": "Animals",
+  "q": "Which animal is the national aquatic animal of India?",
+  "a": "Ganges river dolphin",
+  "w": [
+   "Crocodile",
+   "Turtle",
+   "Blue whale"
+  ],
+  "f": "Ganges dolphins are nearly blind and use echolocation.",
+  "id": 253
+ },
+ {
+  "c": "Body",
+  "q": "Which is the largest internal organ?",
+  "a": "Liver",
+  "w": [
+   "Heart",
+   "Lungs",
+   "Stomach"
+  ],
+  "f": "The liver can regrow after part of it is removed.",
+  "id": 254
+ },
+ {
+  "c": "Space",
+  "q": "Which planet has the most known moons?",
+  "a": "Saturn",
+  "w": [
+   "Jupiter",
+   "Uranus",
+   "Mars"
+  ],
+  "f": "Saturn has well over 100 confirmed moons.",
+  "id": 255
+ },
+ {
+  "c": "Sports",
+  "q": "Usain Bolt represents which country?",
+  "a": "Jamaica",
+  "w": [
+   "USA",
+   "Kenya",
+   "Canada"
+  ],
+  "f": "Bolt's 100 m world record is 9.58 seconds.",
+  "id": 256
+ },
+ {
+  "c": "Geography",
+  "q": "Which country is home to the kangaroo?",
+  "a": "Australia",
+  "w": [
+   "South Africa",
+   "Brazil",
+   "India"
+  ],
+  "f": "Kangaroos can't walk backwards easily.",
+  "id": 257
+ },
+ {
+  "c": "History",
+  "q": "Which emperor embraced Buddhism after Kalinga war?",
+  "a": "Ashoka",
+  "w": [
+   "Chandragupta",
+   "Harsha",
+   "Kanishka"
+  ],
+  "f": "Ashoka's lion capital is India's national emblem.",
+  "id": 258
+ },
+ {
+  "c": "Science",
+  "q": "Which scientist won Nobel Prizes in two sciences?",
+  "a": "Marie Curie",
+  "w": [
+   "Albert Einstein",
+   "Niels Bohr",
+   "Max Planck"
+  ],
+  "f": "Curie won in Physics (1903) and Chemistry (1911).",
+  "id": 259
+ },
+ {
+  "c": "India",
+  "q": "Which desert lies in north-west India?",
+  "a": "Thar",
+  "w": [
+   "Gobi",
+   "Kalahari",
+   "Sahara"
+  ],
+  "f": "Thar is also called the Great Indian Desert.",
+  "id": 260
+ },
+ {
+  "c": "Animals",
+  "q": "Which mammal can truly fly?",
+  "a": "Bat",
+  "w": [
+   "Flying squirrel",
+   "Sugar glider",
+   "Colugo"
+  ],
+  "f": "Flying squirrels only glide - bats really fly.",
+  "id": 261
+ },
+ {
+  "c": "Body",
+  "q": "Which organ helps you breathe?",
+  "a": "Lungs",
+  "w": [
+   "Liver",
+   "Kidneys",
+   "Spleen"
+  ],
+  "f": "The left lung is smaller to make room for the heart.",
+  "id": 262
+ },
+ {
+  "c": "Space",
+  "q": "Which was the first artificial satellite?",
+  "a": "Sputnik 1",
+  "w": [
+   "Explorer 1",
+   "Aryabhata",
+   "Vanguard 1"
+  ],
+  "f": "The Soviet Union launched Sputnik 1 in 1957.",
+  "id": 263
+ },
+ {
+  "c": "Sports",
+  "q": "How many rings are on the Olympic flag?",
+  "a": "5",
+  "w": [
+   "4",
+   "6",
+   "7"
+  ],
+  "f": "The rings represent the five inhabited continents.",
+  "id": 264
+ },
+ {
+  "c": "Geography",
+  "q": "Which US state is the largest by area?",
+  "a": "Alaska",
+  "w": [
+   "Texas",
+   "California",
+   "Montana"
+  ],
+  "f": "Alaska is more than twice the size of Texas.",
+  "id": 265
+ },
+ {
+  "c": "History",
+  "q": "In which year did the Jallianwala Bagh massacre happen?",
+  "a": "1919",
+  "w": [
+   "1905",
+   "1930",
+   "1942"
+  ],
+  "f": "It happened in Amritsar on 13 April 1919.",
+  "id": 266
+ },
+ {
+  "c": "Science",
+  "q": "What do bees collect to make honey?",
+  "a": "Nectar",
+  "w": [
+   "Pollen",
+   "Water",
+   "Sap"
+  ],
+  "f": "Honey never really spoils if stored properly.",
+  "id": 267
+ },
+ {
+  "c": "India",
+  "q": "Where is the Gateway of India?",
+  "a": "Mumbai",
+  "w": [
+   "New Delhi",
+   "Kolkata",
+   "Chennai"
+  ],
+  "f": "It was built to commemorate a 1911 royal visit.",
+  "id": 268
+ },
+ {
+  "c": "Animals",
+  "q": "What is the largest bird in the world?",
+  "a": "Ostrich",
+  "w": [
+   "Emu",
+   "Albatross",
+   "Eagle"
+  ],
+  "f": "Ostrich eggs are the largest of any living bird.",
+  "id": 269
+ },
+ {
+  "c": "Body",
+  "q": "Which glands produce tears?",
+  "a": "Lacrimal glands",
+  "w": [
+   "Salivary glands",
+   "Thyroid gland",
+   "Sweat glands"
+  ],
+  "f": "Tears contain salt, water and antibacterial enzymes.",
+  "id": 270
+ },
+ {
+  "c": "Space",
+  "q": "What is the hottest planet in our Solar System?",
+  "a": "Venus",
+  "w": [
+   "Mercury",
+   "Mars",
+   "Jupiter"
+  ],
+  "f": "Venus's thick CO2 atmosphere traps heat, making it hotter than Mercury.",
+  "id": 271
+ },
+ {
+  "c": "Sports",
+  "q": "Which sport uses a shuttlecock?",
+  "a": "Badminton",
+  "w": [
+   "Tennis",
+   "Squash",
+   "Table tennis"
+  ],
+  "f": "Shuttlecocks can travel over 400 km/h off a smash.",
+  "id": 272
+ },
+ {
+  "c": "Geography",
+  "q": "Which country is shaped like a boot?",
+  "a": "Italy",
+  "w": [
+   "Greece",
+   "Spain",
+   "Portugal"
+  ],
+  "f": "Sicily sits right at the 'toe' of the boot.",
+  "id": 273
+ },
+ {
+  "c": "History",
+  "q": "Who built the Brihadeeswarar Temple in Thanjavur?",
+  "a": "Rajaraja Chola I",
+  "w": [
+   "Ashoka",
+   "Krishnadevaraya",
+   "Pulakeshin II"
+  ],
+  "f": "It was completed around 1010 CE.",
+  "id": 274
+ },
+ {
+  "c": "Science",
+  "q": "What is the study of earthquakes called?",
+  "a": "Seismology",
+  "w": [
+   "Geology",
+   "Meteorology",
+   "Volcanology"
+  ],
+  "f": "'Seismos' is Greek for shaking.",
+  "id": 275
+ },
+ {
+  "c": "India",
+  "q": "Which is the longest river in India?",
+  "a": "Ganga",
+  "w": [
+   "Godavari",
+   "Yamuna",
+   "Brahmaputra"
+  ],
+  "f": "The Ganga flows for about 2,525 km.",
+  "id": 276
+ },
+ {
+  "c": "Animals",
+  "q": "What is the tallest animal?",
+  "a": "Giraffe",
+  "w": [
+   "Elephant",
+   "Camel",
+   "Ostrich"
+  ],
+  "f": "A giraffe's neck has 7 vertebrae - same as humans.",
+  "id": 277
+ },
+ {
+  "c": "Body",
+  "q": "Which vitamin deficiency causes scurvy?",
+  "a": "Vitamin C",
+  "w": [
+   "Vitamin D",
+   "Vitamin A",
+   "Vitamin K"
+  ],
+  "f": "Sailors carried citrus fruits to prevent scurvy.",
+  "id": 278
+ },
+ {
+  "c": "Space",
+  "q": "Which dwarf planet was once our 9th planet?",
+  "a": "Pluto",
+  "w": [
+   "Ceres",
+   "Eris",
+   "Makemake"
+  ],
+  "f": "Pluto was reclassified as a dwarf planet in 2006.",
+  "id": 279
+ },
+ {
+  "c": "Geography",
+  "q": "Which river flows through Egypt?",
+  "a": "Nile",
+  "w": [
+   "Tigris",
+   "Congo",
+   "Niger"
+  ],
+  "f": "Most Egyptians live within a few km of the Nile.",
+  "id": 280
+ },
+ {
+  "c": "History",
+  "q": "Which civilisation built Harappa and Mohenjo-daro?",
+  "a": "Indus Valley",
+  "w": [
+   "Mesopotamian",
+   "Egyptian",
+   "Vedic"
+  ],
+  "f": "Their cities had advanced drainage systems over 4,000 years ago.",
+  "id": 281
+ },
+ {
+  "c": "Science",
+  "q": "Which part of the cell is called the powerhouse?",
+  "a": "Mitochondria",
+  "w": [
+   "Nucleus",
+   "Ribosome",
+   "Cell wall"
+  ],
+  "f": "Mitochondria produce most of the cell's energy (ATP).",
+  "id": 282
+ },
+ {
+  "c": "India",
+  "q": "Which city is known as the City of Lakes?",
+  "a": "Udaipur",
+  "w": [
+   "Bhopal",
+   "Srinagar",
+   "Nainital"
+  ],
+  "f": "Udaipur's Lake Pichola dates back to the 14th century.",
+  "id": 283
+ },
+ {
+  "c": "Animals",
+  "q": "Which bird is known for mimicking human speech?",
+  "a": "Parrot",
+  "w": [
+   "Crow",
+   "Owl",
+   "Pigeon"
+  ],
+  "f": "African grey parrots can learn hundreds of words.",
+  "id": 284
+ },
+ {
+  "c": "Body",
+  "q": "How many bones are in the adult human body?",
+  "a": "206",
+  "w": [
+   "212",
+   "198",
+   "250"
+  ],
+  "f": "Babies are born with around 300 bones that fuse over time.",
+  "id": 285
+ },
+ {
+  "c": "Geography",
+  "q": "Which mountain range separates Europe and Asia?",
+  "a": "Ural Mountains",
+  "w": [
+   "Alps",
+   "Carpathians",
+   "Pyrenees"
+  ],
+  "f": "The Urals run about 2,500 km north to south.",
+  "id": 286
+ },
+ {
+  "c": "History",
+  "q": "When did the Constitution of India come into effect?",
+  "a": "26 January 1950",
+  "w": [
+   "15 August 1947",
+   "26 November 1949",
+   "2 October 1950"
+  ],
+  "f": "That's why India celebrates Republic Day on 26 January.",
+  "id": 287
+ },
+ {
+  "c": "Science",
+  "q": "What is the boiling point of water in Kelvin?",
+  "a": "373 K",
+  "w": [
+   "100 K",
+   "273 K",
+   "212 K"
+  ],
+  "f": "0°C equals about 273 K.",
+  "id": 288
+ },
+ {
+  "c": "India",
+  "q": "Which state is called the Land of Five Rivers?",
+  "a": "Punjab",
+  "w": [
+   "Haryana",
+   "Bihar",
+   "Assam"
+  ],
+  "f": "'Punj' means five and 'ab' means water.",
+  "id": 289
+ },
+ {
+  "c": "Animals",
+  "q": "How many hearts does an octopus have?",
+  "a": "3",
+  "w": [
+   "1",
+   "2",
+   "4"
+  ],
+  "f": "Octopus blood is blue because it uses copper.",
+  "id": 290
+ },
+ {
+  "c": "Body",
+  "q": "What is the largest organ of the human body?",
+  "a": "Skin",
+  "w": [
+   "Liver",
+   "Brain",
+   "Lungs"
+  ],
+  "f": "Skin makes up about 15% of your body weight.",
+  "id": 291
+ },
+ {
+  "c": "Geography",
+  "q": "Which country has Machu Picchu?",
+  "a": "Peru",
+  "w": [
+   "Mexico",
+   "Chile",
+   "Bolivia"
+  ],
+  "f": "This Inca citadel was built in the 15th century.",
+  "id": 292
+ },
+ {
+  "c": "History",
+  "q": "Who was the first woman Prime Minister of India?",
+  "a": "Indira Gandhi",
+  "w": [
+   "Sarojini Naidu",
+   "Pratibha Patil",
+   "Sucheta Kripalani"
+  ],
+  "f": "Indira Gandhi first became PM in 1966.",
+  "id": 293
+ },
+ {
+  "c": "Science",
+  "q": "What force keeps us on the ground?",
+  "a": "Gravity",
+  "w": [
+   "Magnetism",
+   "Friction",
+   "Inertia"
+  ],
+  "f": "Newton described universal gravitation in 1687.",
+  "id": 294
+ },
+ {
+  "c": "India",
+  "q": "Which Indian state is called the Land of the Rising Sun?",
+  "a": "Arunachal Pradesh",
+  "w": [
+   "Assam",
+   "Manipur",
+   "Sikkim"
+  ],
+  "f": "India's first sunrise is seen in Arunachal's Dong village.",
+  "id": 295
+ },
+ {
+  "c": "Animals",
+  "q": "Which is the largest living land animal?",
+  "a": "African elephant",
+  "w": [
+   "Hippopotamus",
+   "Rhinoceros",
+   "Giraffe"
+  ],
+  "f": "African elephants can weigh over 6 tonnes.",
+  "id": 296
+ },
+ {
+  "c": "Body",
+  "q": "Which organ stores bile?",
+  "a": "Gallbladder",
+  "w": [
+   "Liver",
+   "Pancreas",
+   "Spleen"
+  ],
+  "f": "Bile is made by the liver and helps digest fat.",
+  "id": 297
+ },
+ {
+  "c": "Geography",
+  "q": "Which country has the Statue of Liberty?",
+  "a": "USA",
+  "w": [
+   "France",
+   "UK",
+   "Canada"
+  ],
+  "f": "France gifted the statue to the USA in 1886.",
+  "id": 298
+ },
+ {
+  "c": "History",
+  "q": "Who was the first woman to fly solo across the Atlantic?",
+  "a": "Amelia Earhart",
+  "w": [
+   "Kalpana Chawla",
+   "Valentina Tereshkova",
+   "Bessie Coleman"
+  ],
+  "f": "Earhart made the flight in 1932.",
+  "id": 299
+ },
+ {
+  "c": "Science",
+  "q": "At what temperature does water boil at sea level?",
+  "a": "100°C",
+  "w": [
+   "90°C",
+   "120°C",
+   "80°C"
+  ],
+  "f": "At high altitude water boils at a lower temperature.",
+  "id": 300
+ },
+ {
+  "c": "India",
+  "q": "Asiatic lions live in the wild only in?",
+  "a": "Gir Forest",
+  "w": [
+   "Sundarbans",
+   "Kanha",
+   "Bandipur"
+  ],
+  "f": "Gir in Gujarat is the last wild home of Asiatic lions.",
+  "id": 301
+ },
+ {
+  "c": "Animals",
+  "q": "Which animal is known as the King of the Jungle?",
+  "a": "Lion",
+  "w": [
+   "Tiger",
+   "Elephant",
+   "Gorilla"
+  ],
+  "f": "Ironically, lions mostly live in grasslands, not jungles.",
+  "id": 302
+ },
+ {
+  "c": "Body",
+  "q": "What is the hardest substance in the body?",
+  "a": "Tooth enamel",
+  "w": [
+   "Bone",
+   "Nails",
+   "Cartilage"
+  ],
+  "f": "Enamel cannot regrow once it's lost.",
+  "id": 303
+ },
+ {
+  "c": "Geography",
+  "q": "Which is the largest hot desert in the world?",
+  "a": "Sahara",
+  "w": [
+   "Gobi",
+   "Thar",
+   "Kalahari"
+  ],
+  "f": "Antarctica is the largest desert overall - it's a cold desert.",
+  "id": 304
+ },
+ {
+  "c": "History",
+  "q": "Who was the first Prime Minister of India?",
+  "a": "Jawaharlal Nehru",
+  "w": [
+   "Sardar Patel",
+   "Rajendra Prasad",
+   "Lal Bahadur Shastri"
+  ],
+  "f": "Nehru served as PM for nearly 17 years.",
+  "id": 305
+ },
+ {
+  "c": "Science",
+  "q": "What is the unit of electrical resistance?",
+  "a": "Ohm",
+  "w": [
+   "Volt",
+   "Ampere",
+   "Watt"
+  ],
+  "f": "It's named after German physicist Georg Ohm.",
+  "id": 306
+ },
+ {
+  "c": "India",
+  "q": "Which is the highest peak located in India?",
+  "a": "Kangchenjunga",
+  "w": [
+   "Nanda Devi",
+   "K2",
+   "Everest"
+  ],
+  "f": "Kangchenjunga is the world's third-highest mountain.",
+  "id": 307
+ },
+ {
+  "c": "Animals",
+  "q": "How many legs does an insect have?",
+  "a": "6",
+  "w": [
+   "8",
+   "4",
+   "10"
+  ],
+  "f": "Insects have three body parts: head, thorax, abdomen.",
+  "id": 308
+ },
+ {
+  "c": "Body",
+  "q": "Which organ produces insulin?",
+  "a": "Pancreas",
+  "w": [
+   "Liver",
+   "Kidney",
+   "Stomach"
+  ],
+  "f": "Insulin helps cells absorb sugar from blood.",
+  "id": 309
+ },
+ {
+  "c": "Geography",
+  "q": "What is the capital of Germany?",
+  "a": "Berlin",
+  "w": [
+   "Munich",
+   "Frankfurt",
+   "Hamburg"
+  ],
+  "f": "The Berlin Wall fell in 1989.",
+  "id": 310
+ },
+ {
+  "c": "History",
+  "q": "Which movement did Gandhi launch in 1942?",
+  "a": "Quit India",
+  "w": [
+   "Non-Cooperation",
+   "Civil Disobedience",
+   "Khilafat"
+  ],
+  "f": "Gandhi's slogan was 'Do or Die'.",
+  "id": 311
+ },
+ {
+  "c": "Science",
+  "q": "What type of energy is stored in food?",
+  "a": "Chemical energy",
+  "w": [
+   "Nuclear energy",
+   "Kinetic energy",
+   "Sound energy"
+  ],
+  "f": "Your body converts chemical energy into heat and motion.",
+  "id": 312
+ },
+ {
+  "c": "India",
+  "q": "Which city is called the Pink City?",
+  "a": "Jaipur",
+  "w": [
+   "Jodhpur",
+   "Udaipur",
+   "Bikaner"
+  ],
+  "f": "Jaipur was painted pink to welcome Prince Albert in 1876.",
+  "id": 313
+ },
+ {
+  "c": "Animals",
+  "q": "What is the fastest land animal?",
+  "a": "Cheetah",
+  "w": [
+   "Lion",
+   "Horse",
+   "Leopard"
+  ],
+  "f": "Cheetahs can reach about 100-110 km/h in short bursts.",
+  "id": 314
+ },
+ {
+  "c": "Body",
+  "q": "Which part of the brain controls balance?",
+  "a": "Cerebellum",
+  "w": [
+   "Cerebrum",
+   "Medulla",
+   "Thalamus"
+  ],
+  "f": "'Cerebellum' means 'little brain' in Latin.",
+  "id": 315
+ },
+ {
+  "c": "Geography",
+  "q": "What is the longest river in the world?",
+  "a": "Nile",
+  "w": [
+   "Amazon",
+   "Yangtze",
+   "Ganges"
+  ],
+  "f": "Some studies argue the Amazon is longer - it's still debated!",
+  "id": 316
+ },
+ {
+  "c": "History",
+  "q": "In which year did India gain independence?",
+  "a": "1947",
+  "w": [
+   "1950",
+   "1942",
+   "1945"
+  ],
+  "f": "India became independent at midnight on 15 August 1947.",
+  "id": 317
+ },
+ {
+  "c": "Science",
+  "q": "What is dry ice made of?",
+  "a": "Solid carbon dioxide",
+  "w": [
+   "Frozen nitrogen",
+   "Frozen water",
+   "Solid oxygen"
+  ],
+  "f": "Dry ice turns straight from solid to gas.",
+  "id": 318
+ },
+ {
+  "c": "India",
+  "q": "Which national park is famous for one-horned rhinos?",
+  "a": "Kaziranga",
+  "w": [
+   "Jim Corbett",
+   "Gir",
+   "Ranthambore"
+  ],
+  "f": "Kaziranga holds about two-thirds of the world's one-horned rhinos.",
+  "id": 319
+ },
+ {
+  "c": "Animals",
+  "q": "What is India's national bird?",
+  "a": "Peacock",
+  "w": [
+   "Parrot",
+   "Eagle",
+   "Sparrow"
+  ],
+  "f": "Only male peafowl have the long colourful trains.",
+  "id": 320
+ },
+ {
+  "c": "Body",
+  "q": "Which body part has the kneecap?",
+  "a": "Leg",
+  "w": [
+   "Arm",
+   "Back",
+   "Neck"
+  ],
+  "f": "The kneecap's medical name is the patella.",
+  "id": 321
+ },
+ {
+  "c": "Geography",
+  "q": "What is the capital of Kenya?",
+  "a": "Nairobi",
+  "w": [
+   "Mombasa",
+   "Kampala",
+   "Addis Ababa"
+  ],
+  "f": "Nairobi has a national park within city limits.",
+  "id": 322
+ },
+ {
+  "c": "History",
+  "q": "Which empire built Hampi's famous ruins?",
+  "a": "Vijayanagara",
+  "w": [
+   "Chola",
+   "Maratha",
+   "Mughal"
+  ],
+  "f": "Hampi is a UNESCO World Heritage Site.",
+  "id": 323
+ },
+ {
+  "c": "Science",
+  "q": "What is the pH of pure water?",
+  "a": "7",
+  "w": [
+   "0",
+   "14",
+   "5"
+  ],
+  "f": "A pH of 7 is neutral - neither acidic nor basic.",
+  "id": 324
+ },
+ {
+  "c": "India",
+  "q": "Which city is called the Silicon Valley of India?",
+  "a": "Bengaluru",
+  "w": [
+   "Hyderabad",
+   "Pune",
+   "Chennai"
+  ],
+  "f": "Bengaluru is also called the Garden City.",
+  "id": 325
+ },
+ {
+  "c": "Animals",
+  "q": "How many legs does a spider have?",
+  "a": "8",
+  "w": [
+   "6",
+   "10",
+   "12"
+  ],
+  "f": "Spiders are arachnids, not insects.",
+  "id": 326
+ },
+ {
+  "c": "Body",
+  "q": "Which body part grows fastest?",
+  "a": "Hair",
+  "w": [
+   "Nails",
+   "Bones",
+   "Teeth"
+  ],
+  "f": "Scalp hair grows about 1 cm a month.",
+  "id": 327
+ },
+ {
+  "c": "Geography",
+  "q": "What is the capital of Australia?",
+  "a": "Canberra",
+  "w": [
+   "Sydney",
+   "Melbourne",
+   "Perth"
+  ],
+  "f": "Canberra was purpose-built as a compromise between Sydney and Melbourne.",
+  "id": 328
+ },
+ {
+  "c": "History",
+  "q": "Who was the first Indian woman in space?",
+  "a": "Kalpana Chawla",
+  "w": [
+   "Sunita Williams",
+   "Tessy Thomas",
+   "Ritu Karidhal"
+  ],
+  "f": "Chawla flew on Space Shuttle Columbia in 1997.",
+  "id": 329
+ },
+ {
+  "c": "Science",
+  "q": "What does a seismograph measure?",
+  "a": "Earthquakes",
+  "w": [
+   "Wind speed",
+   "Rainfall",
+   "Humidity"
+  ],
+  "f": "Seismographs record ground vibrations.",
+  "id": 330
+ },
+ {
+  "c": "India",
+  "q": "Which Indian state is the largest producer of tea?",
+  "a": "Assam",
+  "w": [
+   "Kerala",
+   "West Bengal",
+   "Tamil Nadu"
+  ],
+  "f": "Assam tea is known for its strong, malty flavour.",
+  "id": 331
+ },
+ {
+  "c": "Animals",
+  "q": "Which animal is known for building dams?",
+  "a": "Beaver",
+  "w": [
+   "Otter",
+   "Badger",
+   "Rabbit"
+  ],
+  "f": "Beaver teeth never stop growing.",
+  "id": 332
+ },
+ {
+  "c": "Geography",
+  "q": "What is the tallest mountain above sea level?",
+  "a": "Mount Everest",
+  "w": [
+   "K2",
+   "Kangchenjunga",
+   "Kilimanjaro"
+  ],
+  "f": "Everest is about 8,849 m tall.",
+  "id": 333
+ },
+ {
+  "c": "History",
+  "q": "Who was the first Indian to win a Nobel Prize?",
+  "a": "Rabindranath Tagore",
+  "w": [
+   "C. V. Raman",
+   "Mother Teresa",
+   "Amartya Sen"
+  ],
+  "f": "Tagore won the Literature prize in 1913.",
+  "id": 334
+ },
+ {
+  "c": "Science",
+  "q": "What is the speed of light, roughly?",
+  "a": "300,000 km/s",
+  "w": [
+   "30,000 km/s",
+   "3,000 km/s",
+   "3 million km/s"
+  ],
+  "f": "Light could circle Earth about 7.5 times in one second.",
+  "id": 335
+ },
+ {
+  "c": "India",
+  "q": "Which is the largest state of India by area?",
+  "a": "Rajasthan",
+  "w": [
+   "Madhya Pradesh",
+   "Maharashtra",
+   "Uttar Pradesh"
+  ],
+  "f": "Rajasthan is bigger than many countries, including Germany.",
+  "id": 336
+ },
+ {
+  "c": "Geography",
+  "q": "What is the capital of the United Kingdom?",
+  "a": "London",
+  "w": [
+   "Manchester",
+   "Edinburgh",
+   "Birmingham"
+  ],
+  "f": "London's Underground is the world's oldest metro, opened 1863.",
+  "id": 337
+ },
+ {
+  "c": "History",
+  "q": "Who is called the father of India's space programme?",
+  "a": "Vikram Sarabhai",
+  "w": [
+   "A. P. J. Abdul Kalam",
+   "Homi Bhabha",
+   "K. Sivan"
+  ],
+  "f": "ISRO was founded in 1969 under his vision.",
+  "id": 338
+ },
+ {
+  "c": "Science",
+  "q": "Who formulated the laws of motion?",
+  "a": "Isaac Newton",
+  "w": [
+   "Galileo Galilei",
+   "Albert Einstein",
+   "Johannes Kepler"
+  ],
+  "f": "Newton published them in 'Principia' in 1687.",
+  "id": 339
+ },
+ {
+  "c": "Geography",
+  "q": "What is the capital of Russia?",
+  "a": "Moscow",
+  "w": [
+   "St Petersburg",
+   "Kazan",
+   "Novosibirsk"
+  ],
+  "f": "The Moscow Metro is famous for its palace-like stations.",
+  "id": 340
+ },
+ {
+  "c": "History",
+  "q": "Which European power first reached India by sea?",
+  "a": "Portugal",
+  "w": [
+   "Britain",
+   "France",
+   "Netherlands"
+  ],
+  "f": "Vasco da Gama landed at Calicut in 1498.",
+  "id": 341
+ },
+ {
+  "c": "Science",
+  "q": "What is the centre of an atom called?",
+  "a": "Nucleus",
+  "w": [
+   "Electron",
+   "Proton shell",
+   "Orbit"
+  ],
+  "f": "The nucleus holds protons and neutrons.",
+  "id": 342
+ },
+ {
+  "c": "Geography",
+  "q": "What is the capital of Egypt?",
+  "a": "Cairo",
+  "w": [
+   "Alexandria",
+   "Giza",
+   "Luxor"
+  ],
+  "f": "Cairo is the largest city in the Arab world.",
+  "id": 343
+ },
+ {
+  "c": "History",
+  "q": "Who is called the Missile Man of India?",
+  "a": "A. P. J. Abdul Kalam",
+  "w": [
+   "Vikram Sarabhai",
+   "Homi Bhabha",
+   "Satish Dhawan"
+  ],
+  "f": "Kalam later became India's 11th President.",
+  "id": 344
+ },
+ {
+  "c": "Geography",
+  "q": "Which country has the Taj Mahal?",
+  "a": "India",
+  "w": [
+   "Pakistan",
+   "Iran",
+   "Bangladesh"
+  ],
+  "f": "Shah Jahan built it in memory of Mumtaz Mahal.",
+  "id": 345
+ },
+ {
+  "c": "History",
+  "q": "Which ancient wonder still stands today?",
+  "a": "Great Pyramid of Giza",
+  "w": [
+   "Colossus of Rhodes",
+   "Hanging Gardens",
+   "Lighthouse of Alexandria"
+  ],
+  "f": "It was the tallest human-made structure for ~3,800 years.",
+  "id": 346
+ },
+ {
+  "c": "Geography",
+  "q": "Which is the largest island in the world?",
+  "a": "Greenland",
+  "w": [
+   "Australia",
+   "Borneo",
+   "Madagascar"
+  ],
+  "f": "Australia is classed as a continent, not an island.",
+  "id": 347
+ },
+ {
+  "c": "History",
+  "q": "Who was the first President of India?",
+  "a": "Rajendra Prasad",
+  "w": [
+   "S. Radhakrishnan",
+   "Zakir Husain",
+   "V. V. Giri"
+  ],
+  "f": "He is the only President to serve two full terms.",
+  "id": 348
+ },
+ {
+  "c": "Geography",
+  "q": "Which is the largest country by area?",
+  "a": "Russia",
+  "w": [
+   "Canada",
+   "China",
+   "USA"
+  ],
+  "f": "Russia spans 11 time zones.",
+  "id": 349
+ },
+ {
+  "c": "History",
+  "q": "Who was known as the Iron Man of India?",
+  "a": "Sardar Patel",
+  "w": [
+   "Bhagat Singh",
+   "Subhas Chandra Bose",
+   "Bal Gangadhar Tilak"
+  ],
+  "f": "Patel united over 560 princely states into India.",
+  "id": 350
+ },
+ {
+  "c": "Geography",
+  "q": "Which is the largest continent?",
+  "a": "Asia",
+  "w": [
+   "Africa",
+   "North America",
+   "Europe"
+  ],
+  "f": "Asia holds about 60% of the world's people.",
+  "id": 351
+ },
+ {
+  "c": "History",
+  "q": "In which year did World War II end?",
+  "a": "1945",
+  "w": [
+   "1944",
+   "1939",
+   "1950"
+  ],
+  "f": "The war ended in Europe in May and in Asia in September 1945.",
+  "id": 352
+ },
+ {
+  "c": "Geography",
+  "q": "What is the driest place on Earth (non-polar)?",
+  "a": "Atacama Desert",
+  "w": [
+   "Sahara Desert",
+   "Thar Desert",
+   "Gobi Desert"
+  ],
+  "f": "Some weather stations in the Atacama have never recorded rain.",
+  "id": 353
+ },
+ {
+  "c": "Geography",
+  "q": "Which country has the most islands?",
+  "a": "Sweden",
+  "w": [
+   "Indonesia",
+   "Philippines",
+   "Japan"
+  ],
+  "f": "Sweden has over 260,000 islands.",
+  "id": 354
+ },
+ {
+  "c": "Geography",
+  "q": "What is the capital of Bhutan?",
+  "a": "Thimphu",
+  "w": [
+   "Paro",
+   "Punakha",
+   "Gangtok"
+  ],
+  "f": "Thimphu famously has no traffic lights.",
+  "id": 355
+ },
+ {
+  "c": "Geography",
+  "q": "Which strait separates Asia from North America?",
+  "a": "Bering Strait",
+  "w": [
+   "Strait of Gibraltar",
+   "Palk Strait",
+   "Malacca Strait"
+  ],
+  "f": "It's only about 82 km wide at its narrowest.",
+  "id": 356
+ },
+ {
+  "c": "Geography",
+  "q": "What is the capital of Thailand?",
+  "a": "Bangkok",
+  "w": [
+   "Phuket",
+   "Chiang Mai",
+   "Pattaya"
+  ],
+  "f": "Bangkok's full ceremonial name is one of the longest place names ever.",
+  "id": 357
+ },
+ {
+  "c": "Geography",
+  "q": "The Great Barrier Reef is off which country?",
+  "a": "Australia",
+  "w": [
+   "Indonesia",
+   "Philippines",
+   "New Zealand"
+  ],
+  "f": "It's the largest coral reef system on Earth.",
+  "id": 358
+ },
+ {
+  "c": "Geography",
+  "q": "What is the largest ocean on Earth?",
+  "a": "Pacific Ocean",
+  "w": [
+   "Atlantic Ocean",
+   "Indian Ocean",
+   "Arctic Ocean"
+  ],
+  "f": "The Pacific covers about a third of Earth's surface.",
+  "id": 359
+ },
+ {
+  "c": "Geography",
+  "q": "What is the capital of Japan?",
+  "a": "Tokyo",
+  "w": [
+   "Kyoto",
+   "Osaka",
+   "Hiroshima"
+  ],
+  "f": "Kyoto was Japan's capital for over 1,000 years.",
+  "id": 360
+ },
+ {
+  "c": "Geography",
+  "q": "Which country is called the Land of a Thousand Lakes?",
+  "a": "Finland",
+  "w": [
+   "Canada",
+   "Norway",
+   "Sweden"
+  ],
+  "f": "Finland actually has nearly 188,000 lakes.",
+  "id": 361
+ },
+ {
+  "c": "Geography",
+  "q": "Which country is called the Land of the Rising Sun?",
+  "a": "Japan",
+  "w": [
+   "China",
+   "South Korea",
+   "Thailand"
+  ],
+  "f": "'Nihon' means 'origin of the sun'.",
+  "id": 362
+ },
+ {
+  "c": "Geography",
+  "q": "Which is the saltiest major body of water?",
+  "a": "Dead Sea",
+  "w": [
+   "Red Sea",
+   "Caspian Sea",
+   "Black Sea"
+  ],
+  "f": "You float easily in the Dead Sea because of its salt.",
+  "id": 363
+ },
+ {
+  "c": "Geography",
+  "q": "What is the capital of South Korea?",
+  "a": "Seoul",
+  "w": [
+   "Busan",
+   "Pyongyang",
+   "Incheon"
+  ],
+  "f": "About half of South Korea lives in the Seoul area.",
+  "id": 364
+ },
+ {
+  "c": "Geography",
+  "q": "What is the capital of Italy?",
+  "a": "Rome",
+  "w": [
+   "Milan",
+   "Venice",
+   "Naples"
+  ],
+  "f": "Rome is home to Vatican City, a separate country.",
+  "id": 365
+ },
+ {
+  "c": "Geography",
+  "q": "Which country has the city of Dubai?",
+  "a": "UAE",
+  "w": [
+   "Saudi Arabia",
+   "Qatar",
+   "Oman"
+  ],
+  "f": "Dubai has the world's tallest building, the Burj Khalifa.",
+  "id": 366
+ },
+ {
+  "c": "Geography",
+  "q": "Which country has the most time zones?",
+  "a": "France",
+  "w": [
+   "Russia",
+   "USA",
+   "China"
+  ],
+  "f": "Overseas territories give France 12 time zones.",
+  "id": 367
+ },
+ {
+  "c": "Geography",
+  "q": "The Eiffel Tower is in which city?",
+  "a": "Paris",
+  "w": [
+   "London",
+   "Rome",
+   "Berlin"
+  ],
+  "f": "It was built for the 1889 World's Fair.",
+  "id": 368
+ },
+ {
+  "c": "Geography",
+  "q": "What is the capital of Nepal?",
+  "a": "Kathmandu",
+  "w": [
+   "Pokhara",
+   "Lalitpur",
+   "Bhaktapur"
+  ],
+  "f": "Nepal's flag is the only non-rectangular national flag.",
+  "id": 369
+ },
+ {
+  "c": "Geography",
+  "q": "What is the capital of Canada?",
+  "a": "Ottawa",
+  "w": [
+   "Toronto",
+   "Vancouver",
+   "Montreal"
+  ],
+  "f": "Queen Victoria chose Ottawa as capital in 1857.",
+  "id": 370
+ },
+ {
+  "c": "Geography",
+  "q": "Which continent has the most countries?",
+  "a": "Africa",
+  "w": [
+   "Asia",
+   "Europe",
+   "South America"
+  ],
+  "f": "Africa has 54 recognised countries.",
+  "id": 371
+ }
+]
