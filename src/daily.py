@@ -111,4 +111,9 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:  # surface the reason as a GitHub annotation
+        msg = f"{type(e).__name__}: {e}".replace("\n", " ")[:900]
+        print(f"::error title=Quiz upload failed::{msg}")
+        raise
