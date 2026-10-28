@@ -68,7 +68,10 @@ jobs:
           if [ "$EVENT" = "schedule" ]; then
             if [ "$CRON" = "17 1 * * *" ]; then SLOT=morning; else SLOT=evening; fi
           else SLOT="$IN_SLOT"; fi
-          DATE="${IN_DATE:-$(TZ=Asia/Kolkata date +%F)}"
+          # Scheduled runs: take the IST date 6 hours ago, so a run GitHub delays past
+          # midnight still posts for the day it was meant for (morning 6:47 / evening 18:47 IST).
+          if [ "$EVENT" = "schedule" ]; then DATE=$(TZ=Asia/Kolkata date -d '-6 hours' +%F)
+          else DATE="${IN_DATE:-$(TZ=Asia/Kolkata date +%F)}"; fi
           echo "slot=$SLOT" >> "$GITHUB_OUTPUT"; echo "date=$DATE" >> "$GITHUB_OUTPUT"
 
       # Skip if this date+slot was already posted publicly (e.g. a manual re-run beat a late schedule).
@@ -107,7 +110,7 @@ jobs:
         run: |
           if [ "$EVENT" = "schedule" ]; then
             if [ "$CRON" = "17 1 * * *" ]; then SLOT=morning; else SLOT=evening; fi
-            ARGS="--slot $SLOT"
+            ARGS="--slot $SLOT --date ${{ steps.when.outputs.date }}"
           else
             ARGS="--slot $IN_SLOT"
             if [ -n "$IN_DATE" ]; then ARGS="$ARGS --date $IN_DATE"; fi
