@@ -29,7 +29,7 @@ def get_service():
     return build("youtube", "v3", credentials=creds, cache_discovery=False)
 
 
-def upload(path, title, description, tags, privacy="public", category_id="27", publish_at=None):
+def upload(path, title, description, tags, privacy="public", category_id="27", publish_at=None, synthetic=False, language="en"):
     """publish_at: timezone-aware datetime. The video is uploaded private and YouTube
     itself makes it public at that exact minute (so GitHub delays don't matter)."""
     yt = get_service()
@@ -39,11 +39,13 @@ def upload(path, title, description, tags, privacy="public", category_id="27", p
             "description": description[:4900],
             "tags": tags,
             "categoryId": category_id,  # 27 = Education
-            "defaultLanguage": "en",
+            "defaultLanguage": language,
         },
         "status": {
             "privacyStatus": "private" if publish_at else privacy,
             "selfDeclaredMadeForKids": False,
+            # YouTube AI disclosure: True for realistic AI video/voice (e.g. Google Flow / Veo)
+            "containsSyntheticMedia": bool(synthetic),
         },
     }
     if publish_at:
@@ -59,7 +61,7 @@ def upload(path, title, description, tags, privacy="public", category_id="27", p
         except HttpError as e:
             if publish_at and e.resp.status == 400:
                 print(f"::warning title=Scheduling rejected, publishing now::{str(e)[:300]}")
-                return upload(path, title, description, tags, privacy, category_id, None)
+                return upload(path, title, description, tags, privacy, category_id, None, synthetic, language)
             if e.resp.status in (500, 502, 503, 504) and retries < 5:
                 retries += 1
                 time.sleep(2 ** retries)

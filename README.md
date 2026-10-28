@@ -76,3 +76,9 @@ Render a video locally: `python src/daily.py --slot evening --date 2026-11-08 --
 Quota: one upload uses ~1,600 of the default 10,000 daily API units, so 2/day (~3,200) is well within limits.
 
 Fonts: Poppins and Noto Sans Devanagari (SIL Open Font License).
+
+## Pre-made Shorts (Google Flow stories / Facts)
+The evening slot can post a pre-made video instead of the quiz. Claude pushes it to the `premade`
+branch as `<YYYY-MM-DD>/<slot>/video.mp4` + `meta.json` (title, description, tags, `synthetic`, `language`).
+`src/post_premade.py` uploads it (with YouTube's AI label when `synthetic` is true); if nothing is
+there for that date and slot, the workflow posts the quiz as before, so the channel never goes quiet.
