@@ -30,6 +30,7 @@ on:
 # Least privilege: the job only needs to read the code.
 permissions:
   contents: read
+  actions: write   # needed to save the small 'already posted' cache marker
 
 concurrency:
   group: daily-quiz
@@ -56,7 +57,31 @@ jobs:
       - name: Check Hindi shaping is available
         run: python -c "from PIL import features; assert features.check('raqm'), 'libraqm missing - Hindi would render broken'"
 
+      - name: Work out date and slot (IST)
+        id: when
+        env:
+          EVENT: ${{ github.event_name }}
+          CRON: ${{ github.event.schedule }}
+          IN_SLOT: ${{ inputs.slot }}
+          IN_DATE: ${{ inputs.date }}
+        run: |
+          if [ "$EVENT" = "schedule" ]; then
+            if [ "$CRON" = "17 1 * * *" ]; then SLOT=morning; else SLOT=evening; fi
+          else SLOT="$IN_SLOT"; fi
+          DATE="${IN_DATE:-$(TZ=Asia/Kolkata date +%F)}"
+          echo "slot=$SLOT" >> "$GITHUB_OUTPUT"; echo "date=$DATE" >> "$GITHUB_OUTPUT"
+
+      # Skip if this date+slot was already posted publicly (e.g. a manual re-run beat a late schedule).
+      - name: Check if already posted
+        id: posted
+        uses: actions/cache/restore@v4
+        with:
+          path: .posted
+          key: posted-${{ steps.when.outputs.date }}-${{ steps.when.outputs.slot }}
+          lookup-only: true
+
       - name: Render and upload
+        if: steps.posted.outputs.cache-hit != 'true'
         env:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
@@ -77,6 +102,17 @@ jobs:
             if [ "$IN_DRY" = "true" ]; then ARGS="$ARGS --dry-run"; fi
             python src/daily.py $ARGS
           fi
+
+      - name: Remember this slot is posted
+        if: success() && steps.posted.outputs.cache-hit != 'true' && inputs.dry_run != true && (inputs.privacy || 'public') == 'public'
+        run: mkdir -p .posted && echo ok > .posted/done
+
+      - name: Save posted marker
+        if: success() && steps.posted.outputs.cache-hit != 'true' && inputs.dry_run != true && (inputs.privacy || 'public') == 'public'
+        uses: actions/cache/save@v4
+        with:
+          path: .posted
+          key: posted-${{ steps.when.outputs.date }}-${{ steps.when.outputs.slot }}
 
       - name: Keep the video as a downloadable artifact
         if: always()
