@@ -18,6 +18,7 @@ Day index = days since 2026-10-30. Even = Day A, odd = Day B.
 - beat 1 (0-4s): scene {"type":"big","text":"3 FACTS"} hook en "3 facts that will blow your mind" + hi
 - beats 2-4 (~10s each): scene {"type":"big","text":"#1"/"#2"/"#3"} with the fact as caption (en + hi)
 - last caption ends with "Which one shocked you? Comment!"
+- VOICEOVER (required for Facts): add "voiceover" to meta.json — {"voice": "hi-IN-MadhurNeural", "lines": [{"start": <beat start + 0.3>, "text": "<natural spoken Hindi for that beat>"}, ...]}, one line per beat (hook, #1, #2, #3 + comment question). Keep each line speakable within its beat (~2.5 Hindi words per second; hook ≤ 9 words, each fact ≤ 25 words). GitHub Actions (src/voiceover.py, edge-tts) speaks it over the music at upload time; if TTS fails it uploads without voice.
 Topics rotate: Human body, Space, Animals, India, History, Money (Hindi), Ocean, Technology.
 
 **Flow story** — ONE complete story in ONE Short (no parts). 6 clips x 10s, Google Flow model "Omni 1.1 Flash", 9:16, 720p, 10s, x1 (15 credits each, 90 total). If Omni voice is poor, use Veo 3.1 Fast 8s (20 credits) x 5.
