@@ -1,0 +1,24 @@
+name: Voice test (temporary)
+on:
+  push:
+    branches: [voice-test]
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg && pip install edge-tts
+      - run: |
+          mkdir -p out
+          ffmpeg -y -loglevel error -f lavfi -i color=c=navy:s=1080x1920:d=14 -f lavfi -i "sine=f=196:d=14" -c:v libx264 -preset veryfast -c:a aac -shortest in.mp4
+          cat > m.json <<'J'
+          {"voiceover":{"lines":[
+            {"start":0.3,"text":"तीन ऐसे फैक्ट्स जो आपको हैरान कर देंगे!"},
+            {"start":4,"text":"नंबर एक: शहद कभी खराब नहीं होता। मिस्र की कब्रों में तीन हज़ार साल पुराना शहद मिला है।"},
+            {"start":10,"text":"कमेंट करके बताइए, कौन सा फैक्ट आपको सबसे ज़्यादा चौंका गया?"}]}}
+          J
+          python src/voiceover.py in.mp4 m.json out/voice_test.mp4
+      - uses: actions/upload-artifact@v4
+        with: {name: voice-test, path: out/*.mp4}

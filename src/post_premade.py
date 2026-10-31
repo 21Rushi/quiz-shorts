@@ -50,6 +50,16 @@ def main():
         total += len(t) + 2
     synthetic = bool(meta.get("synthetic", False))
     print(f"{day} {a.slot} | pre-made | {title} | AI label: {synthetic}")
+    if meta.get("voiceover"):
+        # Facts videos: speak the narration over the music. If TTS fails, upload without voice.
+        os.makedirs("out", exist_ok=True)
+        voiced = os.path.join("out", f"{day.isoformat()}_{a.slot}_voiced.mp4")
+        try:
+            from voiceover import add_voiceover
+            video = add_voiceover(video, meta["voiceover"], voiced)
+        except Exception as e:
+            msg = f"{type(e).__name__}: {e}".replace("\n", " ")[:500]
+            print(f"::warning title=Voiceover skipped::{msg} - uploading the video without voice.")
     if a.dry_run:
         print("Dry run - not uploading.")
         return 0
