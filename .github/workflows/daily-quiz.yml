@@ -2,20 +2,20 @@ name: Daily Shorts (quiz + pre-made story/facts)
 
 on:
   schedule:
-    # Runs ~1 hour early (UTC): 01:17 UTC = 6:47 AM IST, 13:17 UTC = 6:47 PM IST.
-    # The video is uploaded as scheduled and YouTube publishes it at exactly
-    # 7:47 AM / 7:47 PM IST, so GitHub's usual 5-30 min scheduler delay doesn't matter.
-    - cron: "17 1 * * *"
-    - cron: "17 13 * * *"
+    # Each run is ~1 hour early (UTC). The video is uploaded as scheduled and YouTube
+    # publishes it at the exact IST time, so GitHub's usual 5-30 min delay doesn't matter.
+    - cron: "17 1 * * *"    # 6:47 AM IST  -> morning quiz, public 7:47 AM
+    - cron: "17 7 * * *"    # 12:47 PM IST -> evening quiz, public 1:47 PM
+    - cron: "17 13 * * *"   # 6:47 PM IST  -> pre-made Facts/Flow Short (if any), public 7:47 PM
   workflow_dispatch:
     inputs:
       slot:
-        description: "Which slot to post"
+        description: "morning / evening = quiz, premade = Facts/Flow video from the premade branch"
         type: choice
-        options: [morning, evening]
+        options: [morning, evening, premade]
         default: morning
       date:
-        description: "Post the quiz planned for this date (YYYY-MM-DD). Empty = today"
+        description: "Post the item planned for this date (YYYY-MM-DD). Empty = today"
         required: false
       dry_run:
         description: "Render only, don't upload"
@@ -66,10 +66,14 @@ jobs:
           IN_DATE: ${{ inputs.date }}
         run: |
           if [ "$EVENT" = "schedule" ]; then
-            if [ "$CRON" = "17 1 * * *" ]; then SLOT=morning; else SLOT=evening; fi
+            case "$CRON" in
+              "17 1 * * *") SLOT=morning ;;
+              "17 7 * * *") SLOT=evening ;;
+              *) SLOT=premade ;;
+            esac
           else SLOT="$IN_SLOT"; fi
           # Scheduled runs: take the IST date 6 hours ago, so a run GitHub delays past
-          # midnight still posts for the day it was meant for (morning 6:47 / evening 18:47 IST).
+          # midnight still posts for the day it was meant for.
           if [ "$EVENT" = "schedule" ]; then DATE=$(TZ=Asia/Kolkata date -d '-6 hours' +%F)
           else DATE="${IN_DATE:-$(TZ=Asia/Kolkata date +%F)}"; fi
           echo "slot=$SLOT" >> "$GITHUB_OUTPUT"; echo "date=$DATE" >> "$GITHUB_OUTPUT"
@@ -84,9 +88,9 @@ jobs:
           lookup-only: true
 
       # Pre-made Shorts (Google Flow stories / Facts) are pushed to the `premade`
-      # branch by Claude. If one exists for this date+slot it is posted instead of the quiz.
+      # branch by Claude and post in their own 7:47 PM slot (both quizzes still post).
       - name: Fetch pre-made videos
-        if: steps.posted.outputs.cache-hit != 'true'
+        if: steps.posted.outputs.cache-hit != 'true' && steps.when.outputs.slot == 'premade'
         run: |
           if git fetch --depth 1 origin premade 2>/dev/null; then
             git worktree add --detach premade FETCH_HEAD
@@ -96,40 +100,35 @@ jobs:
           fi
 
       - name: Render and upload
+        id: post
         if: steps.posted.outputs.cache-hit != 'true'
         env:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
-          EVENT: ${{ github.event_name }}
-          CRON: ${{ github.event.schedule }}
-          IN_SLOT: ${{ inputs.slot }}
-          IN_DATE: ${{ inputs.date }}
+          SLOT: ${{ steps.when.outputs.slot }}
+          DATE: ${{ steps.when.outputs.date }}
           IN_DRY: ${{ inputs.dry_run }}
           YT_PRIVACY: ${{ inputs.privacy || 'public' }}
         run: |
-          if [ "$EVENT" = "schedule" ]; then
-            if [ "$CRON" = "17 1 * * *" ]; then SLOT=morning; else SLOT=evening; fi
-            ARGS="--slot $SLOT --date ${{ steps.when.outputs.date }}"
-          else
-            ARGS="--slot $IN_SLOT"
-            if [ -n "$IN_DATE" ]; then ARGS="$ARGS --date $IN_DATE"; fi
-            if [ "$IN_DRY" = "true" ]; then ARGS="$ARGS --dry-run"; fi
+          DRY=""
+          if [ "$IN_DRY" = "true" ]; then DRY="--dry-run"; fi
+          if [ "$SLOT" = "premade" ]; then
+            set +e
+            python src/post_premade.py --slot evening --date "$DATE" --dir premade $DRY
+            rc=$?
+            set -e
+            if [ "$rc" -eq 3 ]; then echo "posted=no" >> "$GITHUB_OUTPUT"; exit 0; fi
+            exit "$rc"
           fi
-          set +e
-          python src/post_premade.py $ARGS --dir premade
-          rc=$?
-          set -e
-          if [ "$rc" -eq 0 ]; then exit 0; fi
-          if [ "$rc" -ne 3 ]; then exit "$rc"; fi
-          python src/daily.py $ARGS
+          python src/daily.py --slot "$SLOT" --date "$DATE" $DRY
 
       - name: Remember this slot is posted
-        if: success() && steps.posted.outputs.cache-hit != 'true' && inputs.dry_run != true && (inputs.privacy || 'public') == 'public'
+        if: success() && steps.posted.outputs.cache-hit != 'true' && steps.post.outputs.posted != 'no' && inputs.dry_run != true && (inputs.privacy || 'public') == 'public'
         run: mkdir -p .posted && echo ok > .posted/done
 
       - name: Save posted marker
-        if: success() && steps.posted.outputs.cache-hit != 'true' && inputs.dry_run != true && (inputs.privacy || 'public') == 'public'
+        if: success() && steps.posted.outputs.cache-hit != 'true' && steps.post.outputs.posted != 'no' && inputs.dry_run != true && (inputs.privacy || 'public') == 'public'
         uses: actions/cache/save@v4
         with:
           path: .posted

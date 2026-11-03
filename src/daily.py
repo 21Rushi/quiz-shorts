@@ -1,6 +1,7 @@
 """Pick the quiz for today's slot, render the Short and upload it.
 
-Two slots a day: morning and evening.
+Two quiz slots a day: morning (7:47 AM IST) and evening (1:47 PM IST).
+Pre-made Facts/Flow Shorts post separately at 7:47 PM (src/post_premade.py).
   1. If schedule.json has an entry for (today, slot) -> use it (bilingual, topical).
   2. Otherwise fall back to questions.json in rotation (English only), so the
      channel never goes quiet once the 21-day plan runs out.
@@ -21,7 +22,8 @@ from make_video import ROOT, render_frames  # noqa: E402
 
 CONFIG = json.load(open(os.path.join(ROOT, "config.json"), encoding="utf-8"))
 SLOTS = ["morning", "evening"]
-PUBLISH_TIMES = {"morning": (7, 47), "evening": (19, 47)}  # IST — YouTube publishes at exactly these
+PUBLISH_TIMES = {"morning": (7, 47), "evening": (13, 47)}  # IST quiz times — YouTube publishes at exactly these
+PREMADE_TIMES = {"evening": (19, 47)}  # IST — pre-made Facts / Flow Short gets its own slot
 IST = dt.timezone(dt.timedelta(hours=5, minutes=30))
 
 

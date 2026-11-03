@@ -3,13 +3,20 @@
 Channel: IamRushi (@I-mRushi). Goal: growth + YouTube Partner Program monetization.
 Folder on Mac: ~/Downloads/IamRushi_Shorts  (engine/ = code, flow_clips/, final/, log.json)
 
-## Schedule (2 Shorts every day, alternating A/B)
-Day index = days since 2026-10-30. Even = Day A, odd = Day B.
+## Schedule (from 2026-11-04)
+Quizzes are automatic (GitHub Actions, schedule.json / questions.json). Claude does NOT make them.
 
-| | Day A | Day B |
-|---|---|---|
-| 7:47 AM IST | Quiz — automatic by GitHub Actions (repo 21Rushi/quiz-shorts, schedule.json / questions.json). Claude does NOT make it. | same |
-| 7:47 PM IST | Facts (30-36s, code, 0 credits) | Flow story (60s, Google Flow, ~90 credits) |
+| IST | Every day |
+|---|---|
+| 7:47 AM | Quiz #1 (automatic) |
+| 1:47 PM | Quiz #2 (automatic) |
+| 7:47 PM | Pre-made video slot (below) |
+| Sun 8:47 PM | Weekly 40-question long video (automatic, weekly-challenge.yml) |
+
+Pre-made video slot (7:47 PM IST):
+- Sun, Mon, Thu, Fri: Facts Short with Hindi voiceover (code, 0 Flow credits, no Mac).
+- Wed, Sat: Flow story (60s, Google Flow, ~90 credits, needs Mac). If the Mac is off all day, a Facts Short with voice is posted instead.
+- Tue: nothing (rest day).
 
 ## Formats
 **Quiz** — engine.py spec type "quiz" (see engine/specs/*_quiz.json): q_en, q_hi, 4 options (en+hi), answer, fact_en, fact_hi. Reveal at 25s. Rotate categories: Space, Animals, India GK, Science, History, Geography, Tech, Human body.
@@ -35,7 +42,7 @@ Topic queue (alternate What if / History-mystery): What if the Moon disappeared?
 5. Title ≤ 60 chars, hook first, Hindi + English mix, 2-3 hashtags incl. #shorts. Description: 2 lines + question + 3-5 hashtags. 5-8 tags.
 6. No misleading/clickbait claims, no scary/violent gore, no real people, no copyrighted characters/music.
 7. Retention: hook in first 2 seconds, Shorts under 60s, loop-friendly endings, ask a comment question.
-8. Consistency: same times daily (7:47 AM, 7:47 PM IST), same branding (@I-mRushi, yellow pill).
+8. Consistency: same times daily (7:47 AM, 1:47 PM, 7:47 PM IST), same branding (@I-mRushi, yellow pill).
 9. Engagement: pin a comment with the question; reply to early comments.
 
 ## Output
@@ -44,8 +51,10 @@ Upload (automatic): push the evening video to the `premade` branch of github.com
 `<YYYY-MM-DD>/evening/video.mp4` (the <10 MB upload copy) + `meta.json`:
 {"title","description","tags":[...],"synthetic": true for Flow / false for Facts,"language":"hi"|"en","type","topic"}
 Force-push an orphan commit holding only today's and future dates (keeps the repo small). GitHub Actions
-(daily-quiz.yml, 13:17 UTC = 6:47 PM IST) uploads it and YouTube publishes at 7:47 PM IST with the AI label.
-Must be pushed before 6:30 PM IST. If nothing is pushed, the workflow posts a quiz instead.
+(daily-quiz.yml, 13:17 UTC = 6:47 PM IST, slot "premade") uploads it and YouTube publishes at 7:47 PM IST with
+the AI label. To upload right away, dispatch: gh api -X POST repos/21Rushi/quiz-shorts/actions/workflows/daily-quiz.yml/dispatches
+-f ref=main -f 'inputs[slot]=premade' -f 'inputs[date]=<YYYY-MM-DD>' -F 'inputs[dry_run]=false' -f 'inputs[privacy]=public'.
+Must be pushed before 6:30 PM IST. If nothing is pushed, the 7:47 PM slot stays empty (both quizzes still post).
 Also keep a copy in ~/Downloads/IamRushi_Shorts/final.
 
 ## Setup in a fresh session (cloud workspace)

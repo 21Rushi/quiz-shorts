@@ -9,6 +9,7 @@ Pre-made videos live on the `premade` branch, which the workflow checks out into
        "language": "hi" | "en"}
 
 Exit codes: 0 = uploaded (or dry run), 3 = nothing pre-made for this date+slot.
+Publishes at 7:47 PM IST, its own slot (both daily quizzes still post).
 
 Usage:
   python src/post_premade.py --slot evening [--date YYYY-MM-DD] [--dir premade] [--dry-run]
@@ -20,14 +21,14 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
-from daily import PUBLISH_TIMES, IST, CONFIG, today_ist  # noqa: E402
+from daily import PREMADE_TIMES, IST, CONFIG, today_ist  # noqa: E402
 
 NONE_FOUND = 3
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--slot", choices=list(PUBLISH_TIMES), required=True)
+    ap.add_argument("--slot", choices=list(PREMADE_TIMES), required=True)
     ap.add_argument("--date", default=None)
     ap.add_argument("--dir", default="premade")
     ap.add_argument("--dry-run", action="store_true")
@@ -37,7 +38,7 @@ def main():
     folder = os.path.join(a.dir, day.isoformat(), a.slot)
     video, meta_p = os.path.join(folder, "video.mp4"), os.path.join(folder, "meta.json")
     if not (os.path.isfile(video) and os.path.isfile(meta_p)):
-        print(f"No pre-made video for {day} {a.slot} - falling back to the quiz.")
+        print(f"No pre-made video for {day} {a.slot} - nothing to post in this slot.")
         return NONE_FOUND
 
     meta = json.load(open(meta_p, encoding="utf-8"))
@@ -66,7 +67,7 @@ def main():
 
     from youtube_upload import upload
     privacy = os.environ.get("YT_PRIVACY", CONFIG.get("privacy", "public"))
-    h, m = PUBLISH_TIMES[a.slot]
+    h, m = PREMADE_TIMES[a.slot]
     when = dt.datetime(day.year, day.month, day.day, h, m, tzinfo=IST)
     publish_at = when if privacy == "public" and when > dt.datetime.now(IST) + dt.timedelta(minutes=3) else None
     vid = upload(video, title, desc, out, privacy=privacy, publish_at=publish_at,

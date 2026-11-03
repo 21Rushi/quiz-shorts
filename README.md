@@ -1,6 +1,6 @@
 # Daily Quiz Shorts 🧠
 
-Posts **two** general-knowledge quiz Shorts to YouTube every day (7:47 AM & 7:47 PM IST), fully automatic.
+Posts **two** general-knowledge quiz Shorts to YouTube every day (7:47 AM & 1:47 PM IST), plus a pre-made Facts/Flow Short at 7:47 PM on most days, fully automatic.
 See **PLAN.md** for the 21-day bilingual (English + Hindi) content calendar and the growth checklist.
 
 - 1080x1920 vertical Short, ~31 seconds
@@ -11,7 +11,7 @@ See **PLAN.md** for the 21-day bilingual (English + Hindi) content calendar and 
 - 371 questions written and checked — over a year of daily posts. Edit `questions.json` anytime.
 - `schedule.json`: 42 hand-written bilingual questions for 28 Oct – 17 Nov 2026, tied to festivals and national days. After that it falls back to `questions.json`.
 - **Every Sunday 8:47 PM IST:** a ~10-minute, 40-question "Weekly GK Challenge" (16:9) with chapters and a custom thumbnail — builds watch hours, the second monetisation path.
-- Runs on GitHub Actions at **7:47 AM and 7:47 PM IST**. Your laptop can stay off.
+- Runs on GitHub Actions at **7:47 AM and 1:47 PM IST** (quizzes) and **7:47 PM IST** (pre-made slot). Your laptop can stay off.
 
 ## One-time setup (~20 minutes)
 
@@ -78,7 +78,7 @@ Quota: one upload uses ~1,600 of the default 10,000 daily API units, so 2/day (~
 Fonts: Poppins and Noto Sans Devanagari (SIL Open Font License).
 
 ## Pre-made Shorts (Google Flow stories / Facts)
-The evening slot can post a pre-made video instead of the quiz. Claude pushes it to the `premade`
+A third daily slot (7:47 PM IST) posts a pre-made video. Claude pushes it to the `premade`
 branch as `<YYYY-MM-DD>/<slot>/video.mp4` + `meta.json` (title, description, tags, `synthetic`, `language`).
 `src/post_premade.py` uploads it (with YouTube's AI label when `synthetic` is true); if nothing is
-there for that date and slot, the workflow posts the quiz as before, so the channel never goes quiet.
+there for that date, the slot is skipped. Both quizzes always post.
