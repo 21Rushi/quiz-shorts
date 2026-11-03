@@ -49,7 +49,12 @@ Topic queue (alternate What if / History-mystery): What if the Moon disappeared?
 Save finals to ~/Downloads/IamRushi_Shorts/final as YYYY-MM-DD_<type>_<slug>.mp4 (+ an upload copy under 10 MB) and a YYYY-MM-DD_upload.txt with title/description/tags/AI-label per video. Append to log.json {date, type, topic, title} and never repeat a topic in log.json.
 Upload (automatic): push the evening video to the `premade` branch of github.com/21Rushi/quiz-shorts as
 `<YYYY-MM-DD>/evening/video.mp4` (the <10 MB upload copy) + `meta.json`:
-{"title","description","tags":[...],"synthetic": true for Flow / false for Facts,"language":"hi"|"en","type","topic"}
+{"title","description","tags":[...],"synthetic": true for Flow / false for Facts,"language":"hi"|"en","type","topic",
+ "title_language":"en","localizations":{"hi":{"title":"<Hindi title>","description":"<Hindi description>"}}}
+English + Hindi viewers: "title"/"description" are ENGLISH (shown to US/Europe and other non-Hindi viewers);
+"localizations.hi" holds the HINDI title/description (shown to viewers whose YouTube language is Hindi).
+"language" = the spoken voice language (Hindi). Both titles ≤60 chars with a hook; both descriptions keep the
+comment question, subscribe line and hashtags.
 Force-push an orphan commit holding only today's and future dates (keeps the repo small). GitHub Actions
 (daily-quiz.yml, 13:17 UTC = 6:47 PM IST, slot "premade") uploads it and YouTube publishes at 7:47 PM IST with
 the AI label. To upload right away, dispatch: gh api -X POST repos/21Rushi/quiz-shorts/actions/workflows/daily-quiz.yml/dispatches

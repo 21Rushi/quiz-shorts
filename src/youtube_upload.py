@@ -29,9 +29,13 @@ def get_service():
     return build("youtube", "v3", credentials=creds, cache_discovery=False)
 
 
-def upload(path, title, description, tags, privacy="public", category_id="27", publish_at=None, synthetic=False, language="en"):
+def upload(path, title, description, tags, privacy="public", category_id="27", publish_at=None, synthetic=False, language="en",
+           localizations=None, audio_language=None):
     """publish_at: timezone-aware datetime. The video is uploaded private and YouTube
-    itself makes it public at that exact minute (so GitHub delays don't matter)."""
+    itself makes it public at that exact minute (so GitHub delays don't matter).
+    localizations: {"hi": {"title": ..., "description": ...}, "en": {...}} - YouTube shows each
+    viewer the title/description in their YouTube language (English for US/Europe, Hindi in India).
+    audio_language: language of the spoken voice ("hi"/"en"), if any."""
     yt = get_service()
     body = {
         "snippet": {
@@ -41,6 +45,8 @@ def upload(path, title, description, tags, privacy="public", category_id="27", p
             "categoryId": category_id,  # 27 = Education
             "defaultLanguage": language,
         },
+        "localizations": {k: {"title": v["title"][:100], "description": v.get("description", description)[:4900]}
+                          for k, v in (localizations or {}).items() if k != language and v.get("title")},
         "status": {
             "privacyStatus": "private" if publish_at else privacy,
             "selfDeclaredMadeForKids": False,
@@ -48,10 +54,15 @@ def upload(path, title, description, tags, privacy="public", category_id="27", p
             "containsSyntheticMedia": bool(synthetic),
         },
     }
+    if audio_language:
+        body["snippet"]["defaultAudioLanguage"] = audio_language
+    parts = "snippet,status" + (",localizations" if body["localizations"] else "")
+    if not body["localizations"]:
+        del body["localizations"]
     if publish_at:
         body["status"]["publishAt"] = publish_at.astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
     media = MediaFileUpload(path, mimetype="video/mp4", resumable=True, chunksize=8 * 1024 * 1024)
-    req = yt.videos().insert(part="snippet,status", body=body, media_body=media)
+    req = yt.videos().insert(part=parts, body=body, media_body=media)
     response, retries = None, 0
     while response is None:
         try:
@@ -61,7 +72,8 @@ def upload(path, title, description, tags, privacy="public", category_id="27", p
         except HttpError as e:
             if publish_at and e.resp.status == 400:
                 print(f"::warning title=Scheduling rejected, publishing now::{str(e)[:300]}")
-                return upload(path, title, description, tags, privacy, category_id, None, synthetic, language)
+                return upload(path, title, description, tags, privacy, category_id, None, synthetic, language,
+                              localizations, audio_language)
             if e.resp.status in (500, 502, 503, 504) and retries < 5:
                 retries += 1
                 time.sleep(2 ** retries)

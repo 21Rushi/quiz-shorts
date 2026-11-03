@@ -6,7 +6,9 @@ Pre-made videos live on the `premade` branch, which the workflow checks out into
   premade/<YYYY-MM-DD>/<slot>/meta.json
       {"title": "...", "description": "...", "tags": [...],
        "synthetic": true|false,   # YouTube AI label: true for realistic AI (Flow/Veo)
-       "language": "hi" | "en"}
+       "language": "hi" | "en",          # spoken language
+       "title_language": "en",           # language of "title"/"description" (default en)
+       "localizations": {"hi": {"title": "...", "description": "..."}}}  # shown to Hindi-language viewers
 
 Exit codes: 0 = uploaded (or dry run), 3 = nothing pre-made for this date+slot.
 Publishes at 7:47 PM IST, its own slot (both daily quizzes still post).
@@ -71,7 +73,9 @@ def main():
     when = dt.datetime(day.year, day.month, day.day, h, m, tzinfo=IST)
     publish_at = when if privacy == "public" and when > dt.datetime.now(IST) + dt.timedelta(minutes=3) else None
     vid = upload(video, title, desc, out, privacy=privacy, publish_at=publish_at,
-                 synthetic=synthetic, language=meta.get("language", "en"))
+                 synthetic=synthetic, language=meta.get("title_language", "en"),
+                 localizations=meta.get("localizations"),
+                 audio_language=meta.get("audio_language") or meta.get("language"))
     print(f"Uploaded: https://youtube.com/shorts/{vid}")
     summary = os.environ.get("GITHUB_STEP_SUMMARY")
     if summary:

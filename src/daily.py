@@ -110,7 +110,13 @@ def main():
     when = dt.datetime(day.year, day.month, day.day, h, m, tzinfo=IST)
     publish_at = when if privacy == "public" and when > dt.datetime.now(IST) + dt.timedelta(minutes=3) else None
     print("Scheduled to go public at", when.strftime("%d %b %H:%M IST") if publish_at else "now")
-    vid = upload(out, title, desc, tags, privacy=privacy, publish_at=publish_at)
+    loc = None
+    if q.get("q_hi"):  # bilingual quiz: Hindi-language viewers see a Hindi title, everyone else English
+        hi_title = CONFIG["title_template"].format(episode=episode, question=q["q_hi"])
+        if len(hi_title) > 100:
+            hi_title = CONFIG["title_fallback"].format(episode=episode)
+        loc = {"hi": {"title": hi_title, "description": desc}}
+    vid = upload(out, title, desc, tags, privacy=privacy, publish_at=publish_at, language="en", localizations=loc)
     print(f"Uploaded: https://youtube.com/shorts/{vid}")
     summary = os.environ.get("GITHUB_STEP_SUMMARY")
     if summary:
