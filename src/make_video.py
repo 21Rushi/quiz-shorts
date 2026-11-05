@@ -325,7 +325,7 @@ def _render(q, episode, out_path, music_dir, label):
     theme = THEMES[q["id"] % len(THEMES)]
     accent = theme[2]
     bilingual = bool(q.get("q_hi"))
-    hook = (HOOKS_HI if bilingual else HOOKS)[q["id"] % len(HOOKS)]
+    hook = q.get("hook") or (HOOKS_HI if bilingual else HOOKS)[q["id"] % len(HOOKS)]
     if label:  # compilation segments: header shows the question number, no hook line
         hook = ""
     opts = [q["a"]] + list(q["w"])

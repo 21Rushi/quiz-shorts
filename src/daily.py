@@ -25,6 +25,7 @@ SLOTS = ["morning", "evening"]
 PUBLISH_TIMES = {"morning": (7, 47), "evening": (13, 47)}  # IST quiz times — YouTube publishes at exactly these
 PREMADE_TIMES = {"evening": (19, 47)}  # IST — pre-made Facts / Flow Short gets its own slot
 IST = dt.timezone(dt.timedelta(hours=5, minutes=30))
+HARD_START = dt.date(2026, 11, 6)  # first day the 1:47 PM quiz is a HARD global quiz
 
 
 def today_ist():
@@ -40,6 +41,16 @@ def pick(day, slot):
     day_no = max(0, (day - start).days)
     slot_i = SLOTS.index(slot)
     episode = day_no * len(SLOTS) + slot_i + 1 + CONFIG.get("episode_offset", 0)
+
+    # 1:47 PM slot = HARD global quiz (English) from hard_questions.json, rotating daily.
+    hard_p = os.path.join(ROOT, "hard_questions.json")
+    if slot == "evening" and os.path.isfile(hard_p) and day >= HARD_START:
+        hard = json.load(open(hard_p, encoding="utf-8"))
+        i = (day - HARD_START).days % len(hard)
+        q = dict(hard[i])
+        q.update(id=5000 + i, hard=True, hook="HARD LEVEL: only 1% get it!",
+                 tags=q.get("tags", []) + ["hard quiz", "iq test", "trivia challenge"])
+        return q, episode
 
     schedule = json.load(open(os.path.join(ROOT, "schedule.json"), encoding="utf-8"))
     for i, item in enumerate(schedule):
@@ -58,6 +69,10 @@ def metadata(q, episode, opts, opts_hi):
     labels = "ABCD"
     bilingual = bool(q.get("q_hi"))
     title = CONFIG["title_template"].format(episode=episode, question=q["q"])
+    if q.get("hard"):
+        title = f"HARD 🔥 {q['q']} Only 1% get it! #shorts"
+        if len(title) > 100:
+            title = f"HARD 🔥 {q['q']} #shorts"
     if len(title) > 100:
         title = CONFIG["title_fallback"].format(episode=episode)
 
@@ -72,6 +87,11 @@ def metadata(q, episode, opts, opts_hi):
         episode=episode, question=question_block, options="\n".join(lines),
         category=q["c"], topic_hashtags=hashtags,
     )
+    if q.get("hard"):  # global audience: English-only description
+        desc = (f"🔥 HARD Quiz #{episode} | {q['c']}\n\n{q['q']}\n\n" + "\n".join(lines) +
+                "\n\n⏱️ Answer at 0:25. Only 1% get this right - comment yours before the timer ends!"
+                "\n\n🔔 Subscribe for daily quizzes: https://www.youtube.com/@I-mRushi?sub_confirmation=1"
+                f"\n\n#{q['c'].lower().replace(' ', '')} #hardquiz #trivia #iqtest #quiz #shorts")
     tags = CONFIG["tags"] + (CONFIG["tags_hindi"] if bilingual else []) + extra_tags + [q["c"].lower() + " quiz"]
     # YouTube caps all tags combined at 500 characters
     out, total = [], 0
