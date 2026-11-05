@@ -2,9 +2,9 @@ name: Weekly GK Challenge (long video)
 
 on:
   schedule:
-    # Sundays 12:47 UTC = 6:17 PM IST. Rendering takes ~10 min; the video is uploaded as
-    # scheduled and YouTube publishes it at exactly 8:47 PM IST (Sunday-evening peak).
-    - cron: "47 12 * * 0"
+    # Saturdays 12:47 UTC = 6:17 PM IST. Rendering takes ~10 min; the video is uploaded as
+    # scheduled and YouTube publishes it at exactly 8:47 PM IST (Saturday-evening peak).
+    - cron: "47 12 * * 6"
   workflow_dispatch:
     inputs:
       dry_run:
