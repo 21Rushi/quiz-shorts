@@ -7,6 +7,11 @@ on:
     - cron: "17 1 * * *"    # 6:47 AM IST  -> morning quiz, public 7:47 AM
     - cron: "17 7 * * *"    # 12:47 PM IST -> evening quiz, public 1:47 PM
     - cron: "17 13 * * *"   # 6:47 PM IST  -> pre-made Facts/Flow Short (if any), public 7:47 PM
+    # Backups 25 min later, in case GitHub skips a scheduled run. The "already posted"
+    # marker below makes a backup do nothing when the main run already posted.
+    - cron: "42 1 * * *"    # backup morning quiz
+    - cron: "42 7 * * *"    # backup evening quiz
+    - cron: "42 13 * * *"   # backup pre-made Short
   workflow_dispatch:
     inputs:
       slot:
@@ -67,8 +72,8 @@ jobs:
         run: |
           if [ "$EVENT" = "schedule" ]; then
             case "$CRON" in
-              "17 1 * * *") SLOT=morning ;;
-              "17 7 * * *") SLOT=evening ;;
+              "17 1 * * *"|"42 1 * * *") SLOT=morning ;;
+              "17 7 * * *"|"42 7 * * *") SLOT=evening ;;
               *) SLOT=premade ;;
             esac
           else SLOT="$IN_SLOT"; fi
