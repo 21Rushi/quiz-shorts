@@ -142,7 +142,7 @@ def main():
         (200, "How many did you get right?", 84, True, (255, 255, 255)),
         (360, "Comment your score below!", 64, False, ACCENT),
         (520, "Subscribe for 2 new quizzes every day", 56, True, (255, 255, 255)),
-        (620, "+ a new 40-question challenge every Sunday", 48, False, (200, 200, 255)),
+        (620, "+ a new 40-question challenge every Saturday", 48, False, (200, 200, 255)),
     ])
     parts = []
     card_video(f"{work}/intro.png", INTRO, f"{work}/00_intro.mp4", seed=week)
@@ -175,7 +175,7 @@ def main():
     title = f"{len(qs)} GK Questions — Can You Score {int(len(qs) * 0.8)}+? 🧠 Weekly GK Challenge #{week}"
     desc = (f"🧠 Weekly GK Challenge #{week}: {len(qs)} general knowledge questions, 10 seconds each.\n"
             f"Keep score and comment it at the end!\n\n" + "\n".join(chapters) +
-            f"\n\n🔔 Subscribe for 2 new quiz Shorts every day + a new challenge every Sunday: {sub_link}\n\n"
+            f"\n\n🔔 Subscribe for 2 new quiz Shorts every day + a new challenge every Saturday: {sub_link}\n\n"
             "#gkquiz #generalknowledge #quiz #trivia #gk #quizchallenge")
     tags = CONFIG["tags"] + ["gk challenge", "40 gk questions", "general knowledge quiz", "trivia challenge"]
     print("Title:", title)
@@ -188,7 +188,7 @@ def main():
 
     privacy = os.environ.get("YT_PRIVACY", CONFIG.get("privacy", "public"))
     now = dt.datetime.now(IST)
-    when = now.replace(hour=20, minute=47, second=0, microsecond=0)   # Sunday 8:47 PM IST
+    when = now.replace(hour=20, minute=47, second=0, microsecond=0)   # Saturday 8:47 PM IST
     publish_at = when if privacy == "public" and when > now + dt.timedelta(minutes=3) else None
     print("Scheduled to go public at", when.strftime("%d %b %H:%M IST") if publish_at else "now")
     vid = upload(final, title, desc, tags, privacy=privacy, publish_at=publish_at)
