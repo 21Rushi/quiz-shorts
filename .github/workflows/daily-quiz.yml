@@ -104,6 +104,17 @@ jobs:
             echo "No premade branch yet"
           fi
 
+      # No pre-made video pushed? Build today's Facts / 1-min story Short from
+      # studio/auto_shorts.json right here (no Claude run, no laptop needed).
+      - name: Build planned Short (Facts / story)
+        if: steps.posted.outputs.cache-hit != 'true' && steps.when.outputs.slot == 'premade'
+        run: |
+          mkdir -p ~/fonts && cd ~/fonts
+          npm pack -s @expo-google-fonts/noto-sans-devanagari @expo-google-fonts/montserrat >/dev/null
+          for f in *.tgz; do tar xzf "$f"; done
+          cd "$GITHUB_WORKSPACE"
+          python src/build_auto.py --date "${{ steps.when.outputs.date }}" --dir premade
+
       - name: Render and upload
         id: post
         if: steps.posted.outputs.cache-hit != 'true'
