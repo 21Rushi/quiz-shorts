@@ -12,6 +12,14 @@ on:
     - cron: "42 1 * * *"    # backup morning quiz
     - cron: "42 7 * * *"    # backup evening quiz
     - cron: "42 13 * * *"   # backup pre-made Short
+    # Catch-up runs. GitHub sometimes drops BOTH the main and backup run (it did on
+    # 6 Nov). These do nothing if the slot already posted; if not, they post right away.
+    - cron: "7 3 * * *"     # catch-up morning quiz  (8:37 AM IST)
+    - cron: "7 5 * * *"     # catch-up morning quiz  (10:37 AM IST)
+    - cron: "7 9 * * *"     # catch-up evening quiz  (2:37 PM IST)
+    - cron: "7 11 * * *"    # catch-up evening quiz  (4:37 PM IST)
+    - cron: "7 15 * * *"    # catch-up pre-made Short (8:37 PM IST)
+    - cron: "7 17 * * *"    # catch-up pre-made Short (10:37 PM IST)
   workflow_dispatch:
     inputs:
       slot:
@@ -84,8 +92,8 @@ jobs:
         run: |
           if [ "$EVENT" = "schedule" ]; then
             case "$CRON" in
-              "17 1 * * *"|"42 1 * * *") SLOT=morning ;;
-              "17 7 * * *"|"42 7 * * *") SLOT=evening ;;
+              "17 1 * * *"|"42 1 * * *"|"7 3 * * *"|"7 5 * * *") SLOT=morning ;;
+              "17 7 * * *"|"42 7 * * *"|"7 9 * * *"|"7 11 * * *") SLOT=evening ;;
               *) SLOT=premade ;;
             esac
           else SLOT="$IN_SLOT"; fi
