@@ -39,6 +39,10 @@ on:
         type: choice
         options: [public, private, unlisted]
         default: public
+      force:
+        description: "Post even if this date+slot is already marked posted (manual re-post)"
+        type: boolean
+        default: false
 
 # Least privilege: the job only needs to read the code.
 permissions:
@@ -106,6 +110,7 @@ jobs:
       # Skip if this date+slot was already posted publicly (e.g. a manual re-run beat a late schedule).
       - name: Check if already posted
         id: posted
+        if: inputs.force != true
         uses: actions/cache/restore@v4
         with:
           path: .posted
