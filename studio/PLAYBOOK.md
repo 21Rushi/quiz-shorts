@@ -14,9 +14,11 @@ Quizzes are automatic (GitHub Actions, schedule.json / questions.json). Claude d
 | Sun 8:47 PM | Weekly 40-question long video (automatic, weekly-challenge.yml) |
 
 Pre-made video slot (7:47 PM IST):
-- Sun, Mon, Thu, Fri: Facts Short with Hindi voiceover (code, 0 Flow credits, no Mac).
-- Wed, Sat: Flow story (60s, Google Flow, ~90 credits, needs Mac). If the Mac is off all day, a Facts Short with voice is posted instead.
-- Tue: nothing (rest day).
+- Mon, Wed, Fri: Facts Short with Hindi voiceover (code-made by GitHub Actions from studio/auto_shorts.json, no Mac).
+- Sun: 1-min story, ALWAYS made in Google Flow (realistic). Topic = the "story" entry for that Sunday in studio/auto_shorts.json.
+  Never a plain code-made story (src/build_auto.py skips story days). If the Mac is off, Rushikesh is notified to open
+  it and run the "IamRushi – Sunday Flow story" scheduled task manually; that run uploads right away.
+- Tue, Thu, Sat: no 7:47 PM Short.
 
 ## Formats
 **Quiz** — engine.py spec type "quiz" (see engine/specs/*_quiz.json): q_en, q_hi, 4 options (en+hi), answer, fact_en, fact_hi. Reveal at 25s. Rotate categories: Space, Animals, India GK, Science, History, Geography, Tech, Human body.

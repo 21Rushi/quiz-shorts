@@ -97,6 +97,11 @@ def main():
     if not entry:
         print(f"No auto Short planned for {a.date}.")
         return 0
+    if entry["kind"] == "story":
+        # 1-min stories are made only in Google Flow (realistic) by the Sunday Flow task.
+        # No plain code-made fallback: if Flow wasn't pushed, the slot waits for a manual run.
+        print(f"{a.date} is a Flow story day - waiting for the Google Flow video, not building a plain one.")
+        return 0
     build(entry, folder)
     return 0
 
