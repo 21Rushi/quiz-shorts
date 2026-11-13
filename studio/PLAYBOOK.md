@@ -45,6 +45,9 @@ Assemble: assemble.py spec.json out.mp4 clip1..clip6 (captions en + hi, tag pill
 Topic queue (alternate What if / History-mystery): What if the Moon disappeared?; Roopkund skeleton lake mystery; What if the Sun went out for a day?; Iron Pillar of Delhi that never rusts; What if you fell into a black hole?; How the Kohinoor left India; What if all ice melted?; Nalanda library fire.
 
 ## Google Flow credit budget (Rushikesh, 2026-11-13: about 1000 credits, Claude must manage them)
+The 1000 credits REFILL EVERY MONTH. A month needs about 945-1080 (13-14 Facts + 4-5 stories), so there is almost
+no spare: avoid regenerations early in the month, and if the balance runs short before the refill, notify him
+instead of making a cheaper or partial video.
 Weekly plan = 225 credits: 3 Flow Facts (Mon/Wed/Fri, 3 clips x 15 = 45 each) + 1 Sunday story (6 clips x 15 = 90).
 Every Flow run must:
 1. Read the credit balance shown in Google Flow BEFORE generating. If it cannot cover the whole video (45 Facts /
