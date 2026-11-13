@@ -57,6 +57,17 @@ Every Flow run must:
 3. End the message to him with: "Flow credits: used <n>, left <m> (~<m/225, one decimal> weeks of videos)".
 4. If the balance after the run is under 225, add: "⚠️ Flow credits low - less than one week left."
 
+## Growth rules (Rushikesh, 2026-11-13: "be creative, get trending topics, most-viewed videos, bring subscribers, follow all monetization policy")
+- Trending first: each week the "IamRushi – weekly trend planner" task replaces the coming week's Facts / story topics in
+  studio/auto_shorts.json with topics people are searching for that week (festivals, space/science news, sports events,
+  anniversaries, viral questions) when a good one exists. Keep an evergreen topic if nothing trending fits.
+- Every topic must be true and checkable (2 reliable sources for anything new), surprising, and visual (easy to SHOW in a
+  Flow clip). No politics, tragedy, medical claims, celebrity gossip, rumours, brands, or anything not advertiser-friendly.
+- Hook = the most shocking fact as a question or bold claim in the first 2 seconds; titles <= 60 chars, curiosity without lying.
+- Never repeat a topic or a fact already in studio/auto_shorts.json, studio/topics_log.json or questions.json.
+- Each video must look different from the last one (new scenes, angles, colours) - YouTube demonetizes repetitive,
+  mass-produced content. Always keep the AI label on Flow videos.
+
 ## Reach + monetization rules (YouTube policies)
 1. Original value every time: own script, accurate facts (verify numbers with a web search), never reuse others' clips/music.
 2. No repetitive mass-produced feel: vary topics, wording, colors/themes; never upload near-duplicates.
