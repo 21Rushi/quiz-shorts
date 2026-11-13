@@ -506,6 +506,8 @@ def main(specp, out):
         t = i / FPS
         p.stdin.write(rf(spec, t, bg).tobytes())
     p.stdin.close(); p.wait(); os.remove(wav)
+    for m in _mc.values():
+        if isinstance(m, Clip): m.p.kill()
     print('ok', out)
 
 if __name__ == '__main__':
