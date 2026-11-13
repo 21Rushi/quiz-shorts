@@ -12,13 +12,13 @@ Each entry in studio/auto_shorts.json:
    "beats": [{"scene": "3 FACTS", "en": "...", "hi": "...", "vo": "<spoken Hindi>"}, ...]}
 facts: 4 beats (hook 5s, facts 10s, last 11s = 36s). story: 6 beats (9s each, last 12s = 57s).
 
-Facts Shorts are VISUAL (from 2026-11-14): every fact is shown over real full-screen pictures
-(Wikimedia Commons, planned in studio/facts_visuals.json, fetched by src/visuals.py) with a slow
-zoom, and the hook is a fast montage of them. If a picture can't be fetched, that fact falls
-back to the old big-text scene, so a video is always produced.
+Facts Shorts are made ONLY with Google Flow clips (Rushikesh, 2026-11-13: he did not like the
+photo version). GitHub Actions never builds a Facts Short on its own; the "IamRushi – Flow Facts"
+scheduled task runs this with --clips and pushes the result to the premade branch.
 
---clips c1.mp4 c2.mp4 c3.mp4 : use three Google Flow clips (one per fact) instead of pictures.
-That version is marked as AI-made ("synthetic": true) for YouTube's altered-content label.
+--clips c1.mp4 c2.mp4 c3.mp4 : three Google Flow clips, one per fact. The hook is a montage of
+them and the video is marked AI-made ("synthetic": true) for YouTube's altered-content label.
+(The Wikimedia photo code in media_plan / src/visuals.py is kept but unused.)
 
 Usage: python src/build_auto.py --date YYYY-MM-DD [--dir premade] [--clips c1 c2 c3] [--force]
 Exit 0 always (missing entry just means nothing is built).
@@ -145,6 +145,10 @@ def main():
         # 1-min stories are made only in Google Flow (realistic) by the Sunday Flow task.
         # No plain code-made fallback: if Flow wasn't pushed, the slot waits for a manual run.
         print(f"{a.date} is a Flow story day - waiting for the Google Flow video, not building a plain one.")
+        return 0
+    if entry["kind"] == "facts" and not a.clips:
+        # Rushikesh (2026-11-13): Facts Shorts are made ONLY in Google Flow. No photo / text version.
+        print(f"{a.date} is a Flow Facts day - waiting for the Google Flow video, not building a photo version.")
         return 0
     build(entry, folder, a.clips)
     return 0

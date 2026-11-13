@@ -14,11 +14,10 @@ Quizzes are automatic (GitHub Actions, schedule.json / questions.json). Claude d
 | Sun 8:47 PM | Weekly 40-question long video (automatic, weekly-challenge.yml) |
 
 Pre-made video slot (7:47 PM IST):
-- Mon, Wed, Fri: VISUAL Facts Short with Hindi voiceover. Never the old text-only version.
-  - Mon: automatic (GitHub Actions, no Mac) - real full-screen photos for every fact.
-  - Wed + Fri: Google Flow version (3 realistic clips, one per fact) made by the "IamRushi – Flow Facts (Wed/Fri)"
-    scheduled task and pushed to the premade branch before 6:30 PM IST. If the Mac is off or Flow fails, nothing is
-    pushed and GitHub Actions posts the automatic photo version instead - the slot is never empty.
+- Mon, Wed, Fri: Facts Short made ONLY in Google Flow (3 realistic clips, one per fact) with Hindi voiceover, by the
+  "IamRushi – Flow Facts (Mon/Wed/Fri)" scheduled task. Rushikesh did not like the photo version (2026-11-13): never
+  post a photo or text-only Facts Short. If the Mac is off, he is notified to open it and run the task manually;
+  GitHub Actions builds nothing for Facts on its own, so the slot waits for the Flow video.
 - Sun: 1-min story, ALWAYS made in Google Flow (realistic). Topic = the "story" entry for that Sunday in studio/auto_shorts.json.
   Never a plain code-made story (src/build_auto.py skips story days). If the Mac is off, Rushikesh is notified to open
   it and run the "IamRushi – Sunday Flow story" scheduled task manually; that run uploads right away.
@@ -29,15 +28,7 @@ Pre-made video slot (7:47 PM IST):
 
 **Facts (visual)** — planned in studio/auto_shorts.json (kind "facts": hook + 3 facts, 36s, en + hi captions, Hindi "vo" lines).
 Built by `python src/build_auto.py --date YYYY-MM-DD --dir <folder>`:
-- Photo version (automatic): pictures come from Wikimedia Commons via src/visuals.py. studio/facts_visuals.json lists,
-  per date, the exact checked files ("File:...") for fact #1, #2, #3 (2 per fact is best). The hook is a fast montage
-  of them; each fact shows its photos full-screen with slow zoom, a "#1" badge and captions. Photo credits are added
-  to the description automatically. A fact with no picture falls back to the big-text scene.
-  When adding new facts entries, add their pictures too: put search phrases in facts_visuals.json, run
-  `python src/visuals.py --resolve studio/facts_visuals.json --out preview --from <date>` in GitHub Actions (Commons is
-  not reachable from the Claude cloud workspace), LOOK at the contact sheets, and keep only clean, relevant, safe photos
-  (no text-heavy graphics, logos, maps, identifiable private people, gore, nudity) as exact "File:" names.
-- Flow version: add `--clips c1.mp4 c2.mp4 c3.mp4` (one 8-10s Google Flow clip per fact, in order). The hook is a
+- Always pass `--clips c1.mp4 c2.mp4 c3.mp4` (one 8-10s Google Flow clip per fact, in order). The hook is a
   montage of the clips; meta.json gets "synthetic": true (YouTube AI label). Flow clip prompt:
   "Photorealistic vertical cinematic shot: <scene that SHOWS the fact, with clear motion>. Dramatic lighting, slow
   camera move. No narration, no speech, no subtitles, no on-screen text, no people's faces close-up." (the Hindi voice
