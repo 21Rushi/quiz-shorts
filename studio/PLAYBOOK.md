@@ -14,7 +14,11 @@ Quizzes are automatic (GitHub Actions, schedule.json / questions.json). Claude d
 | Sun 8:47 PM | Weekly 40-question long video (automatic, weekly-challenge.yml) |
 
 Pre-made video slot (7:47 PM IST):
-- Mon, Wed, Fri: Facts Short with Hindi voiceover (code-made by GitHub Actions from studio/auto_shorts.json, no Mac).
+- Mon, Wed, Fri: VISUAL Facts Short with Hindi voiceover. Never the old text-only version.
+  - Mon: automatic (GitHub Actions, no Mac) - real full-screen photos for every fact.
+  - Wed + Fri: Google Flow version (3 realistic clips, one per fact) made by the "IamRushi – Flow Facts (Wed/Fri)"
+    scheduled task and pushed to the premade branch before 6:30 PM IST. If the Mac is off or Flow fails, nothing is
+    pushed and GitHub Actions posts the automatic photo version instead - the slot is never empty.
 - Sun: 1-min story, ALWAYS made in Google Flow (realistic). Topic = the "story" entry for that Sunday in studio/auto_shorts.json.
   Never a plain code-made story (src/build_auto.py skips story days). If the Mac is off, Rushikesh is notified to open
   it and run the "IamRushi – Sunday Flow story" scheduled task manually; that run uploads right away.
@@ -23,11 +27,24 @@ Pre-made video slot (7:47 PM IST):
 ## Formats
 **Quiz** — engine.py spec type "quiz" (see engine/specs/*_quiz.json): q_en, q_hi, 4 options (en+hi), answer, fact_en, fact_hi. Reveal at 25s. Rotate categories: Space, Animals, India GK, Science, History, Geography, Tech, Human body.
 
-**Facts** — engine.py spec type "story" with "tag": "DID YOU KNOW?", duration 30-36:
-- beat 1 (0-4s): scene {"type":"big","text":"3 FACTS"} hook en "3 facts that will blow your mind" + hi
-- beats 2-4 (~10s each): scene {"type":"big","text":"#1"/"#2"/"#3"} with the fact as caption (en + hi)
-- last caption ends with "Which one shocked you? Comment!"
-- VOICEOVER (required for Facts): add "voiceover" to meta.json — {"voice": "hi-IN-MadhurNeural", "lines": [{"start": <beat start + 0.3>, "text": "<natural spoken Hindi for that beat>"}, ...]}, one line per beat (hook, #1, #2, #3 + comment question). Keep each line speakable within its beat (~2.5 Hindi words per second; hook ≤ 9 words, each fact ≤ 25 words). GitHub Actions (src/voiceover.py, edge-tts) speaks it over the music at upload time; if TTS fails it uploads without voice.
+**Facts (visual)** — planned in studio/auto_shorts.json (kind "facts": hook + 3 facts, 36s, en + hi captions, Hindi "vo" lines).
+Built by `python src/build_auto.py --date YYYY-MM-DD --dir <folder>`:
+- Photo version (automatic): pictures come from Wikimedia Commons via src/visuals.py. studio/facts_visuals.json lists,
+  per date, the exact checked files ("File:...") for fact #1, #2, #3 (2 per fact is best). The hook is a fast montage
+  of them; each fact shows its photos full-screen with slow zoom, a "#1" badge and captions. Photo credits are added
+  to the description automatically. A fact with no picture falls back to the big-text scene.
+  When adding new facts entries, add their pictures too: put search phrases in facts_visuals.json, run
+  `python src/visuals.py --resolve studio/facts_visuals.json --out preview --from <date>` in GitHub Actions (Commons is
+  not reachable from the Claude cloud workspace), LOOK at the contact sheets, and keep only clean, relevant, safe photos
+  (no text-heavy graphics, logos, maps, identifiable private people, gore, nudity) as exact "File:" names.
+- Flow version: add `--clips c1.mp4 c2.mp4 c3.mp4` (one 8-10s Google Flow clip per fact, in order). The hook is a
+  montage of the clips; meta.json gets "synthetic": true (YouTube AI label). Flow clip prompt:
+  "Photorealistic vertical cinematic shot: <scene that SHOWS the fact, with clear motion>. Dramatic lighting, slow
+  camera move. No narration, no speech, no subtitles, no on-screen text, no people's faces close-up." (the Hindi voice
+  and captions are added by the pipeline, so clips must be silent of speech). Omni 1.1 Flash, 9:16, 10s, x1 = 15
+  credits each, 45 total.
+- VOICEOVER: build_auto.py writes "voiceover" into meta.json from the "vo" lines; GitHub Actions (src/voiceover.py,
+  edge-tts, hi-IN-MadhurNeural) speaks it over the music at upload time.
 Topics rotate: Human body, Space, Animals, India, History, Money (Hindi), Ocean, Technology.
 
 **Flow story** — ONE complete story in ONE Short (no parts). 6 clips x 10s, Google Flow model "Omni 1.1 Flash", 9:16, 720p, 10s, x1 (15 credits each, 90 total). If Omni voice is poor, use Veo 3.1 Fast 8s (20 credits) x 5.
@@ -51,7 +68,7 @@ Topic queue (alternate What if / History-mystery): What if the Moon disappeared?
 Save finals to ~/Downloads/IamRushi_Shorts/final as YYYY-MM-DD_<type>_<slug>.mp4 (+ an upload copy under 10 MB) and a YYYY-MM-DD_upload.txt with title/description/tags/AI-label per video. Append to log.json {date, type, topic, title} and never repeat a topic in log.json.
 Upload (automatic): push the evening video to the `premade` branch of github.com/21Rushi/quiz-shorts as
 `<YYYY-MM-DD>/evening/video.mp4` (the <10 MB upload copy) + `meta.json`:
-{"title","description","tags":[...],"synthetic": true for Flow / false for Facts,"language":"hi"|"en","type","topic",
+{"title","description","tags":[...],"synthetic": true for Flow (story or Flow Facts) / false for photo Facts,"language":"hi"|"en","type","topic",
  "title_language":"en","localizations":{"hi":{"title":"<Hindi title>","description":"<Hindi description>"}}}
 English + Hindi viewers: "title"/"description" are ENGLISH (shown to US/Europe and other non-Hindi viewers);
 "localizations.hi" holds the HINDI title/description (shown to viewers whose YouTube language is Hindi).
