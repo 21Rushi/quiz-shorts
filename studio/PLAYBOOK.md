@@ -44,6 +44,16 @@ Every clip prompt: "Photorealistic vertical cinematic shot: <scene>. The same de
 Assemble: assemble.py spec.json out.mp4 clip1..clip6 (captions en + hi, tag pill, CTA).
 Topic queue (alternate What if / History-mystery): What if the Moon disappeared?; Roopkund skeleton lake mystery; What if the Sun went out for a day?; Iron Pillar of Delhi that never rusts; What if you fell into a black hole?; How the Kohinoor left India; What if all ice melted?; Nalanda library fire.
 
+## Google Flow credit budget (Rushikesh, 2026-11-13: about 1000 credits, Claude must manage them)
+Weekly plan = 225 credits: 3 Flow Facts (Mon/Wed/Fri, 3 clips x 15 = 45 each) + 1 Sunday story (6 clips x 15 = 90).
+Every Flow run must:
+1. Read the credit balance shown in Google Flow BEFORE generating. If it cannot cover the whole video (45 Facts /
+   90 story), generate nothing (no half-made videos) and tell him: balance, what is needed, and to top up or wait.
+2. Spend carefully: Omni 1.1 Flash 10s x1 only; write a careful prompt first; regenerate at most ONE clip per video,
+   and only if it is clearly unusable. Never use a dearer model or x2/x4 outputs unless he asks.
+3. End the message to him with: "Flow credits: used <n>, left <m> (~<m/225, one decimal> weeks of videos)".
+4. If the balance after the run is under 225, add: "⚠️ Flow credits low - less than one week left."
+
 ## Reach + monetization rules (YouTube policies)
 1. Original value every time: own script, accurate facts (verify numbers with a web search), never reuse others' clips/music.
 2. No repetitive mass-produced feel: vary topics, wording, colors/themes; never upload near-duplicates.
