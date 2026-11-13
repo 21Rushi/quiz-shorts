@@ -1,0 +1,44 @@
+name: Facts visuals check (test only)
+
+on:
+  push:
+    branches: [visuals-test]
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install ffmpeg + Hindi text shaping
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ffmpeg libraqm0
+      - run: pip install -r requirements.txt
+      - name: Fonts
+        run: |
+          mkdir -p ~/fonts && cd ~/fonts
+          npm pack -s @expo-google-fonts/noto-sans-devanagari @expo-google-fonts/montserrat >/dev/null
+          for f in *.tgz; do tar xzf "$f"; done
+      - name: Resolve pictures + contact sheets
+        run: python src/visuals.py --resolve studio/facts_visuals.json --out preview --from 2026-11-16
+      - name: Build sample Short
+        run: |
+          python src/build_auto.py --date 2026-11-16 --dir sample
+          python src/post_premade.py --slot evening --date 2026-11-16 --dir sample --dry-run || true
+          SRC=$(ls out/*_voiced.mp4 2>/dev/null | head -1); SRC=${SRC:-sample/2026-11-16/evening/video.mp4}
+          ffmpeg -y -loglevel error -i "$SRC" -vf scale=540:960 -c:v libx264 -crf 27 -c:a aac -b:a 64k preview/sample.mp4
+          cp sample/2026-11-16/evening/meta.json preview/sample_meta.json
+      - name: Publish preview branch
+        run: |
+          rm -rf preview/img
+          cd preview && git init -q -b visuals-preview
+          git config user.name "github-actions" && git config user.email "actions@users.noreply.github.com"
+          git add -A && git commit -qm "visuals preview"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" visuals-preview

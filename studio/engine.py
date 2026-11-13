@@ -243,7 +243,77 @@ def sc_big(cv, tl, dur, p, T):
     put(cv, text_img(p['text'], F_XB, p.get('size', 220), fill=tuple(p.get('color', (255, 220, 80))), stroke=8),
         W / 2, 720, 1, eob(prog(tl, 0, 0.5)) * (1 + 0.03 * math.sin(tl * 5)))
 
-SCENES = dict(planet=sc_planet, counter=sc_counter, streaks=sc_streaks, oceans=sc_oceans,
+
+# ---------------- media: photos / video clips as full-screen visuals ----------------
+class Photo:
+    """A still image shown full-screen with a slow pan + zoom (Ken Burns)."""
+    PH = int(H * 1.12)
+    def __init__(self, path, flip=False):
+        im = Image.open(path).convert('RGB')
+        s = max(self.PH / im.height, (self.PH * 9 / 16) / im.width)
+        self.im = im.resize((max(1, round(im.width * s)), max(1, round(im.height * s))), Image.LANCZOS)
+        self.flip = flip
+    def frame(self, lt, seg):
+        k = clamp(lt / max(0.01, seg))
+        if self.flip: k = 1 - k
+        hh = self.PH / lerp(1.0, 1.12, k); ww = hh * W / H
+        extra = self.im.width - ww
+        wide = self.im.width / self.im.height > 2.0
+        cx = extra * lerp(0.2 if wide else 0.36, 0.8 if wide else 0.64, k)
+        cy = (self.im.height - hh) / 2
+        return self.im.resize((W, H), Image.BILINEAR, box=(cx, cy, cx + ww, cy + hh))
+
+class Clip:
+    """A video clip decoded frame by frame, cropped to fill the screen. Loops if short."""
+    def __init__(self, path, ss=0.0):
+        self.p = subprocess.Popen(['ffmpeg', '-loglevel', 'error', '-stream_loop', '-1', '-ss', f'{ss:.2f}', '-i', path,
+                                   '-vf', f'scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={FPS}',
+                                   '-an', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-'], stdout=subprocess.PIPE)
+        self.i = -1; self.cur = None
+    def frame(self, lt, seg):
+        want = int(lt * FPS)
+        while self.i < want or self.cur is None:
+            b = self.p.stdout.read(W * H * 3)
+            if len(b) < W * H * 3: break
+            self.cur = Image.frombytes('RGB', (W, H), b); self.i += 1
+        return self.cur or Image.new('RGB', (W, H))
+
+_mc = {}
+def get_media(item, key):
+    if key not in _mc:
+        if item.get('kind') == 'video': _mc[key] = Clip(item['path'], item.get('ss', 0.0))
+        else: _mc[key] = Photo(item['path'], flip=bool(key[-1] % 2))
+    return _mc[key]
+
+_shade = None
+def shade():
+    """Dark gradient at the top (tag) and bottom (captions) so text stays readable on any picture."""
+    global _shade
+    if _shade is None:
+        y = np.arange(H, dtype=np.float32)
+        a = np.clip((420 - y) / 420, 0, 1) * 150 + np.clip((y - 980) / 300, 0, 1) * 185
+        arr = np.zeros((H, W, 4), np.uint8); arr[..., 3] = np.clip(a, 0, 215).astype(np.uint8)[:, None]
+        _shade = Image.fromarray(arr, 'RGBA')
+    return _shade
+
+def sc_media(cv, tl, dur, p, T):
+    items = p['items']; n = len(items); seg = dur / n
+    i = min(n - 1, int(tl / seg)); lt = tl - i * seg
+    cv.paste(get_media(items[i], (p['id'], i)).frame(lt, seg), (0, 0))
+    punch = 1 - eo(prog(lt, 0, 0.18))          # tiny white flash on every cut
+    if punch > 0.02 and (i > 0 or tl < 0.2):
+        cv.paste(Image.blend(cv, Image.new('RGB', (W, H), (255, 255, 255)), 0.35 * punch), (0, 0))
+    cv.paste(shade(), (0, 0), shade())
+    if p.get('text'):   # hook: big words in the middle
+        put(cv, text_img(p['text'], F_XB, p.get('size', 200), fill=(255, 220, 80), stroke=12, sfill=(10, 10, 30)),
+            W / 2, 760, 1, eob(prog(tl, 0, 0.45)) * (1 + 0.03 * math.sin(tl * 5)))
+    if p.get('label'):  # fact number badge
+        s = eob(prog(tl, 0.05, 0.4))
+        b = text_img(p['label'], F_XB, 84, fill=(20, 20, 30))
+        put(cv, card(b.width + 80, b.height + 60, (255, 210, 50), 50), W / 2, 400, 1, s)
+        put(cv, b, W / 2, 400, 1, s)
+
+SCENES = dict(media=sc_media, planet=sc_planet, counter=sc_counter, streaks=sc_streaks, oceans=sc_oceans,
               daynight=sc_daynight, clock=sc_clock, big=sc_big)
 
 def caption(cv, t, a, b, en, hi, y=1230):
@@ -266,16 +336,21 @@ def render_story(spec, t, bg):
     cv = bg.frame(t, tuple(spec.get('accent', (120, 60, 220))))
     pill = text_img(spec.get('tag', 'WHAT IF?'), F_XB, 50, fill=(20, 20, 30))
     c = card(pill.width + 70, pill.height + 34, (255, 210, 50), 40)
-    put(cv, c, W / 2, 230, 1, eob(prog(t, 0, 0.5))); put(cv, pill, W / 2, 230, 1, eob(prog(t, 0, 0.5)))
-    for bt in spec['beats']:
+    for bi, bt in enumerate(spec['beats']):
         a, b = bt['start'], bt['end']
         if a - 0.01 <= t < b + 0.01:
             tl = t - a
-            fade = min(eo(prog(t, a, 0.35)), 1 - prog(t, b - 0.3, 0.3)) if bt is not spec['beats'][-1] else eo(prog(t, a, 0.35))
-            m = cv.copy()
-            SCENES[bt['scene']['type']](m, tl, b - a, bt['scene'], T)
-            cv = Image.blend(cv, m, fade) if fade < 0.995 else m
+            if bt['scene']['type'] == 'media':   # photos / clips fill the screen: hard cuts, no fade to the star background
+                bt['scene']['id'] = bi
+                sc_media(cv, tl, b - a, bt['scene'], T)
+            else:
+                fade = min(eo(prog(t, a, 0.35)), 1 - prog(t, b - 0.3, 0.3)) if bt is not spec['beats'][-1] else eo(prog(t, a, 0.35))
+                m = cv.copy()
+                SCENES[bt['scene']['type']](m, tl, b - a, bt['scene'], T)
+                cv = Image.blend(cv, m, fade) if fade < 0.995 else m
             caption(cv, t, a, b if bt is not spec['beats'][-1] else T + 1, bt['en'], bt.get('hi'))
+            break
+    put(cv, c, W / 2, 230, 1, eob(prog(t, 0, 0.5))); put(cv, pill, W / 2, 230, 1, eob(prog(t, 0, 0.5)))
     brand(cv)
     return cv
 
