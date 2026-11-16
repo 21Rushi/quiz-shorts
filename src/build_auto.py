@@ -100,6 +100,19 @@ def build(entry, folder, clips=None):
                     "-movflags", "+faststart", os.path.join(folder, "video.mp4")], check=True)
     os.remove(raw)
     shutil.rmtree(os.path.join(folder, "img"), ignore_errors=True)
+    # Speak the Hindi narration into the file right here (Rushikesh, 2026-11-16: the saved video must
+    # already have the voice). If TTS is not reachable, the lines stay in meta.json and GitHub adds
+    # the voice at upload time instead (src/post_premade.py).
+    vo, voiced = {"voice": VOICE, "lines": lines}, False
+    try:
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        from voiceover import add_voiceover
+        tmp_v = os.path.join(folder, "voiced.mp4")
+        add_voiceover(os.path.join(folder, "video.mp4"), vo, tmp_v)
+        os.replace(tmp_v, os.path.join(folder, "video.mp4"))
+        voiced = True
+    except Exception as e:
+        print(f"::warning title=Voice not added at build::{type(e).__name__}: {e} - GitHub will add it at upload.")
     pics = ("\n\n📷 Photos: Wikimedia Commons - " + "; ".join(credit)) if credit else ""
     if len(pics) > 900:
         pics = pics[:897] + "..."
@@ -119,8 +132,11 @@ def build(entry, folder, clips=None):
         "localizations": {"hi": {
             "title": entry["title_hi"],
             "description": f"{entry['desc_hi']}\n\n👇 {q_hi}\n\n🔔 रोज़ क्विज़ + फैक्ट्स के लिए Subscribe करें: {SUB}\n\n{entry['hashtags']}"}},
-        "voiceover": {"voice": VOICE, "lines": lines},
     }
+    if voiced:
+        meta["voice_in_video"] = True          # already spoken - post_premade.py must not add it twice
+    else:
+        meta["voiceover"] = vo
     json.dump(meta, open(os.path.join(folder, "meta.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print(f"Built {entry['kind']} Short for {entry['date']}: {entry['title_en']} ({total:.0f}s)")
 

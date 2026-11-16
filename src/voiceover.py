@@ -31,7 +31,26 @@ def duration(path):
     return float(out.stdout.strip())
 
 
+def _trust_proxy_ca():
+    """In Claude's cloud workspace HTTPS goes through a proxy with its own CA; let edge-tts trust it."""
+    ca = "/root/.ccr/ca-bundle.crt"
+    if not os.path.isfile(ca):
+        return
+    try:
+        import certifi
+        if getattr(certifi, "_with_proxy", None):
+            return
+        both = os.path.join(tempfile.gettempdir(), "ca_with_proxy.pem")
+        with open(both, "w") as f:
+            f.write(open(certifi.where()).read() + "\n" + open(ca).read())
+        certifi.where = lambda: both
+        certifi._with_proxy = True
+    except Exception:
+        pass
+
+
 async def tts(text, voice, rate, path):
+    _trust_proxy_ca()
     import edge_tts
     err = "empty audio"
     for attempt in range(3):
