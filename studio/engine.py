@@ -286,10 +286,12 @@ def get_media(item, key, h=H):
         else: _mc[key] = Photo(item['path'], flip=bool(key[-1] % 2))
     return _mc[key]
 
-# Layout for media beats (Rushikesh, 2026-11-16: "I don't like the floating text covering the video"):
-# all words sit in a solid panel at the top, the picture / clip plays underneath with NOTHING drawn over it.
+# Layout for media beats (Rushikesh, 2026-11-16: "I don't like the floating text covering the video", then
+# "take that content below"): all words sit in a solid panel at the BOTTOM, the picture / clip plays above it
+# with NOTHING drawn over it. The lowest SAFE_B pixels of the panel stay empty because the YouTube Shorts
+# app draws the channel name / title there, and text stays clear of the like/comment buttons on the right.
 PANEL_BG = (12, 12, 24)
-CAP_EN, CAP_HI, CAP_W, CAP_Y0 = 46, 36, 1000, 178
+CAP_EN, CAP_HI, CAP_W, CAP_Y0, SAFE_B = 46, 36, 880, 146, 250
 
 def cap_imgs(en, hi):
     e = text_img(en, F_XB, CAP_EN, fill=(255, 255, 255), maxw=CAP_W, spacing=10)
@@ -304,14 +306,14 @@ def panel_h(spec):
             if bt['scene']['type'] != 'media': continue
             e, h = cap_imgs(bt['en'], bt.get('hi'))
             need = max(need, e.height + (h.height + 16 if h else 0))
-        ph = CAP_Y0 + need + 34
-        spec['_panel'] = int(min(640, max(380, ph + ph % 2)))
+        ph = CAP_Y0 + need + 24 + SAFE_B
+        spec['_panel'] = int(min(860, max(520, ph + ph % 2)))
     return spec['_panel']
 
 def sc_media(cv, tl, dur, p, T, bt=None, spec=None, t=0.0):
     spec = spec or {}
     ph = panel_h(spec) if spec.get('beats') else 0
-    vh = H - ph
+    vh = H - ph; py = vh                         # video on top (0..vh), panel below (py..H)
     items = p['items']; n = len(items); seg = dur / n
     i = min(n - 1, int(tl / seg)); lt = tl - i * seg
     fr = get_media(items[i], (p['id'], i), vh).frame(lt, seg)
@@ -320,29 +322,30 @@ def sc_media(cv, tl, dur, p, T, bt=None, spec=None, t=0.0):
     punch = 1 - eo(prog(lt, 0, 0.18))          # tiny white flash on every cut
     if punch > 0.02 and (i > 0 or tl < 0.2):
         fr = Image.blend(fr, Image.new('RGB', fr.size, (255, 255, 255)), 0.35 * punch)
-    cv.paste(fr, (0, ph))
+    cv.paste(fr, (0, 0))
     if not ph: return
     d = ImageDraw.Draw(cv)
-    d.rectangle((0, 0, W, ph), fill=PANEL_BG)
-    d.rectangle((0, ph - 6, W, ph), fill=(255, 210, 50))
-    put(cv, text_img(BRAND, F_B, 28, fill=(255, 255, 255)), W / 2, 44, 0.7)
+    d.rectangle((0, py, W, H), fill=PANEL_BG)
+    d.rectangle((0, py, W, py + 6), fill=(255, 210, 50))
+    put(cv, text_img(BRAND, F_B, 26, fill=(255, 255, 255)), W / 2, py + 34, 0.7)
     # one row: tag pill + fact number badge
+    ry = py + 92
     pill = text_img(spec.get('tag', 'DID YOU KNOW?'), F_XB, 38, fill=(20, 20, 30))
     label = p.get('label') or p.get('text')
     bw = pill.width + 56
     if label:
         lb = text_img(label, F_XB, 38, fill=(255, 210, 50))
         lw = lb.width + 56; x0 = (W - (bw + 18 + lw)) / 2
-        put(cv, card(bw, 68, (255, 210, 50), 34), x0 + bw / 2, 112); put(cv, pill, x0 + bw / 2, 112)
+        put(cv, card(bw, 68, (255, 210, 50), 34), x0 + bw / 2, ry); put(cv, pill, x0 + bw / 2, ry)
         s = eob(prog(tl, 0.05, 0.4))
-        put(cv, card(lw, 68, (40, 40, 64), 34, outline=(255, 210, 50), ow=3), x0 + bw + 18 + lw / 2, 112, 1, s)
-        put(cv, lb, x0 + bw + 18 + lw / 2, 112, 1, s)
+        put(cv, card(lw, 68, (40, 40, 64), 34, outline=(255, 210, 50), ow=3), x0 + bw + 18 + lw / 2, ry, 1, s)
+        put(cv, lb, x0 + bw + 18 + lw / 2, ry, 1, s)
     else:
-        put(cv, card(bw, 68, (255, 210, 50), 34), W / 2, 112); put(cv, pill, W / 2, 112)
+        put(cv, card(bw, 68, (255, 210, 50), 34), W / 2, ry); put(cv, pill, W / 2, ry)
     if bt:
         e, h = cap_imgs(bt['en'], bt.get('hi'))
         blk = e.height + (h.height + 16 if h else 0)
-        y = CAP_Y0 + (ph - 34 - CAP_Y0 - blk) / 2
+        y = py + CAP_Y0 + (ph - SAFE_B - 24 - CAP_Y0 - blk) / 2
         last = bt is spec['beats'][-1]
         al = min(eo(prog(tl, 0, 0.35)), 1 if last else 1 - prog(tl, dur - 0.25, 0.25))
         if al > 0:

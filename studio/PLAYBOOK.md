@@ -35,7 +35,7 @@ Built by `python src/build_auto.py --date YYYY-MM-DD --dir <folder>`:
   and captions are added by the pipeline, so clips must be silent of speech). Omni 1.1 Flash, 9:16, 10s, x1 = 15
   credits each, 45 total.
 - LAYOUT (Rushikesh, 2026-11-16: "I don't like the floating text covering the video"): all words (tag, #1/#2/#3
-  badge, English + Hindi caption) sit in a solid panel at the TOP; the clip plays underneath with nothing drawn over
+  badge, English + Hindi caption) sit in a solid panel at the BOTTOM ("take that content below"); the clip plays above it with nothing drawn over
   it (studio/engine.py sc_media). Never put captions, badges or dark gradients over the clip again.
 - VOICE IN THE FILE (2026-11-16): build_auto.py now speaks the Hindi "vo" lines into video.mp4 itself (edge-tts), so
   the copy saved on the Mac has the voice too; meta.json then has "voice_in_video": true. Only if TTS is unreachable:
