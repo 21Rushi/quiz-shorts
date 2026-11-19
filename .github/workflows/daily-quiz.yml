@@ -65,27 +65,35 @@ jobs:
           python-version: "3.12"
           cache: pip
 
-      # apt mirrors sometimes hang for 20 min and kill the whole run (18-19 Nov: apt-get update hung).
-      # 1) skip if already installed, 2) try installing from the runner's existing package lists
-      #    (no 'apt-get update', which is the step that hangs), 3) only then update + retry.
-      - name: Install ffmpeg + Hindi text shaping
-        timeout-minutes: 14
-        run: |
-          if command -v ffmpeg >/dev/null && ldconfig -p | grep -q libraqm; then echo "already installed"; exit 0; fi
-          APT="-o Acquire::Retries=3 -o Acquire::http::Timeout=20 -o Acquire::https::Timeout=20 -o DPkg::Lock::Timeout=60"
-          if sudo timeout 180 apt-get $APT install -y -qq --no-install-recommends ffmpeg libraqm0; then exit 0; fi
-          echo "install without update failed, updating package lists..."
-          for i in 1 2 3; do
-            if sudo timeout 150 apt-get $APT update -qq && \
-               sudo timeout 180 apt-get $APT install -y -qq --no-install-recommends ffmpeg libraqm0; then
-              exit 0
-            fi
-            echo "apt try $i failed, retrying..."; sleep 10
-          done
-          exit 1
-
       - name: Install Python packages
         run: pip install -r requirements.txt
+
+      # The Ubuntu apt mirror sometimes hangs for 15+ min (18-19 Nov) and killed runs. So apt is no longer
+      # required: Pillow's wheel already has Hindi shaping (raqm) built in, and ffmpeg falls back to a static
+      # build downloaded from GitHub itself. apt is only a quick first try (90 s cap, no 'apt-get update').
+      - name: Install ffmpeg + Hindi text shaping
+        timeout-minutes: 10
+        run: |
+          raqm() { python -c "from PIL import features; import sys; sys.exit(0 if features.check('raqm') else 1)"; }
+          if ! command -v ffmpeg >/dev/null || ! raqm; then
+            sudo timeout 90 apt-get -o DPkg::Lock::Timeout=30 -o Acquire::http::Timeout=15 install -y -qq \
+              --no-install-recommends ffmpeg libraqm0 libfribidi0 || echo "apt unavailable, using fallbacks"
+          fi
+          if ! command -v ffmpeg >/dev/null; then
+            for i in 1 2 3; do
+              if curl -fsSL --retry 3 --max-time 180 -o /tmp/ff.tar.xz \
+                   https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-linux64-gpl.tar.xz; then
+                mkdir -p /tmp/ff && tar -xJf /tmp/ff.tar.xz -C /tmp/ff --strip-components=1 && \
+                sudo cp /tmp/ff/bin/ffmpeg /tmp/ff/bin/ffprobe /usr/local/bin/ && break
+              fi
+              echo "ffmpeg download try $i failed"; sleep 10
+            done
+          fi
+          ffmpeg -version | head -1
+          if ! raqm; then
+            sudo timeout 240 apt-get -o Acquire::http::Timeout=20 update -qq || true
+            sudo timeout 180 apt-get install -y -qq --no-install-recommends libraqm0 libfribidi0 || true
+          fi
 
       - name: Check Hindi shaping is available
         run: python -c "from PIL import features; assert features.check('raqm'), 'libraqm missing - Hindi would render broken'"
