@@ -288,7 +288,6 @@ def get_media(item, key, h=H):
 
 # Layout for media beats (Rushikesh, 2026-11-19, with a reference screenshot): the clip FILLS THE WHOLE SCREEN.
 # The words sit at the bottom over a dark fade (no solid panel):
-#   [person icon @handle] pill (dark, yellow outline)
 #   ---- yellow line ---- [DID YOU KNOW?] [#1] ---- yellow line ----
 #   English caption, white, key words (names, places, numbers, "Comment!") in YELLOW
 #   Hindi caption in a dark rounded box with a yellow border: first line yellow, the rest white
@@ -360,20 +359,6 @@ def bottom_fade(top):
         _grad[top] = Image.fromarray(arr, 'RGBA')
     return _grad[top]
 
-_ic = {}
-def handle_pill():
-    if 'h' not in _ic:
-        t = text_img(BRAND, F_B, 30, fill=(255, 255, 255))
-        w, h = t.width + 110, 62
-        im = card(w, h, (8, 8, 16, 235), 31, outline=YEL, ow=3).copy()
-        d = ImageDraw.Draw(im)                     # small person icon
-        cx, cy = 42, h / 2
-        d.ellipse((cx - 8, cy - 15, cx + 8, cy + 1), fill=(255, 255, 255))
-        d.pieslice((cx - 15, cy + 3, cx + 15, cy + 31), 180, 360, fill=(255, 255, 255))
-        im.paste(t, (66, int((h - t.height) / 2)), t)
-        _ic['h'] = im
-    return _ic['h']
-
 def layout(spec):
     """Fixed positions for the whole video (from the tallest caption), so nothing jumps between facts."""
     if '_lay' not in spec:
@@ -387,8 +372,7 @@ def layout(spec):
         y_hi = bottom - hb                         # top of Hindi box
         y_en = y_hi - 22 - eh                      # top of English block
         y_row = y_en - 58                          # centre of tag row
-        y_hdl = y_row - 74                         # centre of handle pill
-        spec['_lay'] = dict(eh=eh, hb=hb, y_hi=y_hi, y_en=y_en, y_row=y_row, y_hdl=y_hdl, fade=max(0, y_hdl - 260))
+        spec['_lay'] = dict(eh=eh, hb=hb, y_hi=y_hi, y_en=y_en, y_row=y_row, fade=max(0, y_row - 300))
     return spec['_lay']
 
 def sc_media(cv, tl, dur, p, T, bt=None, spec=None, t=0.0):
@@ -405,7 +389,6 @@ def sc_media(cv, tl, dur, p, T, bt=None, spec=None, t=0.0):
     if not spec.get('beats'): return
     L = layout(spec)
     g = bottom_fade(L['fade']); cv.paste(g, (0, L['fade']), g)
-    put(cv, handle_pill(), W / 2, L['y_hdl'])
     # tag row with a yellow line running across behind it
     ry = L['y_row']
     pill = text_img(spec.get('tag', 'DID YOU KNOW?'), F_XB, 40, fill=(20, 20, 30))

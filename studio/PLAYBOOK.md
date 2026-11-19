@@ -35,7 +35,8 @@ Built by `python src/build_auto.py --date YYYY-MM-DD --dir <folder>`:
   and captions are added by the pipeline, so clips must be silent of speech). Omni 1.1 Flash, 9:16, 10s, x1 = 15
   credits each, 45 total.
 - LAYOUT (Rushikesh, 2026-11-19, replaces the 2026-11-16 bottom panel; he sent a reference screenshot): the clip
-  FILLS THE WHOLE SCREEN. Words sit at the bottom over a dark fade: [person icon @I-mRushi] pill -> a yellow line
+  FILLS THE WHOLE SCREEN. NO channel name / handle on the video (Rushikesh, 2026-11-19). Words sit at the bottom over a
+  dark fade: a yellow line
   across the screen with the yellow "DID YOU KNOW?" pill + outlined "#1/#2/#3" badge -> English caption in white with
   key words (names, places, numbers, "Comment!") in YELLOW -> Hindi caption in a dark rounded box with a yellow border
   (first line yellow, rest white). Code: studio/engine.py sc_media. Optional per-beat "hl": ["word", ...] in
