@@ -286,71 +286,151 @@ def get_media(item, key, h=H):
         else: _mc[key] = Photo(item['path'], flip=bool(key[-1] % 2))
     return _mc[key]
 
-# Layout for media beats (Rushikesh, 2026-11-16: "I don't like the floating text covering the video", then
-# "take that content below"): all words sit in a solid panel at the BOTTOM, the picture / clip plays above it
-# with NOTHING drawn over it. The lowest SAFE_B pixels of the panel stay empty because the YouTube Shorts
-# app draws the channel name / title there, and text stays clear of the like/comment buttons on the right.
-PANEL_BG = (12, 12, 24)
-CAP_EN, CAP_HI, CAP_W, CAP_Y0, SAFE_B = 46, 36, 880, 146, 250
+# Layout for media beats (Rushikesh, 2026-11-19, with a reference screenshot): the clip FILLS THE WHOLE SCREEN.
+# The words sit at the bottom over a dark fade (no solid panel):
+#   [person icon @handle] pill (dark, yellow outline)
+#   ---- yellow line ---- [DID YOU KNOW?] [#1] ---- yellow line ----
+#   English caption, white, key words (names, places, numbers, "Comment!") in YELLOW
+#   Hindi caption in a dark rounded box with a yellow border: first line yellow, the rest white
+# The text block ends SAFE_B px above the bottom so the YouTube title / channel row doesn't cover it.
+YEL = (255, 210, 50)
+NAVY = (10, 12, 28)
+CAP_EN, CAP_HI, CAP_W, SAFE_B = 50, 42, 900, 120
+_HL_JOIN = {'of', 'the', 'de', 'and', 'on', 'da', 'del', 'van', 'von'}
+_HL_SKIP = {'I', 'A', 'An', 'The', 'You', 'Your', 'Which', 'What', 'Why', 'How', 'It', 'In', 'On', 'And', 'But',
+            'Many', 'Most', 'Some', 'One', 'This', 'That', 'These', 'Babies', 'An'}
 
-def cap_imgs(en, hi):
-    e = text_img(en, F_XB, CAP_EN, fill=(255, 255, 255), maxw=CAP_W, spacing=10)
-    h = text_img(hi, F_HI, CAP_HI, fill=(255, 215, 90), maxw=CAP_W, spacing=8) if hi else None
+def hl_words(text, extra=()):
+    """Which words of an English caption to colour yellow: capitalised names (Great Wall of China), numbers,
+    'Comment!' and any words listed in the beat's optional "hl" list."""
+    ws = text.split(' '); flag = [False] * len(ws)
+    ex = {e.lower() for e in extra}
+    def core(w): return w.strip('.,!?;:"\'()')
+    for i, w in enumerate(ws):
+        c = core(w)
+        if not c: continue
+        first = i == 0 or ws[i - 1].endswith(('.', '!', '?'))
+        if any(ch.isdigit() for ch in c) or c.lower() in ex or c.lower().startswith('comment'):
+            flag[i] = True
+        elif c[0].isupper() and c not in _HL_SKIP and not (first and c in _HL_SKIP):
+            flag[i] = not first or (i + 1 < len(ws) and core(ws[i + 1])[:1].isupper())
+    for i in range(1, len(ws) - 1):                # "Great Wall of China": join small words between names
+        if not flag[i] and core(ws[i]).lower() in _HL_JOIN and flag[i - 1] and flag[i + 1]: flag[i] = True
+    return ws, flag
+
+_rt = {}
+def rich_img(words, colors, path, size, maxw, spacing=10, line_colors=None):
+    """Centered multi-line text where each word has its own colour (or each LINE, if line_colors is given)."""
+    k = (tuple(words), tuple(colors), path, size, maxw, tuple(line_colors or ()))
+    if k in _rt: return _rt[k]
+    f = font(path, size); d = ImageDraw.Draw(Image.new('RGBA', (8, 8)))
+    sp = d.textlength(' ', font=f)
+    lines, cur, cw = [], [], 0
+    for w, c in zip(words, colors):
+        wl = d.textlength(w, font=f)
+        if cur and cw + sp + wl > maxw: lines.append((cur, cw)); cur, cw = [], 0
+        cw = cw + (sp if cur else 0) + wl; cur.append((w, c, wl))
+    if cur: lines.append((cur, cw))
+    asc, desc = f.getmetrics(); lh = asc + desc
+    im = Image.new('RGBA', (int(max(l[1] for l in lines)) + 8, lh * len(lines) + spacing * (len(lines) - 1) + 8))
+    dr = ImageDraw.Draw(im)
+    for li, (ln, lw) in enumerate(lines):
+        x = (im.width - lw) / 2; y = 4 + li * (lh + spacing)
+        for w, c, wl in ln:
+            col = line_colors[min(li, len(line_colors) - 1)] if line_colors else c
+            dr.text((x, y), w, font=f, fill=col); x += wl + sp
+    _rt[k] = im
+    return im
+
+def cap_imgs(en, hi, hl=()):
+    ws, flag = hl_words(en, hl)
+    e = rich_img(ws, [YEL if f else (255, 255, 255) for f in flag], F_XB, CAP_EN, CAP_W, 10)
+    h = None
+    if hi:
+        hw = hi.split(' ')
+        h = rich_img(hw, [None] * len(hw), F_HI, CAP_HI, CAP_W - 90, 6, line_colors=[YEL, (255, 255, 255)])
     return e, h
 
-def panel_h(spec):
-    """One panel height for the whole video (tallest caption), so the picture never jumps."""
-    if '_panel' not in spec:
-        need = 0
+_grad = {}
+def bottom_fade(top):
+    """Dark navy fade from transparent at `top` to ~88% at the bottom of the screen."""
+    if top not in _grad:
+        hgt = H - top; a = np.linspace(0, 1, hgt) ** 1.4 * 225
+        arr = np.zeros((hgt, W, 4), np.uint8); arr[..., :3] = NAVY; arr[..., 3] = a[:, None].astype(np.uint8)
+        _grad[top] = Image.fromarray(arr, 'RGBA')
+    return _grad[top]
+
+_ic = {}
+def handle_pill():
+    if 'h' not in _ic:
+        t = text_img(BRAND, F_B, 30, fill=(255, 255, 255))
+        w, h = t.width + 110, 62
+        im = card(w, h, (8, 8, 16, 235), 31, outline=YEL, ow=3).copy()
+        d = ImageDraw.Draw(im)                     # small person icon
+        cx, cy = 42, h / 2
+        d.ellipse((cx - 8, cy - 15, cx + 8, cy + 1), fill=(255, 255, 255))
+        d.pieslice((cx - 15, cy + 3, cx + 15, cy + 31), 180, 360, fill=(255, 255, 255))
+        im.paste(t, (66, int((h - t.height) / 2)), t)
+        _ic['h'] = im
+    return _ic['h']
+
+def layout(spec):
+    """Fixed positions for the whole video (from the tallest caption), so nothing jumps between facts."""
+    if '_lay' not in spec:
+        eh = hh = 0
         for bt in spec['beats']:
             if bt['scene']['type'] != 'media': continue
-            e, h = cap_imgs(bt['en'], bt.get('hi'))
-            need = max(need, e.height + (h.height + 16 if h else 0))
-        ph = CAP_Y0 + need + 24 + SAFE_B
-        spec['_panel'] = int(min(860, max(520, ph + ph % 2)))
-    return spec['_panel']
+            e, h = cap_imgs(bt['en'], bt.get('hi'), bt.get('hl', ()))
+            eh = max(eh, e.height); hh = max(hh, h.height if h else 0)
+        hb = hh + 44 if hh else 0                  # Hindi box height
+        bottom = H - SAFE_B
+        y_hi = bottom - hb                         # top of Hindi box
+        y_en = y_hi - 22 - eh                      # top of English block
+        y_row = y_en - 58                          # centre of tag row
+        y_hdl = y_row - 74                         # centre of handle pill
+        spec['_lay'] = dict(eh=eh, hb=hb, y_hi=y_hi, y_en=y_en, y_row=y_row, y_hdl=y_hdl, fade=max(0, y_hdl - 260))
+    return spec['_lay']
 
 def sc_media(cv, tl, dur, p, T, bt=None, spec=None, t=0.0):
     spec = spec or {}
-    ph = panel_h(spec) if spec.get('beats') else 0
-    vh = H - ph; py = vh                         # video on top (0..vh), panel below (py..H)
     items = p['items']; n = len(items); seg = dur / n
     i = min(n - 1, int(tl / seg)); lt = tl - i * seg
-    fr = get_media(items[i], (p['id'], i), vh).frame(lt, seg)
-    if fr.height != vh:                          # photos come full-size: keep the middle
-        top = (fr.height - vh) // 2; fr = fr.crop((0, top, W, top + vh))
+    fr = get_media(items[i], (p['id'], i), H).frame(lt, seg)
+    if fr.height != H:
+        top = (fr.height - H) // 2; fr = fr.crop((0, top, W, top + H))
     punch = 1 - eo(prog(lt, 0, 0.18))          # tiny white flash on every cut
     if punch > 0.02 and (i > 0 or tl < 0.2):
         fr = Image.blend(fr, Image.new('RGB', fr.size, (255, 255, 255)), 0.35 * punch)
     cv.paste(fr, (0, 0))
-    if not ph: return
-    d = ImageDraw.Draw(cv)
-    d.rectangle((0, py, W, H), fill=PANEL_BG)
-    d.rectangle((0, py, W, py + 6), fill=(255, 210, 50))
-    put(cv, text_img(BRAND, F_B, 26, fill=(255, 255, 255)), W / 2, py + 34, 0.7)
-    # one row: tag pill + fact number badge
-    ry = py + 92
-    pill = text_img(spec.get('tag', 'DID YOU KNOW?'), F_XB, 38, fill=(20, 20, 30))
+    if not spec.get('beats'): return
+    L = layout(spec)
+    g = bottom_fade(L['fade']); cv.paste(g, (0, L['fade']), g)
+    put(cv, handle_pill(), W / 2, L['y_hdl'])
+    # tag row with a yellow line running across behind it
+    ry = L['y_row']
+    pill = text_img(spec.get('tag', 'DID YOU KNOW?'), F_XB, 40, fill=(20, 20, 30))
     label = p.get('label') or p.get('text')
-    bw = pill.width + 56
+    bw = pill.width + 60
+    lw = (text_img(label, F_XB, 40, fill=YEL).width + 52) if label else 0
+    tot = bw + (16 + lw if label else 0); x0 = (W - tot) / 2
+    d = ImageDraw.Draw(cv)
+    d.rectangle((0, ry - 2, x0 - 14, ry + 2), fill=YEL); d.rectangle((x0 + tot + 14, ry - 2, W, ry + 2), fill=YEL)
+    put(cv, card(bw, 72, YEL, 36), x0 + bw / 2, ry); put(cv, pill, x0 + bw / 2, ry)
     if label:
-        lb = text_img(label, F_XB, 38, fill=(255, 210, 50))
-        lw = lb.width + 56; x0 = (W - (bw + 18 + lw)) / 2
-        put(cv, card(bw, 68, (255, 210, 50), 34), x0 + bw / 2, ry); put(cv, pill, x0 + bw / 2, ry)
-        s = eob(prog(tl, 0.05, 0.4))
-        put(cv, card(lw, 68, (40, 40, 64), 34, outline=(255, 210, 50), ow=3), x0 + bw + 18 + lw / 2, ry, 1, s)
-        put(cv, lb, x0 + bw + 18 + lw / 2, ry, 1, s)
-    else:
-        put(cv, card(bw, 68, (255, 210, 50), 34), W / 2, ry); put(cv, pill, W / 2, ry)
+        s = eob(prog(tl, 0.05, 0.4)); lb = text_img(label, F_XB, 40, fill=YEL)
+        put(cv, card(lw, 72, (8, 8, 16, 235), 36, outline=YEL, ow=3), x0 + bw + 16 + lw / 2, ry, 1, s)
+        put(cv, lb, x0 + bw + 16 + lw / 2, ry, 1, s)
     if bt:
-        e, h = cap_imgs(bt['en'], bt.get('hi'))
-        blk = e.height + (h.height + 16 if h else 0)
-        y = py + CAP_Y0 + (ph - SAFE_B - 24 - CAP_Y0 - blk) / 2
+        e, h = cap_imgs(bt['en'], bt.get('hi'), bt.get('hl', ()))
         last = bt is spec['beats'][-1]
         al = min(eo(prog(tl, 0, 0.35)), 1 if last else 1 - prog(tl, dur - 0.25, 0.25))
         if al > 0:
-            put(cv, e, W / 2, y, al, top=True)
-            if h: put(cv, h, W / 2, y + e.height + 16, al, top=True)
+            put(cv, e, W / 2, L['y_en'] + (L['eh'] - e.height) / 2, al, top=True)
+            if h:
+                bwid = max(h.width + 90, 620)
+                put(cv, card(bwid, h.height + 44, (8, 8, 16, 225), 30, outline=YEL, ow=3), W / 2,
+                    L['y_hi'] + L['hb'] / 2, al)
+                put(cv, h, W / 2, L['y_hi'] + L['hb'] / 2, al)
 
 SCENES = dict(media=sc_media, planet=sc_planet, counter=sc_counter, streaks=sc_streaks, oceans=sc_oceans,
               daynight=sc_daynight, clock=sc_clock, big=sc_big)
