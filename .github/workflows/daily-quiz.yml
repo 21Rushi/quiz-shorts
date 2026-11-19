@@ -65,15 +65,19 @@ jobs:
           python-version: "3.12"
           cache: pip
 
-      # apt mirrors sometimes hang for 20 min and kill the whole run.
-      # Cap each try at 4 min and retry up to 3 times.
+      # apt mirrors sometimes hang for 20 min and kill the whole run (18-19 Nov: apt-get update hung).
+      # 1) skip if already installed, 2) try installing from the runner's existing package lists
+      #    (no 'apt-get update', which is the step that hangs), 3) only then update + retry.
       - name: Install ffmpeg + Hindi text shaping
         timeout-minutes: 14
         run: |
-          APT="-o Acquire::Retries=3 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 -o DPkg::Lock::Timeout=60"
+          if command -v ffmpeg >/dev/null && ldconfig -p | grep -q libraqm; then echo "already installed"; exit 0; fi
+          APT="-o Acquire::Retries=3 -o Acquire::http::Timeout=20 -o Acquire::https::Timeout=20 -o DPkg::Lock::Timeout=60"
+          if sudo timeout 180 apt-get $APT install -y -qq --no-install-recommends ffmpeg libraqm0; then exit 0; fi
+          echo "install without update failed, updating package lists..."
           for i in 1 2 3; do
-            if sudo timeout 240 apt-get $APT update -qq && \
-               sudo timeout 240 apt-get $APT install -y -qq --no-install-recommends ffmpeg libraqm0; then
+            if sudo timeout 150 apt-get $APT update -qq && \
+               sudo timeout 180 apt-get $APT install -y -qq --no-install-recommends ffmpeg libraqm0; then
               exit 0
             fi
             echo "apt try $i failed, retrying..."; sleep 10
