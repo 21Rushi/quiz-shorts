@@ -24,7 +24,8 @@ def top_layer(im):
     pill = text_img(spec.get('tag', 'WHAT IF?'), F_XB, 50, fill=(20, 20, 30))
     c = card(pill.width + 70, pill.height + 34, (255, 210, 50, 255), 40)
     paste_c(im, c, 540, 200); paste_c(im, pill, 540, 217)
-    b = text_img(BRAND, F_B, 34, fill=(255, 255, 255, 200)); im.alpha_composite(b, (60, 55))
+    if spec.get('brand', False):  # no handle on video (Rushikesh, 2026-11-19)
+        b = text_img(BRAND, F_B, 34, fill=(255, 255, 255, 200)); im.alpha_composite(b, (60, 55))
 
 lay = [os.path.join(tmp, 'top.png')]; layer(top_layer).save(lay[0])
 times = []; t = 0
